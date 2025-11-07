@@ -1,30 +1,43 @@
-# Jax Health Readiness Scorecard (MVP)
+# Jax Health Readiness Scorecard (Phase 2)
 
 **Automated weekly county-level health readiness scores for Jacksonville-area counties**
 
-This MVP ranks Duval, Clay, St. Johns, Nassau, and Baker counties on timely, defensible public-health indicators using free, stable government data sources.
+This scorecard ranks Duval, Clay, St. Johns, Nassau, and Baker counties on 5 evidence-based public health indicators using free, stable government data sources.
 
-## Current Indicators
+## Current Indicators (Phase 2)
 
-### 1. Air Quality Stress
-- **Source**: EPA AirData Annual AQI by County
-- **Metric**: Count of unhealthy-or-worse AQI days (2023, most recent complete year)
-- **Weight**: 40 points max (capped at 30 days)
-- **URL**: https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_YYYY.zip
-
-### 2. Primary Care Shortage
+### 1. Primary Care Access (30 points)
 - **Source**: HRSA Health Professional Shortage Area (HPSA) Dashboard
 - **Metric**: Maximum Primary Care HPSA score in county (0-25 scale)
-- **Weight**: 60 points max
 - **URL**: https://data.hrsa.gov/DataDownload/DD_Files/HPSA_DASHBOARD.csv
 
-## Scoring
+### 2. Chronic Disease Prevalence (30 points)
+- **Source**: CDC PLACES (Local Data for Better Health)
+- **Metric**: Average prevalence of diabetes, obesity, and asthma
+- **URL**: https://data.cdc.gov/resource/duw2-7jbt.json
 
-**Readiness Score** = Air Quality Score (0-40) + HPSA Score (0-60)
+### 3. Air Quality Stress (15 points)
+- **Source**: EPA AirData Annual AQI by County
+- **Metric**: Count of unhealthy-or-worse AQI days (2023)
+- **URL**: https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_YYYY.zip
+
+### 4. Hazard Risk (15 points)
+- **Source**: FEMA National Risk Index
+- **Metric**: Composite risk score for natural hazards
+- **URL**: https://hazards.fema.gov/nri/data-resources
+
+### 5. Respiratory Virus Activity (10 points - future)
+- **Source**: CDC Respiratory Virus Surveillance
+- **Metric**: State-level flu/COVID/RSV activity levels
+- **Status**: Planned for Phase 3
+
+## Scoring (Phase 2)
+
+**Readiness Score** (0-100) = Primary Care (30) + Chronic Disease (30) + Air Quality (15) + Hazard Risk (15) + Respiratory (10)
 
 - **Higher score = higher risk/need**
-- Transparent, linear scaling
-- Easily adjustable weights for future refinement
+- Balanced weighting: healthcare access + chronic disease = 60%, environmental factors = 40%
+- Transparent, evidence-based methodology
 
 ## Data Outputs
 
@@ -74,19 +87,21 @@ gh repo create jax-health-scorecard --public --source=. --remote=origin --push
 
 ## Roadmap
 
-### Phase 2: Enhanced Indicators
-- **CDC PLACES**: Small-area chronic disease estimates (tract/county level)
-- **FEMA National Risk Index**: Community hazard baseline (county CSV)
-- **CDC Respiratory Virus Activity**: State-level weekly surveillance for nowcasting
+### ✅ Phase 2: Enhanced Indicators (COMPLETED)
+- ✅ **CDC PLACES**: County-level chronic disease prevalence (diabetes, obesity, asthma)
+- ✅ **FEMA National Risk Index**: Community hazard risk baseline
+- ⏳ **CDC Respiratory Virus Activity**: State-level weekly surveillance (placeholder ready)
 
-### Phase 3: Real-time Signals
+### Phase 3: Real-time Signals (Next)
 - **AirNow Daily API**: Rolling 7-day AQI averages (requires free API key)
-- **CDC Respiratory Activity Levels**: Weekly state trends
+- **CDC Respiratory Activity Levels**: Active weekly state flu/COVID/RSV tracking
+- **Increase refresh frequency**: Daily updates instead of weekly
 
-### Phase 4: School-Level Granularity
-- **Urban Institute Education Data API**: Public school roster
-- Geocode schools to counties/census tracts
-- Map county/tract signals down to individual schools
+### Phase 4: School-Level Granularity (Goal)
+- **Urban Institute Education Data API**: Public school roster with locations
+- **Geocoding**: Map schools to census tracts
+- **School-level scoring**: Assign tract/county indicators to 300+ individual schools
+- **Enhanced visualization**: Interactive maps and school search
 
 ## Data Sources & Credits
 
@@ -134,5 +149,5 @@ For questions or partnership inquiries about expanding to school-level data or a
 ---
 
 **Last Updated**: November 2025  
-**Status**: MVP Ready ✅
+**Status**: Phase 2 Complete ✅ (5 indicators, enhanced scoring)
 

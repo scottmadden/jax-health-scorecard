@@ -1,6 +1,6 @@
-fips,state,county,unhealthy_or_worse_days,hpsa_primary_care_max,hpsa_primary_care_flag,score_air_q,score_hpsa,readiness_score,updated_utc
-12031,Florida,Duval,0.0,23,1,0.0,55.2,55.2,2025-11-07T20:21:59Z
-12019,Florida,Clay,,17,1,0.0,40.800000000000004,40.8,2025-11-07T20:21:59Z
-12109,Florida,St. Johns,,17,1,0.0,40.800000000000004,40.8,2025-11-07T20:21:59Z
-12003,Florida,Baker,0.0,17,1,0.0,40.800000000000004,40.8,2025-11-07T20:21:59Z
-12089,Florida,Nassau,,11,1,0.0,26.4,26.4,2025-11-07T20:21:59Z
+fips,state,county,unhealthy_or_worse_days,hpsa_primary_care_max,chronic_disease_prev,risk_score,risk_rating,score_air_q,score_hpsa,score_chronic,score_hazard,readiness_score,updated_utc
+12031,Florida,Duval,0.0,23,34.7,0.0,Not Rated,0.0,27.6,30.0,0.0,57.6,2025-11-07T20:55:07Z
+12019,Florida,Clay,,17,35.7,0.0,Not Rated,0.0,20.400000000000002,30.0,0.0,50.4,2025-11-07T20:55:07Z
+12003,Florida,Baker,0.0,17,24.75,0.0,Not Rated,0.0,20.400000000000002,30.0,0.0,50.4,2025-11-07T20:55:07Z
+12089,Florida,Nassau,,11,21.2,0.0,Not Rated,0.0,13.2,30.0,0.0,43.2,2025-11-07T20:55:07Z
+12109,Florida,St. Johns,,17,10.3,0.0,Not Rated,0.0,20.400000000000002,15.450000000000001,0.0,35.8,2025-11-07T20:55:07Z
