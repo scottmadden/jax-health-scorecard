@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>Jacksonville-Area County Health Readiness Scorecard (Phase 2)</title>
+<html lang="en"><head><meta charset="utf-8"><title>Jacksonville-Area County Health Readiness Scorecard (Phase 3)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:24px;max-width:1200px}
 h1{margin:0;font-size:1.8rem} 
 h2{margin:8px 0;color:#555;font-weight:500;font-size:1rem}
+.alert-box{margin:16px 0;padding:12px;background:#e3f2fd;border-left:4px solid #2196F3}
+.alert-box strong{color:#1976D2}
 .legend{margin:16px 0;padding:12px;background:#f9f9f9;border-left:4px solid #4CAF50}
 .legend h3{margin:0 0 8px 0;font-size:0.9rem;text-transform:uppercase;color:#666}
 .legend ul{margin:4px 0;padding-left:20px}
@@ -17,31 +19,36 @@ td{vertical-align:middle}
 .county-name{font-weight:600}
 small{color:#666}
 .highlight{background:#fff3e0}
+.badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:0.8rem;background:#4CAF50;color:white}
 </style></head><body>
-<h1>Jacksonville-Area County Health Readiness Scorecard (Phase 2)</h1>
-<h2>5 Health Indicators: Air Quality + Healthcare Access + Chronic Disease + Hazard Risk</h2>
+<h1>Jacksonville-Area County Health Readiness Scorecard (Phase 3) <span class="badge">PHASE 3</span></h1>
+<h2>Real-Time Health Signals: Now tracking respiratory virus activity</h2>
+<div class="alert-box">
+<strong>🦠 FL Respiratory Virus Activity:</strong> Minimal (adds 2.0 points to all counties this week)
+</div>
 <div class="legend">
 <h3>Scoring Breakdown (100 points total):</h3>
 <ul>
 <li><strong>Primary Care Access (30pts)</strong>: HRSA HPSA shortage score (0-25 scale)</li>
 <li><strong>Chronic Disease (30pts)</strong>: CDC PLACES avg prevalence (diabetes, obesity, asthma)</li>
-<li><strong>Air Quality (15pts)</strong>: EPA unhealthy AQI days (2023)</li>
-<li><strong>Hazard Risk (15pts)</strong>: FEMA National Risk Index score</li>
-<li><strong>Respiratory Virus (10pts)</strong>: CDC state-level activity (future)</li>
+<li><strong>Air Quality (15pts)</strong>: EPA unhealthy AQI days OR AirNow current (if API key set)</li>
+<li><strong>Hazard Risk (15pts)</strong>: FEMA National Risk Index composite score</li>
+<li><strong>Respiratory Virus (10pts)</strong>: CDC state-level flu/COVID/RSV activity ✅ <em>Active</em></li>
 </ul>
 </div>
-<small>Sources: EPA AirData (2023), HRSA HPSA Dashboard, CDC PLACES, FEMA NRI. Higher score = higher risk/need.</small>
+<small>Sources: EPA AirData (2023), HRSA HPSA, CDC PLACES, FEMA NRI, CDC Respiratory Surveillance. Higher score = higher risk/need.</small>
 <table>
 <thead><tr>
 <th>Rank</th>
 <th>County</th>
 <th>HPSA<br><small>(0-25)</small></th>
-<th>Chronic Disease<br><small>(%)</small></th>
+<th>Chronic<br><small>(%)</small></th>
 <th>AQI Days<br><small>(2023)</small></th>
-<th>Hazard Risk<br><small>(0-100)</small></th>
-<th>Readiness Score<br><small>(0-100)</small></th>
+<th>Hazard<br><small>(0-100)</small></th>
+<th>Respiratory<br><small>(FL-wide)</small></th>
+<th>Score<br><small>(0-100)</small></th>
 </tr></thead>
 <tbody>
-<tr class='highlight'><td><strong>1</strong></td><td class='county-name'>Duval, Florida</td><td>23</td><td>34.7</td><td>0</td><td>0.0<br><small>Not Rated</small></td><td class='score'>57.6</td></tr><tr class=''><td><strong>2</strong></td><td class='county-name'>Clay, Florida</td><td>17</td><td>35.7</td><td>-</td><td>0.0<br><small>Not Rated</small></td><td class='score'>50.4</td></tr><tr class=''><td><strong>3</strong></td><td class='county-name'>Baker, Florida</td><td>17</td><td>24.8</td><td>0</td><td>0.0<br><small>Not Rated</small></td><td class='score'>50.4</td></tr><tr class=''><td><strong>4</strong></td><td class='county-name'>Nassau, Florida</td><td>11</td><td>21.2</td><td>-</td><td>0.0<br><small>Not Rated</small></td><td class='score'>43.2</td></tr><tr class=''><td><strong>5</strong></td><td class='county-name'>St. Johns, Florida</td><td>17</td><td>10.3</td><td>-</td><td>0.0<br><small>Not Rated</small></td><td class='score'>35.8</td></tr></tbody></table>
-<small style="margin-top:16px;display:block">Last updated: 2025-11-07T20:55:07Z | Auto-refreshes every Monday 9:15am ET | <a href="https://github.com/scottmadden/jax-health-scorecard">View Source</a></small>
+<tr class='highlight'><td><strong>1</strong></td><td class='county-name'>Duval, Florida</td><td>23</td><td>34.7</td><td>0</td><td>0.0</td><td>Minimal</td><td class='score'>50.4</td></tr><tr class=''><td><strong>2</strong></td><td class='county-name'>Clay, Florida</td><td>17</td><td>35.7</td><td>-</td><td>0.0</td><td>Minimal</td><td class='score'>43.8</td></tr><tr class=''><td><strong>3</strong></td><td class='county-name'>Baker, Florida</td><td>17</td><td>24.8</td><td>0</td><td>0.0</td><td>Minimal</td><td class='score'>37.2</td></tr><tr class=''><td><strong>4</strong></td><td class='county-name'>St. Johns, Florida</td><td>17</td><td>10.3</td><td>-</td><td>0.0</td><td>Minimal</td><td class='score'>28.6</td></tr><tr class=''><td><strong>5</strong></td><td class='county-name'>Nassau, Florida</td><td>11</td><td>21.2</td><td>-</td><td>0.0</td><td>Minimal</td><td class='score'>27.9</td></tr></tbody></table>
+<small style="margin-top:16px;display:block">Last updated: 2025-11-08T00:26:32Z | Auto-refreshes daily 9:15am ET | <a href="https://github.com/scottmadden/jax-health-scorecard">View Source</a></small>
 </body></html>

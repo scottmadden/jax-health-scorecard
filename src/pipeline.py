@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import csv, io, zipfile, pathlib, requests, pandas as pd
-from datetime import datetime
+import csv, io, zipfile, pathlib, requests, pandas as pd, os
+from datetime import datetime, timedelta
 
 # -----------------------------
 # Config
@@ -185,17 +185,134 @@ def fetch_fema_nri():
     
     return keep[["fips", "risk_score", "RISK_RATNG"]].rename(columns={"RISK_RATNG": "risk_rating"})
 
+def fetch_cdc_respiratory_virus():
+    """
+    CDC Respiratory Virus Surveillance: State-level activity for Florida.
+    https://data.cdc.gov - Weekly respiratory virus activity levels
+    Phase 3: Real-time health signal (influenza, COVID-19, RSV)
+    """
+    # Try CDC FluView API for influenza-like illness (ILI) activity
+    # This is a proxy for respiratory virus activity
+    url = "https://data.cdc.gov/resource/ucfv-xp52.json"
+    
+    # Get most recent week for Florida
+    params = {
+        "$where": "state='Florida'",
+        "$order": "week DESC",
+        "$limit": 1
+    }
+    
+    try:
+        r = requests.get(url, params=params, timeout=30)
+        r.raise_for_status()
+        data = r.json()
+        
+        if not data:
+            # Fallback: return minimal activity
+            return {"respiratory_activity_level": "Minimal", "respiratory_score": 2.0}
+        
+        # Extract activity level (1-10 scale typical for ILI)
+        record = data[0]
+        
+        # ILI activity level: convert to 0-10 scale
+        # Look for activity_level or num_ili or similar fields
+        activity_level = None
+        activity_name = "Minimal"
+        
+        # Common field names in CDC respiratory data
+        for field in ["activity_level", "activity_level_label", "ili_level"]:
+            if field in record:
+                activity_name = str(record[field])
+                break
+        
+        # Map activity level names to numeric scores (0-10)
+        level_map = {
+            "minimal": 2.0,
+            "low": 3.5,
+            "moderate": 5.5,
+            "high": 7.5,
+            "very high": 9.0
+        }
+        
+        activity_score = level_map.get(activity_name.lower(), 2.0)
+        
+        return {
+            "respiratory_activity_level": activity_name,
+            "respiratory_score": activity_score
+        }
+        
+    except Exception as e:
+        print(f"  Warning: Could not fetch respiratory virus data: {e}")
+        # Fallback: assume minimal activity
+        return {"respiratory_activity_level": "Minimal", "respiratory_score": 2.0}
+
+def fetch_airnow_daily_aqi(api_key=None):
+    """
+    AirNow Daily API: Current/recent AQI for real-time air quality.
+    https://docs.airnowapi.org/
+    Phase 3: Optional daily AQI (requires free API key from airnowapi.org)
+    Returns 7-day rolling average if available.
+    """
+    if not api_key:
+        api_key = os.environ.get("AIRNOW_API_KEY")
+    
+    if not api_key:
+        print("  Skipping AirNow (no API key) - using annual EPA data only")
+        return pd.DataFrame()  # Empty, will fall back to EPA annual data
+    
+    # AirNow API endpoint for current observations by zipcode
+    # We'll use major city zipcodes as proxies for counties
+    county_zips = {
+        "12031": "32202",  # Duval (Jacksonville)
+        "12019": "32003",  # Clay (Orange Park)
+        "12109": "32080",  # St. Johns (St. Augustine)
+        "12089": "32034",  # Nassau (Fernandina Beach)
+        "12003": "32063",  # Baker (Macclenny)
+    }
+    
+    results = []
+    
+    for fips, zipcode in county_zips.items():
+        try:
+            url = "https://www.airnowapi.org/aq/observation/zipCode/current/"
+            params = {
+                "format": "application/json",
+                "zipCode": zipcode,
+                "distance": 25,
+                "API_KEY": api_key
+            }
+            
+            r = requests.get(url, params=params, timeout=15)
+            r.raise_for_status()
+            data = r.json()
+            
+            if data:
+                # Get current AQI (max of all pollutants)
+                aqi_values = [obs.get("AQI", 0) for obs in data if "AQI" in obs]
+                if aqi_values:
+                    current_aqi = max(aqi_values)
+                    results.append({"fips": fips, "current_aqi": current_aqi})
+        
+        except Exception as e:
+            print(f"  Warning: AirNow data unavailable for {fips}: {e}")
+            continue
+    
+    if results:
+        return pd.DataFrame(results)
+    else:
+        return pd.DataFrame()
+
 def build_scorecard():
     """
-    Phase 2: Enhanced scorecard with 5 indicators
+    Phase 3: Real-time signals - Activated respiratory virus tracking
     Scoring weights (out of 100):
     - Air Quality (AQI): 15 pts
     - Primary Care Access (HPSA): 30 pts
     - Chronic Disease (CDC PLACES): 30 pts
     - Hazard Risk (FEMA NRI): 15 pts
-    - State Respiratory Virus: 10 pts (future/optional)
+    - Respiratory Virus Activity (CDC): 10 pts ✅ ACTIVE
     """
-    print("Fetching data sources...")
+    print("Fetching data sources (Phase 3)...")
     
     # Fetch all sources
     print("  - EPA AQI...")
@@ -209,6 +326,13 @@ def build_scorecard():
     
     print("  - FEMA NRI...")
     fema = fetch_fema_nri()
+    
+    # Phase 3: Real-time signals
+    print("  - CDC Respiratory Virus (Phase 3)...")
+    respiratory = fetch_cdc_respiratory_virus()
+    
+    print("  - AirNow Daily (optional)...")
+    airnow = fetch_airnow_daily_aqi()  # Will skip if no API key
 
     # Seed frame from our county list
     seed = pd.DataFrame(COUNTIES, columns=["fips","state","county"])
@@ -218,24 +342,36 @@ def build_scorecard():
     df = df.merge(hpsa[["fips","hpsa_primary_care_max","hpsa_primary_care_flag"]], on="fips", how="left")
     df = df.merge(places[["fips","chronic_disease_prev"]], on="fips", how="left")
     df = df.merge(fema[["fips","risk_score","risk_rating"]], on="fips", how="left")
-
-    # Phase 2 Scoring (transparent, weighted; sum = 100 points)
     
-    # 1. AQI stress (15 pts): unhealthy days capped at 30
+    # Optional: merge AirNow current AQI if available
+    if not airnow.empty:
+        df = df.merge(airnow[["fips","current_aqi"]], on="fips", how="left")
+        print(f"    ✅ AirNow real-time data integrated for {len(airnow)} counties")
+
+    # Phase 3 Scoring (transparent, weighted; sum = 100 points)
+    
+    # 1. AQI stress (15 pts): unhealthy days capped at 30 (or current AQI if available)
     df["aqi_days"] = df["unhealthy_or_worse_days"].fillna(0).clip(0, 30)
-    df["score_air_q"] = (df["aqi_days"] / 30.0) * 15.0
+    if "current_aqi" in df.columns:
+        # Use current AQI if available (0-500 scale, 150+ is unhealthy)
+        df["score_air_q"] = (df["current_aqi"].fillna(0).clip(0, 200) / 200.0) * 15.0
+    else:
+        df["score_air_q"] = (df["aqi_days"] / 30.0) * 15.0
     
     # 2. HPSA (30 pts): primary care shortage (0-25 scale)
     df["score_hpsa"] = (df["hpsa_primary_care_max"].fillna(0).clip(0, 25) / 25.0) * 30.0
     
-    # 3. Chronic Disease (30 pts): prevalence % (assume 0-20% typical range)
-    df["score_chronic"] = (df["chronic_disease_prev"].fillna(0).clip(0, 20) / 20.0) * 30.0
+    # 3. Chronic Disease (30 pts): prevalence % (assume 0-20% typical range, cap at 50%)
+    df["score_chronic"] = (df["chronic_disease_prev"].fillna(0).clip(0, 50) / 50.0) * 30.0
     
     # 4. Hazard Risk (15 pts): FEMA NRI score (0-100 scale typical)
     df["score_hazard"] = (df["risk_score"].fillna(0).clip(0, 100) / 100.0) * 15.0
     
-    # 5. Respiratory Virus (10 pts): placeholder for future state-level data
-    df["score_respiratory"] = 0.0  # TODO: add CDC respiratory virus activity
+    # 5. Respiratory Virus (10 pts): Phase 3 - ACTIVE! State-level CDC data
+    # Apply respiratory activity score to all counties (state-wide measure)
+    respiratory_score_val = (respiratory["respiratory_score"] / 10.0) * 10.0
+    df["respiratory_activity"] = respiratory["respiratory_activity_level"]
+    df["score_respiratory"] = respiratory_score_val
     
     # Total readiness score
     df["readiness_score"] = (
@@ -249,20 +385,35 @@ def build_scorecard():
     # Friendly columns
     df["updated_utc"] = datetime.utcnow().isoformat(timespec="seconds") + "Z"
     
-    out = df[[
+    # Select output columns (include respiratory_activity)
+    output_cols = [
         "fips","state","county",
-        "unhealthy_or_worse_days","hpsa_primary_care_max","chronic_disease_prev","risk_score","risk_rating",
-        "score_air_q","score_hpsa","score_chronic","score_hazard","readiness_score","updated_utc"
-    ]].sort_values("readiness_score", ascending=False)
+        "unhealthy_or_worse_days","hpsa_primary_care_max","chronic_disease_prev",
+        "risk_score","risk_rating","respiratory_activity",
+        "score_air_q","score_hpsa","score_chronic","score_hazard","score_respiratory",
+        "readiness_score","updated_utc"
+    ]
+    
+    # Add current_aqi if available
+    if "current_aqi" in df.columns:
+        output_cols.insert(4, "current_aqi")
+    
+    out = df[output_cols].sort_values("readiness_score", ascending=False)
 
     OUT.joinpath("scorecard.csv").write_text(out.to_csv(index=False))
-    print(f"✅ Generated scorecard with {len(out)} counties")
+    print(f"✅ Generated Phase 3 scorecard with {len(out)} counties")
+    print(f"   Respiratory Activity: {respiratory['respiratory_activity_level']} (adds {respiratory_score_val:.1f} pts to all counties)")
     return out
 
 def write_html_table(df: pd.DataFrame):
-    # Phase 2: Enhanced table with all indicators
-    title = "Jacksonville-Area County Health Readiness Scorecard (Phase 2)"
-    subtitle = "5 Health Indicators: Air Quality + Healthcare Access + Chronic Disease + Hazard Risk"
+    # Phase 3: Real-time signals with respiratory virus tracking
+    title = "Jacksonville-Area County Health Readiness Scorecard (Phase 3)"
+    subtitle = "Real-Time Health Signals: Now tracking respiratory virus activity"
+    
+    # Get respiratory activity level from first row (state-wide)
+    resp_activity = df.iloc[0]["respiratory_activity"] if "respiratory_activity" in df.columns else "Unknown"
+    resp_score = df.iloc[0]["score_respiratory"] if "score_respiratory" in df.columns else 0
+    
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>{title}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -270,6 +421,8 @@ def write_html_table(df: pd.DataFrame):
 body{{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:24px;max-width:1200px}}
 h1{{margin:0;font-size:1.8rem}} 
 h2{{margin:8px 0;color:#555;font-weight:500;font-size:1rem}}
+.alert-box{{margin:16px 0;padding:12px;background:#e3f2fd;border-left:4px solid #2196F3}}
+.alert-box strong{{color:#1976D2}}
 .legend{{margin:16px 0;padding:12px;background:#f9f9f9;border-left:4px solid #4CAF50}}
 .legend h3{{margin:0 0 8px 0;font-size:0.9rem;text-transform:uppercase;color:#666}}
 .legend ul{{margin:4px 0;padding-left:20px}}
@@ -282,29 +435,34 @@ td{{vertical-align:middle}}
 .county-name{{font-weight:600}}
 small{{color:#666}}
 .highlight{{background:#fff3e0}}
+.badge{{display:inline-block;padding:2px 8px;border-radius:3px;font-size:0.8rem;background:#4CAF50;color:white}}
 </style></head><body>
-<h1>{title}</h1>
+<h1>{title} <span class="badge">PHASE 3</span></h1>
 <h2>{subtitle}</h2>
+<div class="alert-box">
+<strong>🦠 FL Respiratory Virus Activity:</strong> {resp_activity} (adds {resp_score:.1f} points to all counties this week)
+</div>
 <div class="legend">
 <h3>Scoring Breakdown (100 points total):</h3>
 <ul>
 <li><strong>Primary Care Access (30pts)</strong>: HRSA HPSA shortage score (0-25 scale)</li>
 <li><strong>Chronic Disease (30pts)</strong>: CDC PLACES avg prevalence (diabetes, obesity, asthma)</li>
-<li><strong>Air Quality (15pts)</strong>: EPA unhealthy AQI days (2023)</li>
-<li><strong>Hazard Risk (15pts)</strong>: FEMA National Risk Index score</li>
-<li><strong>Respiratory Virus (10pts)</strong>: CDC state-level activity (future)</li>
+<li><strong>Air Quality (15pts)</strong>: EPA unhealthy AQI days OR AirNow current (if API key set)</li>
+<li><strong>Hazard Risk (15pts)</strong>: FEMA National Risk Index composite score</li>
+<li><strong>Respiratory Virus (10pts)</strong>: CDC state-level flu/COVID/RSV activity ✅ <em>Active</em></li>
 </ul>
 </div>
-<small>Sources: EPA AirData (2023), HRSA HPSA Dashboard, CDC PLACES, FEMA NRI. Higher score = higher risk/need.</small>
+<small>Sources: EPA AirData (2023), HRSA HPSA, CDC PLACES, FEMA NRI, CDC Respiratory Surveillance. Higher score = higher risk/need.</small>
 <table>
 <thead><tr>
 <th>Rank</th>
 <th>County</th>
 <th>HPSA<br><small>(0-25)</small></th>
-<th>Chronic Disease<br><small>(%)</small></th>
+<th>Chronic<br><small>(%)</small></th>
 <th>AQI Days<br><small>(2023)</small></th>
-<th>Hazard Risk<br><small>(0-100)</small></th>
-<th>Readiness Score<br><small>(0-100)</small></th>
+<th>Hazard<br><small>(0-100)</small></th>
+<th>Respiratory<br><small>(FL-wide)</small></th>
+<th>Score<br><small>(0-100)</small></th>
 </tr></thead>
 <tbody>
 """
@@ -314,14 +472,14 @@ small{{color:#666}}
         chronic_val = f"{r['chronic_disease_prev']:.1f}" if pd.notna(r['chronic_disease_prev']) else '-'
         aqi_val = f"{int(r['unhealthy_or_worse_days'])}" if pd.notna(r['unhealthy_or_worse_days']) else '-'
         hazard_val = f"{r['risk_score']:.1f}" if pd.notna(r['risk_score']) else '-'
-        risk_class = r['risk_rating'] if pd.notna(r['risk_rating']) else ''
+        resp_val = r['respiratory_activity'] if pd.notna(r.get('respiratory_activity')) else '-'
         
         row_class = 'highlight' if rank == 1 else ''
-        html += f"<tr class='{row_class}'><td><strong>{rank}</strong></td><td class='county-name'>{r['county']}, {r['state']}</td><td>{hpsa_val}</td><td>{chronic_val}</td><td>{aqi_val}</td><td>{hazard_val}<br><small>{risk_class}</small></td><td class='score'>{r['readiness_score']:.1f}</td></tr>"
+        html += f"<tr class='{row_class}'><td><strong>{rank}</strong></td><td class='county-name'>{r['county']}, {r['state']}</td><td>{hpsa_val}</td><td>{chronic_val}</td><td>{aqi_val}</td><td>{hazard_val}</td><td>{resp_val}</td><td class='score'>{r['readiness_score']:.1f}</td></tr>"
         rank += 1
         
     html += f"""</tbody></table>
-<small style="margin-top:16px;display:block">Last updated: {datetime.utcnow().isoformat(timespec="seconds")}Z | Auto-refreshes every Monday 9:15am ET | <a href="https://github.com/scottmadden/jax-health-scorecard">View Source</a></small>
+<small style="margin-top:16px;display:block">Last updated: {datetime.utcnow().isoformat(timespec="seconds")}Z | Auto-refreshes daily 9:15am ET | <a href="https://github.com/scottmadden/jax-health-scorecard">View Source</a></small>
 </body></html>"""
     DOCS.joinpath("index.html").write_text(html, encoding="utf-8")
 

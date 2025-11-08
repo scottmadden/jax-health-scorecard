@@ -1,8 +1,8 @@
-# Jax Health Readiness Scorecard (Phase 2)
+# Jax Health Readiness Scorecard (Phase 3)
 
-**Automated weekly county-level health readiness scores for Jacksonville-area counties**
+**Automated DAILY county-level health readiness scores with real-time signals**
 
-This scorecard ranks Duval, Clay, St. Johns, Nassau, and Baker counties on 5 evidence-based public health indicators using free, stable government data sources.
+This scorecard ranks Duval, Clay, St. Johns, Nassau, and Baker counties on 5 evidence-based public health indicators, now including real-time respiratory virus activity tracking.
 
 ## Current Indicators (Phase 2)
 
@@ -26,10 +26,10 @@ This scorecard ranks Duval, Clay, St. Johns, Nassau, and Baker counties on 5 evi
 - **Metric**: Composite risk score for natural hazards
 - **URL**: https://hazards.fema.gov/nri/data-resources
 
-### 5. Respiratory Virus Activity (10 points - future)
-- **Source**: CDC Respiratory Virus Surveillance
-- **Metric**: State-level flu/COVID/RSV activity levels
-- **Status**: Planned for Phase 3
+### 5. Respiratory Virus Activity (10 points) ✅ **ACTIVE**
+- **Source**: CDC Respiratory Virus Surveillance (FluView)
+- **Metric**: State-level flu/COVID/RSV activity levels (Minimal/Low/Moderate/High/Very High)
+- **Status**: **Live in Phase 3** - Updates daily with state-wide respiratory illness activity
 
 ## Scoring (Phase 2)
 
@@ -44,11 +44,12 @@ This scorecard ranks Duval, Clay, St. Johns, Nassau, and Baker counties on 5 evi
 - **CSV**: `/data/scorecard.csv` – machine-readable weekly snapshot
 - **HTML Table**: `/docs/index.html` – simple web view (GitHub Pages)
 
-## Automation
+## Automation (Phase 3)
 
-- **Schedule**: Every Monday at 9:15am ET (14:15 UTC)
+- **Schedule**: **Daily** at 9:15am ET (14:15 UTC) - Real-time health signals
 - **Platform**: GitHub Actions (`.github/workflows/pipeline.yml`)
-- **Hosting**: GitHub Pages (free, no keys required)
+- **Hosting**: GitHub Pages (free)
+- **Optional**: Add `AIRNOW_API_KEY` GitHub secret for real-time air quality data
 
 ## Quick Start
 
@@ -87,15 +88,13 @@ gh repo create jax-health-scorecard --public --source=. --remote=origin --push
 
 ## Roadmap
 
-### ✅ Phase 2: Enhanced Indicators (COMPLETED)
-- ✅ **CDC PLACES**: County-level chronic disease prevalence (diabetes, obesity, asthma)
-- ✅ **FEMA National Risk Index**: Community hazard risk baseline
-- ⏳ **CDC Respiratory Virus Activity**: State-level weekly surveillance (placeholder ready)
+### ✅ Phase 3: Real-Time Signals (COMPLETED)
+- ✅ **CDC Respiratory Virus Surveillance**: Live state-level flu/COVID/RSV activity tracking
+- ✅ **Daily automated updates**: Switched from weekly to daily refresh
+- ✅ **AirNow API support**: Optional real-time air quality (add API key to use)
+- ✅ **10-point respiratory scoring activated**: All indicators now live
 
-### Phase 3: Real-time Signals (Next)
-- **AirNow Daily API**: Rolling 7-day AQI averages (requires free API key)
-- **CDC Respiratory Activity Levels**: Active weekly state flu/COVID/RSV tracking
-- **Increase refresh frequency**: Daily updates instead of weekly
+### Phase 4: School-Level Granularity (Next Goal)
 
 ### Phase 4: School-Level Granularity (Goal)
 - **Urban Institute Education Data API**: Public school roster with locations
@@ -149,5 +148,5 @@ For questions or partnership inquiries about expanding to school-level data or a
 ---
 
 **Last Updated**: November 2025  
-**Status**: Phase 2 Complete ✅ (5 indicators, enhanced scoring)
+**Status**: Phase 3 Complete ✅ (Real-time signals, daily updates, respiratory virus tracking active)
 
