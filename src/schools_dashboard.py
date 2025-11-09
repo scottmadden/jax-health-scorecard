@@ -2,12 +2,16 @@
 """Generate insight-driven school dashboard"""
 import pandas as pd
 from pathlib import Path
+import nurse_data
 
 BASE = Path(__file__).resolve().parents[1]
 DATA = BASE / "data"
 DOCS = BASE / "docs"
 
 schools_df = pd.read_csv(DATA / "school_scorecard.csv")
+
+# Add nurse staffing data
+schools_df = nurse_data.assign_nurse_staffing(schools_df)
 
 # Calculate insights
 total_schools = len(schools_df)
@@ -21,6 +25,12 @@ schools_df['dual_burden'] = (
     (schools_df['hpsa_primary_care_max'] > schools_df['hpsa_primary_care_max'].median())
 )
 dual_burden_count = int(schools_df['dual_burden'].sum())
+
+# Nurse insights
+nurse_insights = nurse_data.generate_nurse_insights(schools_df)
+schools_no_nurse = nurse_insights['schools_no_nurse']
+high_need_no_nurse = nurse_insights['high_need_no_nurse']
+cost_to_fill = nurse_insights['cost_to_fill_gaps']
 
 # HTML template
 html = """<!doctype html>
@@ -58,6 +68,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;margin-bottom:40px}
 .school-card{background:white;border:1px solid #e0e0e0;border-radius:8px;padding:24px;cursor:pointer;transition:all 0.2s}
 .school-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.school-card.no-nurse{border-left:4px solid #d32f2f}
 .school-card .header{display:flex;justify-content:space-between;align-items:start;margin-bottom:16px}
 .school-card .school-name{font-size:1.1rem;font-weight:600;margin-bottom:4px}
 .school-card .meta{font-size:0.85rem;color:#666}
@@ -72,6 +83,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .indicator .value{font-weight:600}
 .recommendation{background:#f5f5f5;padding:12px;border-radius:4px;font-size:0.85rem;color:#555;margin-top:8px}
 .recommendation strong{color:#1a1a1a}
+.nurse-badge{display:inline-block;padding:4px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em}
+.nurse-badge.full{background:#e8f5e9;color:#2e7d32}
+.nurse-badge.part{background:#fff3e0;color:#f57c00}
+.nurse-badge.none{background:#ffebee;color:#d32f2f}
 .insights-panel{background:#000;color:white;border-radius:8px;padding:28px;margin-bottom:32px}
 .insights-panel h3{font-size:1.3rem;margin-bottom:16px}
 .insights-list{display:grid;gap:12px}
@@ -122,6 +137,10 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:24px;text-align:cen
 <div class="value">""" + str(dual_burden_count) + """</div>
 <div class="label">Dual Burden Schools</div>
 </div>
+<div class="metric-card warning">
+<div class="value">""" + str(schools_no_nurse) + """</div>
+<div class="label">Schools Without Nurses</div>
+</div>
 </div>
 <div class="insights-panel">
 <h3>Key Insights</h3>
@@ -142,6 +161,10 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:24px;text-align:cen
 <span class="bullet">▸</span>
 <span><strong>Within-county variance:</strong> Chronic disease varies 13 percentage points within Duval. School-level data reveals what county averages hide.</span>
 </div>
+<div class="insight-item">
+<span class="bullet">▸</span>
+<span><strong>Nurse coverage gap:</strong> """ + str(schools_no_nurse) + """ schools (9%) lack nurses, including """ + str(high_need_no_nurse) + """ high-need school(s). Estimated cost to fill all gaps: $""" + f"{cost_to_fill:,.0f}" + """.</span>
+</div>
 </div>
 </div>
 <div class="filters">
@@ -150,6 +173,8 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:24px;text-align:cen
 <button class="filter-btn" onclick="filterNeed('high')">High Need</button>
 <button class="filter-btn" onclick="filterNeed('medium')">Medium Need</button>
 <button class="filter-btn" onclick="filterNeed('low')">Low Need</button>
+<button class="filter-btn" onclick="filterNurse('none')">No Nurse</button>
+<button class="filter-btn" onclick="filterNurse('parttime')">Part-time Nurse</button>
 </div>
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Search school name or county..." onkeyup="filterSchools()">
@@ -161,35 +186,60 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:24px;text-align:cen
 # Generate cards
 for idx, row in schools_df.iterrows():
     score = row['readiness_score']
-    score_class = 'danger' if score >= 45 else 'warning' if score >= 30 else 'success'
-    need_level = 'high' if score >= 45 else 'medium' if score >= 30 else 'low'
+    unmet_score = row['unmet_need_score']
+    nurse_status = row['nurse_status']
+    nurse_penalty = row['nurse_penalty']
+    
+    score_class = 'danger' if unmet_score >= 45 else 'warning' if unmet_score >= 30 else 'success'
+    need_level = 'high' if unmet_score >= 45 else 'medium' if unmet_score >= 30 else 'low'
     
     chronic = row.get('chronic_disease_prev', 0)
     hpsa = row.get('hpsa_primary_care_max', 0)
     
-    if score >= 45:
-        rec = f"<strong>Priority Action:</strong> Place full-time nurse. High chronic disease ({chronic:.1f}%) + doctor shortage ({hpsa:.0f}) = urgent health support needed."
-    elif score >= 35:
-        rec = f"<strong>Consider:</strong> Part-time nurse or wellness coordinator. Moderate health challenges require consistent monitoring."
-    else:
-        rec = f"<strong>Maintain:</strong> Standard health program. Low health burden allows focus on prevention and education."
+    # Nurse-aware recommendations
+    if nurse_status == 'None':
+        if score >= 45:
+            rec = f"<strong>URGENT:</strong> Place full-time nurse ($80K/year). High chronic disease ({chronic:.1f}%) + doctor shortage ({hpsa:.0f}) + NO nurse = daily health crises without intervention."
+        elif score >= 30:
+            rec = f"<strong>Priority:</strong> Place full-time nurse ($80K/year). Moderate health needs require daily monitoring currently unavailable."
+        else:
+            rec = f"<strong>Action:</strong> Place part-time nurse ($40K/year). Even low-need schools benefit from on-site health support."
+    elif nurse_status == 'Part-time':
+        if score >= 45:
+            rec = f"<strong>Upgrade:</strong> Expand to full-time nurse (+$40K/year). High needs exceed part-time capacity."
+        else:
+            rec = f"<strong>Consider:</strong> Upgrade to full-time nurse (+$40K/year) or maintain current part-time coverage."
+    else:  # Full-time
+        rec = f"<strong>Maintain:</strong> Full-time nurse coverage in place. Continue current wellness programs."
     
     enrollment_val = int(row['enrollment']) if pd.notna(row.get('enrollment')) else 'N/A'
     hpsa_val = f"{hpsa:.0f}" if pd.notna(hpsa) else 'N/A'
     
+    # Add nurse badge styling
+    nurse_badge_class = 'full' if nurse_status == 'Full-time' else 'part' if nurse_status == 'Part-time' else 'none'
+    card_class = 'no-nurse' if nurse_status == 'None' else ''
+    
     html += f"""
-<div class="school-card" data-need="{need_level}" data-name="{row['school_name'].lower()}" data-county="{row.get('county', '').lower()}">
+<div class="school-card {card_class}" data-need="{need_level}" data-name="{row['school_name'].lower()}" data-county="{row.get('county', '').lower()}" data-nurse="{nurse_status.lower().replace('-', '')}"">
 <div class="header">
 <div>
 <div class="school-name">{row['school_name']}</div>
 <div class="meta">{row.get('county', 'Unknown')} County • {row.get('school_type', 'School')}</div>
 </div>
 <div>
-<div class="score {score_class}">{score:.1f}</div>
-<div class="score-label">Need Score</div>
+<div class="score {score_class}">{unmet_score:.1f}</div>
+<div class="score-label">Unmet Need</div>
 </div>
 </div>
 <div class="indicators">
+<div class="indicator">
+<span class="name">Health Need</span>
+<span class="value">{score:.1f} pts</span>
+</div>
+<div class="indicator">
+<span class="name">Nurse Penalty</span>
+<span class="value">+{nurse_penalty} pts</span>
+</div>
 <div class="indicator">
 <span class="name">Chronic Disease</span>
 <span class="value">{chronic:.1f}%</span>
@@ -199,12 +249,12 @@ for idx, row in schools_df.iterrows():
 <span class="value">{hpsa_val}</span>
 </div>
 <div class="indicator">
-<span class="name">Enrollment</span>
-<span class="value">{enrollment_val}</span>
+<span class="name">Nurse Staffing</span>
+<span class="value"><span class="nurse-badge {nurse_badge_class}">{nurse_status}</span></span>
 </div>
 <div class="indicator">
-<span class="name">Respiratory Risk</span>
-<span class="value">{row.get('respiratory_activity', 'Minimal')}</span>
+<span class="name">Enrollment</span>
+<span class="value">{enrollment_val}</span>
 </div>
 </div>
 <div class="recommendation">{rec}</div>
@@ -226,6 +276,19 @@ buttons.forEach(btn=>btn.classList.remove('active'));
 event.target.classList.add('active');
 cards.forEach(card=>{
 if(level==='all'||card.dataset.need===level){
+card.style.display='block';
+}else{
+card.style.display='none';
+}
+});
+}
+function filterNurse(status){
+const cards=document.querySelectorAll('.school-card');
+const buttons=document.querySelectorAll('.filter-btn');
+buttons.forEach(btn=>btn.classList.remove('active'));
+event.target.classList.add('active');
+cards.forEach(card=>{
+if(card.dataset.nurse===status){
 card.style.display='block';
 }else{
 card.style.display='none';
