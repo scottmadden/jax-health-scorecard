@@ -11,13 +11,14 @@ body {
   color: #1a1a1a;
   background: #fafafa;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Top Bar */
+/* Top Bar - Mobile First */
 .topbar {
   background: white;
   border-bottom: 1px solid #e0e0e0;
-  padding: 20px 24px;
+  padding: 16px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -30,15 +31,16 @@ body {
   align-items: center;
 }
 .logo {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #1a1a1a;
 }
+.nav {display: none}
 .nav a {
-  margin-left: 32px;
+  margin-left: 24px;
   color: #666;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: color 0.2s;
 }
 .nav a:hover {color: #1a1a1a}
@@ -47,64 +49,71 @@ body {
   color: white;
   padding: 10px 20px;
   border-radius: 6px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 .nav a.primary:hover {background: #333}
 
-/* Hero - Insight First */
+/* Hero - Mobile First */
 .hero {
   max-width: 1200px;
-  margin: 60px auto 40px;
-  padding: 0 24px;
+  margin: 32px auto 24px;
+  padding: 0 16px;
 }
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 .hero .subtitle {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  line-height: 1.5;
 }
 
-/* Key Insight Cards */
+/* Key Insight Cards - Mobile First */
 .insights {
   max-width: 1200px;
-  margin: 0 auto 60px;
-  padding: 0 24px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 .insight-card {
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 28px;
+  padding: 20px;
   transition: box-shadow 0.2s;
+  min-height: 44px;
 }
-.insight-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.insight-card:active {
+  background: #f9f9f9;
 }
 .insight-card .metric {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  line-height: 1;
 }
 .insight-card .label {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   color: #888;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .insight-card .description {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #555;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 .insight-card.highlight {
   background: #000;
@@ -115,80 +124,108 @@ body {
 .insight-card.highlight .label {color: rgba(255,255,255,0.7)}
 .insight-card.highlight .description {color: rgba(255,255,255,0.9)}
 
-/* Quick Actions */
+/* Quick Actions - Mobile First */
 .actions {
   max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 24px;
+  margin: 40px auto;
+  padding: 0 16px;
 }
 .action-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 .action-btn {
   display: block;
   text-align: center;
-  padding: 24px;
+  padding: 20px;
   background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   color: #1a1a1a;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s;
+  min-height: 44px;
 }
-.action-btn:hover {
+.action-btn:active {
+  background: #f5f5f5;
   border-color: #1a1a1a;
-  transform: translateY(-2px);
 }
 .action-btn .title {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 .action-btn .desc {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #666;
+  line-height: 1.4;
 }
 
-/* Search */
+/* Search - Mobile First */
 .search-bar {
   max-width: 600px;
-  margin: 60px auto;
-  padding: 0 24px;
+  margin: 32px auto;
+  padding: 0 16px;
 }
 .search-input {
   width: 100%;
-  padding: 18px 24px;
-  font-size: 1.1rem;
+  padding: 16px;
+  font-size: 1rem;
   border: 2px solid #ddd;
   border-radius: 8px;
   transition: border 0.2s;
+  -webkit-appearance: none;
+  min-height: 48px;
 }
 .search-input:focus {
   outline: none;
   border-color: #1a1a1a;
 }
 
-/* Footer */
+/* Footer - Mobile First */
 footer {
   background: white;
   border-top: 1px solid #e0e0e0;
-  padding: 40px 24px;
-  margin-top: 80px;
+  padding: 32px 16px;
+  margin-top: 48px;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #888;
+  line-height: 1.6;
+}
+footer a {
+  color: #1976d2;
+  text-decoration: none;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
 }
 
-@media (max-width: 768px) {
-  .hero h1 {font-size: 2rem}
-  .hero .subtitle {font-size: 1.05rem}
-  .insights {grid-template-columns: 1fr; gap: 16px}
-  .insight-card {padding: 24px}
-  .insight-card .metric {font-size: 2.5rem}
-  .action-grid {grid-template-columns: 1fr}
-  .nav {display: none}
+/* Desktop Enhancements (min-width) */
+@media (min-width: 768px) {
+  .topbar {padding: 20px 24px}
+  .logo {font-size: 1.3rem}
+  .nav {display: block}
+  .hero {margin: 60px auto 40px; padding: 0 24px}
+  .hero h1 {font-size: 2.8rem}
+  .hero .subtitle {font-size: 1.2rem}
+  .insights {padding: 0 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px}
+  .insight-card {padding: 28px}
+  .insight-card .metric {font-size: 3rem; margin-bottom: 8px}
+  .insight-card .label {font-size: 0.95rem; margin-bottom: 16px}
+  .insight-card .description {font-size: 0.95rem}
+  .insight-card:hover {box-shadow: 0 4px 12px rgba(0,0,0,0.08)}
+  .actions {margin: 60px auto; padding: 0 24px}
+  .action-grid {grid-template-columns: repeat(3, 1fr); gap: 16px}
+  .action-btn {padding: 24px}
+  .action-btn:hover {border-color: #1a1a1a; transform: translateY(-2px)}
+  .action-btn .title {font-size: 1.1rem; margin-bottom: 8px}
+  .action-btn .desc {font-size: 0.9rem}
+  .search-bar {margin: 60px auto; padding: 0 24px}
+  .search-input {padding: 18px 24px; font-size: 1.1rem}
+  footer {padding: 40px 24px; margin-top: 80px; font-size: 0.9rem}
 }
 </style>
 </head>
