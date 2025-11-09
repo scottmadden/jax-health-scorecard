@@ -26,6 +26,9 @@ jobs:
       - name: Regenerate school HTML
         run: python src/schools_html.py
         continue-on-error: true
+      - name: Archive for trends (Phase 5)
+        run: python src/trends.py
+        continue-on-error: true
       - name: Commit artifacts
         run: |
           git config user.name "scorecard-bot"

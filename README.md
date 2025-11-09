@@ -1,8 +1,8 @@
 # Jax Health Readiness Scorecard (Phase 4)
 
-**Automated DAILY health readiness scores for 51 individual schools + 5 counties**
+**Automated DAILY health readiness scores for 93 K-12 schools + 5 counties**
 
-This scorecard provides tract-level health precision for Jacksonville-area schools, enabling data-driven resource allocation at the school level. Ranks 51 schools across Duval, Clay, St. Johns, Nassau, and Baker counties.
+This scorecard provides tract-level health precision for Jacksonville-area schools, enabling data-driven resource allocation. Comprehensive K-12 coverage: 38 elementary, 13 middle, and 42 high schools across Duval, Clay, St. Johns, Nassau, and Baker counties.
 
 ## Current Indicators (Phase 2)
 
@@ -45,10 +45,11 @@ This scorecard provides tract-level health precision for Jacksonville-area schoo
 - **CSV**: `/data/scorecard.csv` – 5 counties with aggregate indicators
 - **HTML**: `/docs/index.html` – County comparison table
 
-### School-Level ✨ NEW
-- **CSV**: `/data/school_scorecard.csv` – 51 schools with tract-level health data
+### School-Level ✨ **93 K-12 SCHOOLS**
+- **CSV**: `/data/school_scorecard.csv` – 93 schools (38 elem, 13 middle, 42 high) with tract-level data
 - **HTML**: `/docs/schools.html` – Interactive, searchable school table
-- **Features**: Search, filter by county/score, sortable columns, responsive design
+- **Features**: Search, filter by county/score/type, sortable columns, statistics dashboard, mobile-responsive
+- **Geocoding**: 61% success rate (57/93 schools mapped to census tracts)
 
 ## Automation (Phase 3)
 
@@ -95,12 +96,20 @@ gh repo create jax-health-scorecard --public --source=. --remote=origin --push
 ## Roadmap
 
 ### ✅ Phase 4: School-Level Granularity (COMPLETED)
-- ✅ **51 individual schools ranked**: Expanded from 5 counties to 51 schools
-- ✅ **Census tract geocoding**: 72.5% success rate (37/51 schools mapped)
+- ✅ **93 K-12 schools ranked**: Comprehensive elementary (38) + middle (13) + high (42) coverage
+- ✅ **Census tract geocoding**: 61% success rate (57/93 schools mapped to 47 census tracts)
 - ✅ **Tract-level health data**: CDC PLACES chronic disease by neighborhood
-- ✅ **Interactive HTML table**: Search, filter, sort functionality
-- ✅ **School statistics dashboard**: Total schools, geocoding rate, averages
+- ✅ **Interactive HTML table**: Search, filter by county/score/type, sortable columns
+- ✅ **School statistics dashboard**: Real-time metrics, geocoding status, averages
 - ✅ **Dual navigation**: County ↔ School seamless switching
+
+### ✅ Phase 5: Polish & Promote (IN PROGRESS)
+- ✅ **Historical trend tracking**: Daily archival for week-over-week analysis
+- ✅ **Outreach templates**: Email, social media, press release ready-to-use
+- ✅ **User guide**: Comprehensive documentation with FAQs
+- ⏳ Data visualizations (charts/graphs)
+- ⏳ Email alert system
+- ⏳ Interactive map with school markers
 
 ### Phase 5: Polish & Promote (Next)
 - Historical trend tracking (week-over-week score changes)

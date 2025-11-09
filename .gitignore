@@ -29,5 +29,13 @@ data/raw/*.csv
 
 # Don't ignore output data
 !data/scorecard.csv
+!data/school_scorecard.csv
+!data/schools_phase4.csv
+!data/jacksonville_schools_extended.csv
+!data/trends.json
 !docs/index.html
+!docs/schools.html
+
+# Keep historical archives for trends (Phase 5)
+!data/history/*.csv
 

@@ -516,4 +516,16 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"⚠️  Could not generate school HTML: {e}")
         print("   County scorecard complete, school scorecard skipped")
+    
+    # Phase 5: Archive for historical trends
+    print("\n" + "=" * 60)
+    print("Archiving Scores for Historical Trends (Phase 5)")
+    print("=" * 60)
+    try:
+        from trends import archive_current_scores, generate_trend_summary
+        archive_current_scores()
+        generate_trend_summary()
+        print("✅ Historical data archived")
+    except Exception as e:
+        print(f"⚠️  Could not archive trends: {e}")
 
