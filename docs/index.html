@@ -2,224 +2,266 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Jacksonville School Health</title>
+<title>Jacksonville School Health Analytics</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Health readiness scores for 132 Jacksonville schools. Updated daily.">
 <style>
-* {box-sizing:border-box; margin:0; padding:0}
+* {margin:0;padding:0;box-sizing:border-box}
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #1a1a1a;
-  line-height: 1.6;
+  background: #fafafa;
+  line-height: 1.5;
 }
 
-/* Hero Section */
-.hero {
-  background: #fff;
-  padding: 80px 24px 60px;
-  text-align: center;
+/* Top Bar */
+.topbar {
+  background: white;
   border-bottom: 1px solid #e0e0e0;
+  padding: 20px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.nav a {
+  margin-left: 32px;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.nav a:hover {color: #1a1a1a}
+.nav a.primary {
+  background: #000;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+.nav a.primary:hover {background: #333}
+
+/* Hero - Insight First */
+.hero {
+  max-width: 1200px;
+  margin: 60px auto 40px;
+  padding: 0 24px;
 }
 .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 12px;
-  font-weight: 600;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
   letter-spacing: -0.03em;
-  color: #1a1a1a;
 }
-.hero p {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin: 0 auto 32px;
-  font-weight: 400;
+.hero .subtitle {
+  font-size: 1.2rem;
   color: #666;
+  margin-bottom: 40px;
 }
-.hero .cta {
-  display: inline-block;
-  background: #1976d2;
-  color: white;
-  padding: 16px 32px;
-  border-radius: 6px;
-  font-size: 1.1rem;
+
+/* Key Insight Cards */
+.insights {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+.insight-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 28px;
+  transition: box-shadow 0.2s;
+}
+.insight-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.insight-card .metric {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+.insight-card .label {
+  font-size: 0.95rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   font-weight: 500;
+  margin-bottom: 16px;
+}
+.insight-card .description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+.insight-card.highlight {
+  background: #000;
+  color: white;
+  border-color: #000;
+}
+.insight-card.highlight .metric {color: white}
+.insight-card.highlight .label {color: rgba(255,255,255,0.7)}
+.insight-card.highlight .description {color: rgba(255,255,255,0.9)}
+
+/* Quick Actions */
+.actions {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.action-btn {
+  display: block;
+  text-align: center;
+  padding: 24px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  color: #1a1a1a;
   text-decoration: none;
+  font-weight: 500;
   transition: all 0.2s;
 }
-.hero .cta:hover {
-  background: #1565c0;
+.action-btn:hover {
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
 }
-
-/* Quick Stats */
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 24px;
-  text-align: center;
+.action-btn .title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
-.stat-value {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #1976d2;
-}
-.stat-label {
+.action-btn .desc {
   font-size: 0.9rem;
-  color: #888;
-  margin-top: 4px;
+  color: #666;
 }
 
-/* Search Section */
-.search-section {
+/* Search */
+.search-bar {
   max-width: 600px;
   margin: 60px auto;
   padding: 0 24px;
-  text-align: center;
 }
-.search-box-large {
+.search-input {
   width: 100%;
-  padding: 16px 20px;
+  padding: 18px 24px;
   font-size: 1.1rem;
   border: 2px solid #ddd;
   border-radius: 8px;
-  transition: all 0.2s;
+  transition: border 0.2s;
 }
-.search-box-large:focus {
+.search-input:focus {
   outline: none;
-  border-color: #1976d2;
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.08);
-}
-
-/* Role Selector - Minimal */
-.roles {
-  max-width: 900px;
-  margin: 60px auto 80px;
-  padding: 0 24px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.role-link {
-  padding: 16px 28px;
-  background: #f5f5f5;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  color: #333;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.2s;
-  font-weight: 500;
-}
-.role-link:hover {
-  background: #1976d2;
-  color: white;
-  border-color: #1976d2;
-}
-
-/* Simplified Insight */
-.insight {
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 24px;
-  text-align: center;
-  color: #666;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  border-color: #1a1a1a;
 }
 
 /* Footer */
 footer {
-  background: #f9f9f9;
-  color: #888;
-  padding: 32px 24px;
-  margin-top: 60px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  padding: 40px 24px;
+  margin-top: 80px;
   text-align: center;
   font-size: 0.9rem;
-  border-top: 1px solid #e0e0e0;
-}
-footer a {
-  color: #1976d2;
-  text-decoration: none;
+  color: #888;
 }
 
-/* Mobile First */
 @media (max-width: 768px) {
-  .hero {padding: 60px 20px 40px}
   .hero h1 {font-size: 2rem}
-  .hero p {font-size: 1.1rem}
-  .hero .cta {font-size: 1rem; padding: 14px 24px}
-  .quick-stats {grid-template-columns: 1fr 1fr; gap: 16px}
-  .stat-value {font-size: 2rem}
-  .search-section {margin: 40px auto}
-  .search-box-large {font-size: 1rem; padding: 14px 16px}
-  .roles {flex-direction: column}
-  .role-link {width: 100%; text-align: center}
+  .hero .subtitle {font-size: 1.05rem}
+  .insights {grid-template-columns: 1fr; gap: 16px}
+  .insight-card {padding: 24px}
+  .insight-card .metric {font-size: 2.5rem}
+  .action-grid {grid-template-columns: 1fr}
+  .nav {display: none}
 }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="topbar-content">
+    <div class="logo">Jacksonville School Health</div>
+    <div class="nav">
+      <a href="schools.html" class="primary">View Schools</a>
+    </div>
+  </div>
+</div>
+
 <div class="hero">
-  <h1>Jacksonville School Health</h1>
-  <p>Know your school's health needs. Make data-driven decisions about wellness and resources.</p>
-  <a href="schools.html" class="cta">View 132 School Rankings →</a>
+  <h1>Data-driven health resource allocation for 132 schools</h1>
+  <p class="subtitle">Identify which schools need nurses, wellness programs, and health interventions based on tract-level federal data</p>
 </div>
 
-<div class="quick-stats">
-  <div><div class="stat-value">132</div><div class="stat-label">Schools</div></div>
-  <div><div class="stat-value">5</div><div class="stat-label">Counties</div></div>
-  <div><div class="stat-value">Daily</div><div class="stat-label">Updates</div></div>
-  <div><div class="stat-value">Free</div><div class="stat-label">Always</div></div>
+<div class="insights">
+  
+  <div class="insight-card highlight">
+    <div class="metric">63%</div>
+    <div class="label">Variation Within Counties</div>
+    <div class="description">Chronic disease rates vary by 63% within Duval County (19% to 32%). School-level data reveals disparities county averages hide.</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="metric">Top 10</div>
+    <div class="label">Schools Need Immediate Attention</div>
+    <div class="description">All in Duval County. Scores range from 45.9 to 48.5. These schools need priority nurse placement and wellness program funding.</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="metric">Nassau</div>
+    <div class="label">Healthiest County</div>
+    <div class="description">All 10 Nassau schools score 15-16 (lowest need). Best healthcare access and lowest chronic disease burden in the region.</div>
+  </div>
+
 </div>
 
-<div class="search-section">
+<div class="search-bar">
   <input type="text" 
-         class="search-box-large" 
-         id="quickSearch"
-         placeholder="Search your school..."
-         onkeyup="handleQuickSearch(event)">
-  <p style="margin-top:16px; color:#999; font-size:0.9rem">
-    <a href="schools.html" style="color:#1976d2">Browse all schools</a> or <a href="counties.html" style="color:#1976d2">compare counties</a>
-  </p>
+         class="search-input" 
+         placeholder="Search for any school..."
+         onkeyup="if(event.key==='Enter') window.location='schools.html?search='+encodeURIComponent(this.value)">
 </div>
 
-<div class="insight">
-  <p>Health needs vary significantly between schools in the same county. See which schools need resources most.</p>
-</div>
-
-<div class="roles">
-  <a href="schools.html" class="role-link">View Schools</a>
-  <a href="counties.html" class="role-link">View Counties</a>
-  <a href="../data/school_scorecard.csv" class="role-link">Download Data</a>
+<div class="actions">
+  <div class="action-grid">
+    
+    <a href="schools.html" class="action-btn">
+      <div class="title">Explore All Schools</div>
+      <div class="desc">Compare 132 schools with detailed health metrics</div>
+    </a>
+    
+    <a href="counties.html" class="action-btn">
+      <div class="title">County Overview</div>
+      <div class="desc">Regional comparison of 5 Jacksonville counties</div>
+    </a>
+    
+    <a href="../data/school_scorecard.csv" class="action-btn">
+      <div class="title">Download Data</div>
+      <div class="desc">CSV with all 132 schools for your own analysis</div>
+    </a>
+    
+  </div>
 </div>
 
 <footer>
-  <p><strong>Jacksonville School Health Scorecard</strong></p>
-  <p style="margin:16px 0">Data from CDC, EPA, HRSA, and FEMA (all federal public sources)</p>
-  <p>Updates daily at 9:15am ET | <a href="https://github.com/scottmadden/jax-health-scorecard">View Source Code</a></p>
-  <p style="margin-top:24px; font-size:0.85rem">Built with ❤️ for Jacksonville families and schools</p>
+  <p>Data from CDC, EPA, HRSA, FEMA | Updates daily at 9:15am ET</p>
+  <p style="margin-top:12px"><a href="https://github.com/scottmadden/jax-health-scorecard" style="color:#1976d2">Technical Details</a></p>
 </footer>
-
-<script>
-function handleQuickSearch(event) {
-  if (event.key === 'Enter') {
-    const query = document.getElementById('quickSearch').value;
-    window.location.href = `schools.html?search=${encodeURIComponent(query)}`;
-  }
-}
-
-// Add search hint
-document.getElementById('quickSearch').addEventListener('focus', function() {
-  this.placeholder = 'Press Enter to search...';
-});
-document.getElementById('quickSearch').addEventListener('blur', function() {
-  if (!this.value) {
-    this.placeholder = "Type your school name (e.g., 'Orange Park Elementary')...";
-  }
-});
-</script>
 
 </body>
 </html>
-

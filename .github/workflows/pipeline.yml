@@ -20,11 +20,11 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Run Phase 3 county pipeline
         run: python src/pipeline.py
-      - name: Run Phase 4 school pipeline
+      - name: Run school data pipeline
         run: python src/schools.py
         continue-on-error: true
-      - name: Regenerate school HTML
-        run: python src/schools_html.py
+      - name: Generate insight-driven dashboard
+        run: python src/schools_dashboard.py
         continue-on-error: true
       - name: Archive for trends (Phase 5)
         run: python src/trends.py
