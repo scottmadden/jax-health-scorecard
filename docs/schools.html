@@ -23,12 +23,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .metric-card.danger .value{color:#d32f2f}
 .metric-card.warning .value{color:#f57c00}
 .metric-card.success .value{color:#2e7d32}
-.filters{background:white;border:1px solid #e0e0e0;border-radius:6px;padding:20px;margin-bottom:24px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.filter-group{display:flex;gap:8px;flex-wrap:wrap}
-.filter-btn{padding:10px 20px;border:1px solid #ddd;border-radius:6px;background:white;cursor:pointer;font-size:0.9rem;transition:all 0.2s}
+.filters{background:white;border:1px solid #e0e0e0;border-radius:6px;padding:20px;margin-bottom:24px}
+.filter-row{display:flex;gap:16px;align-items:center;margin-bottom:12px}
+.filter-row:last-child{margin-bottom:0}
+.filter-label{font-size:0.85rem;color:#666;min-width:80px;font-weight:500}
+.filter-group{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.filter-btn{padding:8px 16px;border:1px solid #ddd;border-radius:6px;background:white;cursor:pointer;font-size:0.85rem;transition:all 0.2s}
 .filter-btn:hover{border-color:#1a1a1a}
 .filter-btn.active{background:#1a1a1a;color:white;border-color:#1a1a1a}
-.search-box{flex:1;min-width:250px}
+.search-box{width:100%}
 .search-box input{width:100%;padding:10px 16px;border:1px solid #ddd;border-radius:6px;font-size:0.95rem}
 .school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;margin-bottom:40px}
 .school-card{background:white;border:1px solid #e0e0e0;border-radius:8px;padding:24px;cursor:pointer;transition:all 0.2s}
@@ -62,7 +65,8 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:24px;text-align:cen
 .dashboard-header h1{font-size:1.8rem}
 .metrics{grid-template-columns:repeat(2,1fr)}
 .school-grid{grid-template-columns:1fr}
-.filters{flex-direction:column;align-items:stretch}
+.filter-row{flex-direction:column;align-items:stretch}
+.filter-label{min-width:auto;margin-bottom:4px}
 }
 </style>
 </head>
@@ -133,16 +137,28 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:24px;text-align:cen
 </div>
 </div>
 <div class="filters">
-<div class="filter-group">
-<button class="filter-btn active" onclick="filterNeed('all')">All Schools</button>
-<button class="filter-btn" onclick="filterNeed('high')">High Need</button>
-<button class="filter-btn" onclick="filterNeed('medium')">Medium Need</button>
-<button class="filter-btn" onclick="filterNeed('low')">Low Need</button>
-<button class="filter-btn" onclick="filterNurse('none')">No Nurse</button>
-<button class="filter-btn" onclick="filterNurse('parttime')">Part-time Nurse</button>
-</div>
+<div class="filter-row">
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Search school name or county..." onkeyup="filterSchools()">
+</div>
+</div>
+<div class="filter-row">
+<div class="filter-label">Need Level:</div>
+<div class="filter-group">
+<button class="filter-btn active" onclick="filterNeed('all')">All</button>
+<button class="filter-btn" onclick="filterNeed('high')">High</button>
+<button class="filter-btn" onclick="filterNeed('medium')">Medium</button>
+<button class="filter-btn" onclick="filterNeed('low')">Low</button>
+</div>
+</div>
+<div class="filter-row">
+<div class="filter-label">Nurse Status:</div>
+<div class="filter-group">
+<button class="filter-btn active" onclick="filterNurse('all')">All</button>
+<button class="filter-btn" onclick="filterNurse('fulltime')">Full-time</button>
+<button class="filter-btn" onclick="filterNurse('parttime')">Part-time</button>
+<button class="filter-btn" onclick="filterNurse('none')">None</button>
+</div>
 </div>
 </div>
 <div class="school-grid" id="schoolGrid">
@@ -5447,17 +5463,28 @@ card.style.display='none';
 }
 });
 }
-function filterNurse(status){
-const cards=document.querySelectorAll('.school-card');
-const buttons=document.querySelectorAll('.filter-btn');
+let currentNeedFilter='all';
+let currentNurseFilter='all';
+function filterNeed(level){
+currentNeedFilter=level;
+const buttons=event.target.parentElement.querySelectorAll('.filter-btn');
 buttons.forEach(btn=>btn.classList.remove('active'));
 event.target.classList.add('active');
-cards.forEach(card=>{
-if(card.dataset.nurse===status){
-card.style.display='block';
-}else{
-card.style.display='none';
+applyFilters();
 }
+function filterNurse(status){
+currentNurseFilter=status;
+const buttons=event.target.parentElement.querySelectorAll('.filter-btn');
+buttons.forEach(btn=>btn.classList.remove('active'));
+event.target.classList.add('active');
+applyFilters();
+}
+function applyFilters(){
+const cards=document.querySelectorAll('.school-card');
+cards.forEach(card=>{
+const needMatch=currentNeedFilter==='all'||card.dataset.need===currentNeedFilter;
+const nurseMatch=currentNurseFilter==='all'||card.dataset.nurse===currentNurseFilter;
+card.style.display=(needMatch&&nurseMatch)?'block':'none';
 });
 }
 function filterSchools(){
