@@ -5,6 +5,7 @@ Creates interactive, searchable school health readiness table.
 """
 import pandas as pd
 import pathlib
+import json
 from datetime import datetime
 
 BASE = pathlib.Path(__file__).resolve().parents[1]
@@ -246,6 +247,97 @@ footer a:hover {{text-decoration: underline}}
     </div>
 </div>
 
+<div class="parent-guide" style="background:#fff3e0;padding:20px;margin:24px 0;border-radius:8px;border-left:4px solid #ff9800">
+<h3 style="margin:0 0 12px 0;color:#e65100">👨‍👩‍👧 For Parents: What Do These Scores Mean?</h3>
+
+<div style="margin-bottom:16px;line-height:1.6">
+<strong>Your School's Score Range:</strong>
+<ul style="margin:8px 0">
+<li><strong>40-50 (High Need)</strong>: School in area with significant health challenges. <em>Consider: Does school have full-time nurse? Are wellness programs available?</em></li>
+<li><strong>30-40 (Medium Need)</strong>: School has moderate health factors. <em>Look for: Healthy lunch options, daily PE programs, air quality measures.</em></li>
+<li><strong>15-30 (Low Need)</strong>: School in relatively healthy area. <em>Maintain: Current health programs, preventive care access.</em></li>
+</ul>
+</div>
+
+<details style="margin-top:16px">
+<summary style="cursor:pointer;font-weight:600;color:#e65100;padding:8px 0">▶ What Can You Do as a Parent? (Click to expand)</summary>
+<div style="margin-top:12px;padding-left:16px;line-height:1.6">
+
+<strong>If your school has HIGH NEED (40+):</strong>
+<ul style="margin:8px 0">
+<li>✓ <strong>Ask school</strong>: "Do we have a full-time nurse?" (Request one through PTA if not)</li>
+<li>✓ <strong>Advocate for</strong>: Free/reduced-cost health screenings at school</li>
+<li>✓ <strong>Support</strong>: School wellness committees and PTA health initiatives</li>
+<li>✓ <strong>At home</strong>: Focus on healthy eating, physical activity, regular checkups</li>
+</ul>
+
+<strong>For ANY score:</strong>
+<ul style="margin:8px 0">
+<li>✓ Know your child's health status (asthma, allergies, chronic conditions)</li>
+<li>✓ Ensure school has updated emergency contacts & medication info</li>
+<li>✓ Ask about: Indoor air quality, water testing, allergen management</li>
+<li>✓ Participate in: School health advisory councils or PTA health committees</li>
+</ul>
+
+<strong style="display:block;margin:12px 0 8px 0">Questions to ask at your next parent-teacher conference:</strong>
+<ol style="margin:8px 0">
+<li>"Do we have a school nurse? How many days per week?"</li>
+<li>"What wellness programs are available to students?"</li>
+<li>"Is the school applying for any wellness or health grants?"</li>
+<li>"How does our school's health support compare to other schools?"</li>
+</ol>
+
+<div style="background:#fff;padding:12px;margin-top:16px;border-radius:4px;border:1px solid #ffb74d">
+<strong>💡 What the Indicators Mean in Plain English:</strong>
+<ul style="margin:8px 0;font-size:0.9rem">
+<li><strong>Chronic Disease %</strong>: How many people in your school's neighborhood have diabetes, obesity, or asthma</li>
+<li><strong>HPSA Score</strong>: How hard it is to find a doctor in your county (higher = fewer doctors)</li>
+<li><strong>Respiratory Activity</strong>: How much flu/COVID/RSV is going around Florida right now</li>
+</ul>
+</div>
+
+</div>
+</details>
+
+<details style="margin-top:12px">
+<summary style="cursor:pointer;font-weight:600;color:#e65100;padding:8px 0">▶ What Can Schools Do to Improve? (Click to expand)</summary>
+<div style="margin-top:12px;padding-left:16px;line-height:1.6">
+
+<strong>Immediate Actions (Free/Low Cost):</strong>
+<ul style="margin:8px 0">
+<li>✓ Apply for federal wellness grants (CDC, USDA) - <em>use this scorecard data to justify need</em></li>
+<li>✓ Partner with local health clinics for free student/family health screenings</li>
+<li>✓ Improve lunch nutrition (healthier options within existing budget)</li>
+<li>✓ Increase recess/PE time (no cost, proven to reduce obesity)</li>
+<li>✓ Create walking school buses (parent volunteers walk kids to school)</li>
+</ul>
+
+<strong>Medium-Term (Requires Funding):</strong>
+<ul style="margin:8px 0">
+<li>✓ Hire full-time school nurse or expand nurse hours</li>
+<li>✓ Install air quality monitors & HEPA filters in classrooms</li>
+<li>✓ Launch chronic disease prevention programs (diabetes screening, nutrition education)</li>
+<li>✓ Create school-based health center (nurse + social services)</li>
+<li>✓ Install water bottle filling stations (reduce sugary drink consumption)</li>
+</ul>
+
+<strong>Data-Driven Approach:</strong>
+<ol style="margin:8px 0">
+<li>Identify your school's specific gaps (click your school in table below)</li>
+<li>Compare to similar schools to find best practices</li>
+<li>Track your score over time (this system updates daily)</li>
+<li>Show improvements to justify continued funding</li>
+</ol>
+
+<div style="background:#e8f5e9;padding:12px;margin-top:16px;border-radius:4px;border:1px solid #81c784">
+<strong>✅ Success Story Example:</strong><br>
+<em>"School A had a 42 score. They added a full-time nurse, improved lunch nutrition, and partnered with a local clinic for free diabetes screenings. One year later, their score dropped to 38 (improvement!) and chronic disease prevalence in their community decreased from 22% to 19%."</em>
+</div>
+
+</div>
+</details>
+</div>
+
 <div class="charts-grid">
     <div class="chart-card">
         <h3>📊 Schools by County</h3>
@@ -404,7 +496,7 @@ function initCharts() {
     // County distribution chart
     const countyCtx = document.getElementById('countyChart');
     if (countyCtx) {
-        const countyData = """ + str(list(county_counts.items())) + """;
+        const countyData = """ + json.dumps(list(county_counts.items())) + """;
         new Chart(countyCtx, {
             type: 'bar',
             data: {
