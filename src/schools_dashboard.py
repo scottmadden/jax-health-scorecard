@@ -3,6 +3,7 @@
 import pandas as pd
 from pathlib import Path
 import nurse_data
+import grading
 
 BASE = Path(__file__).resolve().parents[1]
 DATA = BASE / "data"
@@ -81,6 +82,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .score.warning{color:#f57c00}
 .score.success{color:#2e7d32}
 .score-label{font-size:0.7rem;color:#888;text-transform:uppercase;margin-top:2px}
+""" + grading.get_grade_styles() + """
 .indicators{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .indicator{display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 0;border-bottom:1px solid #f5f5f5}
 .indicator:last-child{border-bottom:none}
@@ -193,6 +195,7 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 </div>
 </div>
 </div>
+""" + grading.get_grade_explanation() + """
 <div class="filters">
 <div class="filter-row">
 <div class="search-box">
@@ -227,6 +230,9 @@ for idx, row in schools_df.iterrows():
     unmet_score = row['unmet_need_score']
     nurse_status = row['nurse_status']
     nurse_penalty = row['nurse_penalty']
+    
+    # Get letter grade
+    letter, grade_label, grade_class = grading.get_letter_grade(unmet_score)
     
     score_class = 'danger' if unmet_score >= 45 else 'warning' if unmet_score >= 30 else 'success'
     need_level = 'high' if unmet_score >= 45 else 'medium' if unmet_score >= 30 else 'low'
@@ -265,8 +271,9 @@ for idx, row in schools_df.iterrows():
 <div class="meta">{row.get('county', 'Unknown')} County • {row.get('school_type', 'School')}</div>
 </div>
 <div>
-<div class="score {score_class}">{unmet_score:.1f}</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-{letter.lower()}">{letter}</div>
+<div class="grade-label-text">{grade_label}</div>
+<div class="numeric-score">{unmet_score:.1f} pts</div>
 </div>
 </div>
 <div class="indicators">

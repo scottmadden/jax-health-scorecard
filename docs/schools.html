@@ -46,6 +46,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .score.warning{color:#f57c00}
 .score.success{color:#2e7d32}
 .score-label{font-size:0.7rem;color:#888;text-transform:uppercase;margin-top:2px}
+
+    .grade-display{font-size:3rem;font-weight:700;line-height:1;font-family:Georgia,serif}
+    .grade-display.grade-a,.grade-display.grade-b{color:#2e7d32}
+    .grade-display.grade-c{color:#f57c00}
+    .grade-display.grade-d,.grade-display.grade-f{color:#d32f2f}
+    .grade-label-text{font-size:0.7rem;color:#888;text-transform:uppercase;margin-top:4px}
+    .numeric-score{font-size:0.75rem;color:#999;margin-top:2px}
+    .grade-legend{background:#f9f9f9;border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin:24px 0}
+    .grade-legend h4{margin:0 0 16px 0;font-size:1.1rem;color:#1a1a1a}
+    .grade-scale{display:grid;gap:12px}
+    .grade-item{display:flex;gap:16px;align-items:center;padding:12px;background:white;border-radius:6px}
+    .grade-letter{font-size:2rem;font-weight:700;font-family:Georgia,serif;min-width:50px;text-align:center}
+    .grade-item.grade-a .grade-letter,.grade-item.grade-b .grade-letter{color:#2e7d32}
+    .grade-item.grade-c .grade-letter{color:#f57c00}
+    .grade-item.grade-d .grade-letter,.grade-item.grade-f .grade-letter{color:#d32f2f}
+    .grade-info{flex:1}
+    .grade-label{font-weight:600;font-size:0.95rem;margin-bottom:4px}
+    .grade-desc{font-size:0.85rem;color:#666;line-height:1.4}
+    .grade-note{font-size:0.85rem;color:#666;margin-top:16px;font-style:italic}
+    @media (min-width:768px){
+    .grade-legend{padding:24px}
+    .grade-scale{grid-template-columns:repeat(2,1fr)}
+    .grade-item.grade-f{grid-column:1/-1}
+    }
+    
 .indicators{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .indicator{display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 0;border-bottom:1px solid #f5f5f5}
 .indicator:last-child{border-bottom:none}
@@ -158,6 +183,49 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 </div>
 </div>
 </div>
+
+    <div class="grade-legend">
+        <h4>Understanding Health Grades</h4>
+        <div class="grade-scale">
+            <div class="grade-item grade-a">
+                <div class="grade-letter">A</div>
+                <div class="grade-info">
+                    <div class="grade-label">Excellent</div>
+                    <div class="grade-desc">Minimal health needs. Strong community health and adequate medical support.</div>
+                </div>
+            </div>
+            <div class="grade-item grade-b">
+                <div class="grade-letter">B</div>
+                <div class="grade-info">
+                    <div class="grade-label">Good</div>
+                    <div class="grade-desc">Low health needs. Standard wellness programs are sufficient.</div>
+                </div>
+            </div>
+            <div class="grade-item grade-c">
+                <div class="grade-letter">C</div>
+                <div class="grade-info">
+                    <div class="grade-label">Fair</div>
+                    <div class="grade-desc">Moderate needs. Enhanced health services and monitoring recommended.</div>
+                </div>
+            </div>
+            <div class="grade-item grade-d">
+                <div class="grade-letter">D</div>
+                <div class="grade-info">
+                    <div class="grade-label">Needs Action</div>
+                    <div class="grade-desc">High needs. Urgent placement of full-time nurse and wellness programs required.</div>
+                </div>
+            </div>
+            <div class="grade-item grade-f">
+                <div class="grade-letter">F</div>
+                <div class="grade-info">
+                    <div class="grade-label">Critical</div>
+                    <div class="grade-desc">Critical needs. Immediate intervention required. Multiple health support gaps.</div>
+                </div>
+            </div>
+        </div>
+        <p class="grade-note">Grades reflect combined health burden (chronic disease, doctor availability, environmental factors) and available support (nurse staffing).</p>
+    </div>
+    
 <div class="filters">
 <div class="filter-row">
 <div class="search-box">
@@ -192,8 +260,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">53.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">53.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -232,8 +301,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">58.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-f">F</div>
+<div class="grade-label-text">Critical</div>
+<div class="numeric-score">58.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -272,8 +342,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">51.3</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">51.3 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -312,8 +383,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">51.1</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">51.1 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -352,8 +424,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">46.1</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">46.1 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -392,8 +465,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">45.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">45.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -432,8 +506,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">43.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">43.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -472,8 +547,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">53.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">53.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -512,8 +588,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">47.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">47.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -552,8 +629,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">52.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">52.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -592,8 +670,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">42.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">42.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -632,8 +711,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">52.3</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">52.3 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -672,8 +752,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">47.0</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">47.0 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -712,8 +793,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">41.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">41.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -752,8 +834,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">41.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">41.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -792,8 +875,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">41.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">41.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -832,8 +916,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">41.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">41.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -872,8 +957,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">46.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">46.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -912,8 +998,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">46.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">46.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -952,8 +1039,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">41.1</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">41.1 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -992,8 +1080,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">46.0</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">46.0 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1032,8 +1121,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">40.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">40.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1072,8 +1162,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">40.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">40.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1112,8 +1203,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">40.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">40.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1152,8 +1244,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">45.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">45.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1192,8 +1285,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">44.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">44.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1232,8 +1326,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">39.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">39.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1272,8 +1367,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">44.3</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">44.3 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1312,8 +1408,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">44.1</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">44.1 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1352,8 +1449,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">38.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">38.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1392,8 +1490,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">43.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">43.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1432,8 +1531,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">38.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">38.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1472,8 +1572,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">38.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">38.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1512,8 +1613,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">48.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">48.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1552,8 +1654,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score danger">48.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-d">D</div>
+<div class="grade-label-text">Needs Action</div>
+<div class="numeric-score">48.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1592,8 +1695,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">43.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">43.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1632,8 +1736,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">38.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">38.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1672,8 +1777,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">35.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">35.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1712,8 +1818,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">40.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">40.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1752,8 +1859,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">35.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">35.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1792,8 +1900,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">35.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">35.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1832,8 +1941,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">40.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">40.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1872,8 +1982,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">35.3</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">35.3 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1912,8 +2023,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">44.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">44.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1952,8 +2064,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">34.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -1992,8 +2105,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">39.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">39.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2032,8 +2146,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">34.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2072,8 +2187,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">39.3</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">39.3 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2112,8 +2228,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Baker County • School</div>
 </div>
 <div>
-<div class="score warning">39.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">39.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2152,8 +2269,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Baker County • School</div>
 </div>
 <div>
-<div class="score warning">34.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2192,8 +2310,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">44.1</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">44.1 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2232,8 +2351,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">39.1</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">39.1 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2272,8 +2392,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">43.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">43.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2312,8 +2433,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">43.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">43.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2352,8 +2474,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">38.8</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">38.8 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2392,8 +2515,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">43.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">43.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2432,8 +2556,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">33.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">33.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2472,8 +2597,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">33.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">33.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2512,8 +2638,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score warning">32.7</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">32.7 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2552,8 +2679,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">32.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">32.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2592,8 +2720,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">32.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">32.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2632,8 +2761,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">32.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">32.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2672,8 +2802,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">37.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">37.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2712,8 +2843,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">32.1</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">32.1 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2752,8 +2884,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">31.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">31.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2792,8 +2925,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">31.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">31.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2832,8 +2966,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">31.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">31.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2872,8 +3007,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">36.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">36.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2912,8 +3048,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">31.0</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">31.0 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2952,8 +3089,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">41.0</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">41.0 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -2992,8 +3130,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">35.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">35.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3032,8 +3171,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">30.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">30.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3072,8 +3212,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">30.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">30.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3112,8 +3253,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score warning">35.9</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-c">C</div>
+<div class="grade-label-text">Fair</div>
+<div class="numeric-score">35.9 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3152,8 +3294,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3192,8 +3335,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3232,8 +3376,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3272,8 +3417,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score success">29.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">29.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3312,8 +3458,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score success">29.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">29.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3352,8 +3499,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score success">29.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">29.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3392,8 +3540,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3432,8 +3581,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3472,8 +3622,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score success">29.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">29.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3512,8 +3663,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score success">29.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">29.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3552,8 +3704,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score success">29.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">29.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3592,8 +3745,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score success">29.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">29.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3632,8 +3786,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3672,8 +3827,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3712,8 +3868,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3752,8 +3909,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Duval County • School</div>
 </div>
 <div>
-<div class="score warning">34.6</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">34.6 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3792,8 +3950,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">26.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">26.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3832,8 +3991,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">26.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">26.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3872,8 +4032,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">26.5</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">26.5 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3912,8 +4073,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">25.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">25.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3952,8 +4114,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -3992,8 +4155,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4032,8 +4196,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4072,8 +4237,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4112,8 +4278,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4152,8 +4319,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4192,8 +4360,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4232,8 +4401,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4272,8 +4442,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4312,8 +4483,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4352,8 +4524,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4392,8 +4565,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4432,8 +4606,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4472,8 +4647,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4512,8 +4688,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4552,8 +4729,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4592,8 +4770,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4632,8 +4811,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4672,8 +4852,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4712,8 +4893,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4752,8 +4934,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4792,8 +4975,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4832,8 +5016,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4872,8 +5057,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4912,8 +5098,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4952,8 +5139,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -4992,8 +5180,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5032,8 +5221,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Baker County • School</div>
 </div>
 <div>
-<div class="score success">27.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-b">B</div>
+<div class="grade-label-text">Good</div>
+<div class="numeric-score">27.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5072,8 +5262,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Baker County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5112,8 +5303,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Baker County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5152,8 +5344,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Clay County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5192,8 +5385,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">St. Johns County • School</div>
 </div>
 <div>
-<div class="score success">22.4</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">22.4 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5232,8 +5426,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">15.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">15.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5272,8 +5467,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">20.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">20.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5312,8 +5508,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">15.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">15.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5352,8 +5549,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">15.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">15.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5392,8 +5590,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">15.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">15.2 pts</div>
 </div>
 </div>
 <div class="indicators">
@@ -5432,8 +5631,9 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 <div class="meta">Nassau County • School</div>
 </div>
 <div>
-<div class="score success">15.2</div>
-<div class="score-label">Unmet Need</div>
+<div class="grade-display grade-a">A</div>
+<div class="grade-label-text">Excellent</div>
+<div class="numeric-score">15.2 pts</div>
 </div>
 </div>
 <div class="indicators">
