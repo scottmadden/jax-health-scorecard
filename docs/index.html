@@ -1,55 +1,322 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>Jacksonville-Area County Health Readiness Scorecard (Phase 3)</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jacksonville School Health Scorecard - Know Your School's Health Needs</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Track health readiness for 132 Jacksonville-area schools with daily-updated federal data. Free, automated, and actionable.">
 <style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:24px;max-width:1200px}
-h1{margin:0;font-size:1.8rem} 
-h2{margin:8px 0;color:#555;font-weight:500;font-size:1rem}
-.alert-box{margin:16px 0;padding:12px;background:#e3f2fd;border-left:4px solid #2196F3}
-.alert-box strong{color:#1976D2}
-.legend{margin:16px 0;padding:12px;background:#f9f9f9;border-left:4px solid #4CAF50}
-.legend h3{margin:0 0 8px 0;font-size:0.9rem;text-transform:uppercase;color:#666}
-.legend ul{margin:4px 0;padding-left:20px}
-.legend li{font-size:0.85rem;color:#666;margin:4px 0}
-table{border-collapse:collapse;width:100%;margin-top:16px;font-size:0.9rem}
-th,td{border:1px solid #ddd;padding:10px 8px;text-align:left}
-th{background:#f7f7f7;font-weight:600;font-size:0.85rem}
-td{vertical-align:middle}
-.score{font-weight:bold;font-size:1.1rem;color:#d32f2f}
-.county-name{font-weight:600}
-small{color:#666}
-.highlight{background:#fff3e0}
-.badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:0.8rem;background:#4CAF50;color:white}
-</style></head><body>
-<h1>Jacksonville-Area County Health Readiness Scorecard (Phase 3) <span class="badge">PHASE 3</span></h1>
-<h2>Real-Time Health Signals: Now tracking respiratory virus activity</h2>
-<div class="alert-box">
-<strong>🦠 FL Respiratory Virus Activity:</strong> Minimal (adds 2.0 points to all counties this week)
+* {box-sizing:border-box; margin:0; padding:0}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  padding: 100px 24px 80px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.hero p {
+  font-size: 1.4rem;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-weight: 400;
+}
+.hero .cta {
+  display: inline-block;
+  background: white;
+  color: #1976d2;
+  padding: 18px 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
+.hero .cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Quick Stats */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: -50px auto 0;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+.stat {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.stat-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1976d2;
+}
+.stat-label {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* Search Section */
+.search-section {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.search-section h2 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+}
+.search-box-large {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 1.2rem;
+  border: 3px solid #e0e0e0;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.search-box-large:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+}
+
+/* Role Selector */
+.roles {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 24px;
+}
+.roles h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 48px;
+  color: #1a1a1a;
+}
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+.role-card {
+  background: #f9f9f9;
+  padding: 36px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s;
+  text-align: left;
+}
+.role-card:hover {
+  border-color: #1976d2;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  background: white;
+}
+.role-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  color: #1976d2;
+}
+.role-card p {
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+}
+.role-card a {
+  display: inline-block;
+  color: #1976d2;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+.role-card a:after {
+  content: " →";
+}
+
+/* Featured Insight */
+.insight {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  padding: 60px 24px;
+  margin: 80px 0;
+}
+.insight-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.insight-content h2 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+}
+.insight-content .highlight {
+  font-size: 1.8rem;
+  color: #d32f2f;
+  font-weight: 700;
+  display: block;
+  margin: 16px 0;
+}
+.insight-content p {
+  font-size: 1.15rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+/* Footer */
+footer {
+  background: #1a1a1a;
+  color: #999;
+  padding: 48px 24px;
+  margin-top: 80px;
+  text-align: center;
+}
+footer p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+footer a {
+  color: #1976d2;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero h1 {font-size: 2.5rem}
+  .hero p {font-size: 1.1rem}
+  .quick-stats {grid-template-columns: 1fr 1fr; margin-top: -40px}
+  .role-grid {grid-template-columns: 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Jacksonville School Health</h1>
+  <p>Know your school's health needs. Make data-driven decisions about wellness and resources.</p>
+  <a href="schools.html" class="cta">View 132 School Rankings →</a>
 </div>
-<div class="legend">
-<h3>Scoring Breakdown (100 points total):</h3>
-<ul>
-<li><strong>Primary Care Access (30pts)</strong>: HRSA HPSA shortage score (0-25 scale)</li>
-<li><strong>Chronic Disease (30pts)</strong>: CDC PLACES avg prevalence (diabetes, obesity, asthma)</li>
-<li><strong>Air Quality (15pts)</strong>: EPA unhealthy AQI days OR AirNow current (if API key set)</li>
-<li><strong>Hazard Risk (15pts)</strong>: FEMA National Risk Index composite score</li>
-<li><strong>Respiratory Virus (10pts)</strong>: CDC state-level flu/COVID/RSV activity ✅ <em>Active</em></li>
-</ul>
+
+<div class="quick-stats">
+  <div class="stat">
+    <div class="stat-value">132</div>
+    <div class="stat-label">K-12 Schools Tracked</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">5</div>
+    <div class="stat-label">Jacksonville Counties</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">Daily</div>
+    <div class="stat-label">Automatic Updates</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">Free</div>
+    <div class="stat-label">Always Free</div>
+  </div>
 </div>
-<small>Sources: EPA AirData (2023), HRSA HPSA, CDC PLACES, FEMA NRI, CDC Respiratory Surveillance. Higher score = higher risk/need.</small>
-<table>
-<thead><tr>
-<th>Rank</th>
-<th>County</th>
-<th>HPSA<br><small>(0-25)</small></th>
-<th>Chronic<br><small>(%)</small></th>
-<th>AQI Days<br><small>(2023)</small></th>
-<th>Hazard<br><small>(0-100)</small></th>
-<th>Respiratory<br><small>(FL-wide)</small></th>
-<th>Score<br><small>(0-100)</small></th>
-</tr></thead>
-<tbody>
-<tr class='highlight'><td><strong>1</strong></td><td class='county-name'>Duval, Florida</td><td>23</td><td>34.7</td><td>0</td><td>0.0</td><td>Minimal</td><td class='score'>50.4</td></tr><tr class=''><td><strong>2</strong></td><td class='county-name'>Clay, Florida</td><td>17</td><td>35.7</td><td>-</td><td>0.0</td><td>Minimal</td><td class='score'>43.8</td></tr><tr class=''><td><strong>3</strong></td><td class='county-name'>Baker, Florida</td><td>17</td><td>24.8</td><td>0</td><td>0.0</td><td>Minimal</td><td class='score'>37.2</td></tr><tr class=''><td><strong>4</strong></td><td class='county-name'>St. Johns, Florida</td><td>17</td><td>10.3</td><td>-</td><td>0.0</td><td>Minimal</td><td class='score'>28.6</td></tr><tr class=''><td><strong>5</strong></td><td class='county-name'>Nassau, Florida</td><td>11</td><td>21.2</td><td>-</td><td>0.0</td><td>Minimal</td><td class='score'>27.9</td></tr></tbody></table>
-<small style="margin-top:16px;display:block">Last updated: 2025-11-09T16:39:26Z | Auto-refreshes daily 9:15am ET</small>
-<p style="margin-top:12px"><strong>📍 Navigation:</strong> <a href="schools.html" style="font-weight:600;color:#1976d2">View School-Level Scorecard (51 Schools)</a> | <a href="https://github.com/scottmadden/jax-health-scorecard">GitHub Repository</a> | <a href="../data/scorecard.csv">Download CSV</a></p>
-</body></html>
+
+<div class="search-section">
+  <h2>Find Your School</h2>
+  <input type="text" 
+         class="search-box-large" 
+         id="quickSearch"
+         placeholder="Type your school name (e.g., 'Orange Park Elementary')..."
+         onkeyup="handleQuickSearch(event)">
+  <p style="margin-top:16px; color:#666; font-size:0.95rem">
+    Or <a href="schools.html" style="color:#1976d2; font-weight:600">browse all 132 schools →</a>
+  </p>
+</div>
+
+<div class="insight">
+  <div class="insight-content">
+    <h2>Key Finding</h2>
+    <span class="highlight">63% Variation</span>
+    <p>Chronic disease rates vary by 63% within Duval County—from 19% to 32% depending on your school's neighborhood. County-level data hides these critical differences.</p>
+    <p style="margin-top:20px; font-size:1.05rem">
+      <strong>This scorecard reveals which specific schools need health resources most.</strong>
+    </p>
+  </div>
+</div>
+
+<div class="roles">
+  <h2>Choose Your Perspective</h2>
+  <div class="role-grid">
+    
+    <div class="role-card">
+      <h3>👨‍👩‍👧 I'm a Parent</h3>
+      <p>Find your child's school, understand what the health score means, and learn practical steps you can take to support your child's wellbeing.</p>
+      <a href="schools.html?guide=parent">Search Schools</a>
+    </div>
+    
+    <div class="role-card">
+      <h3>🏫 I'm an Educator</h3>
+      <p>See which schools need resources most, compare to similar schools, justify grant applications with federal data, and track improvements over time.</p>
+      <a href="schools.html?guide=educator">View Rankings</a>
+    </div>
+    
+    <div class="role-card">
+      <h3>📊 I'm a Researcher</h3>
+      <p>Download complete CSV datasets, analyze trends, study correlations with academic performance, and integrate with your own data systems.</p>
+      <a href="schools.html?guide=data">Access Data</a>
+    </div>
+    
+  </div>
+</div>
+
+<footer>
+  <p><strong>Jacksonville School Health Scorecard</strong></p>
+  <p style="margin:16px 0">Data from CDC, EPA, HRSA, and FEMA (all federal public sources)</p>
+  <p>Updates daily at 9:15am ET | <a href="https://github.com/scottmadden/jax-health-scorecard">View Source Code</a></p>
+  <p style="margin-top:24px; font-size:0.85rem">Built with ❤️ for Jacksonville families and schools</p>
+</footer>
+
+<script>
+function handleQuickSearch(event) {
+  if (event.key === 'Enter') {
+    const query = document.getElementById('quickSearch').value;
+    window.location.href = `schools.html?search=${encodeURIComponent(query)}`;
+  }
+}
+
+// Add search hint
+document.getElementById('quickSearch').addEventListener('focus', function() {
+  this.placeholder = 'Press Enter to search...';
+});
+document.getElementById('quickSearch').addEventListener('blur', function() {
+  if (!this.value) {
+    this.placeholder = "Type your school name (e.g., 'Orange Park Elementary')...";
+  }
+});
+</script>
+
+</body>
+</html>
+

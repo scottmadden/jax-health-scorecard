@@ -27,7 +27,7 @@ def generate_school_html(schools_df: pd.DataFrame) -> str:
     # County breakdown
     county_counts = schools_df["county"].value_counts().to_dict()
     
-    title = "Jacksonville-Area School Health Readiness Scorecard (Phase 4)"
+    title = "School Rankings - Jacksonville School Health"
     
     html = f"""<!doctype html>
 <html lang="en">
@@ -35,19 +35,27 @@ def generate_school_html(schools_df: pd.DataFrame) -> str:
 <meta charset="utf-8">
 <title>{title}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interactive rankings for {total_schools} Jacksonville-area K-12 schools based on health indicators">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 * {{box-sizing: border-box}}
 body {{
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background: #f5f5f5;
 }}
-.container {{max-width: 1400px; margin: 0 auto; background: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1)}}
-h1 {{margin: 0; font-size: 2rem; color: #1a1a1a}}
-.badge {{display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; background: #7c4dff; color: white; margin-left: 12px; font-weight: 600}}
-h2 {{margin: 12px 0; color: #666; font-weight: 500; font-size: 1.1rem}}
+nav {{background: #1976d2; color: white; padding: 16px 24px; margin-bottom: 0}}
+nav .nav-content {{max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap}}
+nav .logo {{font-size: 1.3rem; font-weight: 600; color: white; text-decoration: none}}
+nav .links {{display: flex; gap: 24px}}
+nav a {{color: white; text-decoration: none; font-size: 0.95rem; transition: opacity 0.2s}}
+nav a:hover {{opacity: 0.8}}
+nav .active {{font-weight: 600; border-bottom: 2px solid white; padding-bottom: 2px}}
+
+.container {{max-width: 1400px; margin: 0 auto; background: white; padding: 32px; border-radius: 0}}
+h1 {{margin: 0; font-size: 2.2rem; color: #1a1a1a; font-weight: 700}}
+h2 {{margin: 12px 0 24px; color: #666; font-weight: 400; font-size: 1.15rem}}
 
 .stats-grid {{
     display: grid;
@@ -179,9 +187,6 @@ footer a:hover {{text-decoration: underline}}
 <body>
 <div class="container">
 
-<h1>{title} <span class="badge">PHASE 4</span></h1>
-<h2>Individual school rankings with tract-level health data</h2>
-
 <div class="stats-grid">
     <div class="stat-card">
         <h3>Total Schools</h3>
@@ -206,27 +211,19 @@ footer a:hover {{text-decoration: underline}}
 </div>
 
 <div class="legend">
-<h3>📊 Scoring System (100 Points Total)</h3>
+<h3>📊 How We Calculate Health Scores (100 Points Total)</h3>
 <ul>
-<li><strong>Primary Care Access (30 pts):</strong> County-level HRSA HPSA shortage score</li>
-<li><strong>Chronic Disease (30 pts):</strong> Tract-level CDC PLACES prevalence (diabetes, obesity, asthma)</li>
-<li><strong>Air Quality (15 pts):</strong> County-level EPA/AirNow data</li>
-<li><strong>Hazard Risk (15 pts):</strong> County-level FEMA National Risk Index</li>
-<li><strong>Respiratory Virus (10 pts):</strong> State-level CDC flu/COVID/RSV activity</li>
+<li><strong>Doctor Availability (30 pts):</strong> How easy is it to find a doctor in your county</li>
+<li><strong>Neighborhood Health (30 pts):</strong> % of people nearby with diabetes, obesity, or asthma</li>
+<li><strong>Air Quality (15 pts):</strong> Days with unhealthy air in your county</li>
+<li><strong>Natural Disaster Risk (15 pts):</strong> Risk of hurricanes, flooding, etc.</li>
+<li><strong>Respiratory Illness (10 pts):</strong> Current flu/COVID/RSV activity in Florida</li>
 </ul>
 <p style="margin: 12px 0 0 0; color: #666; font-size: 0.9rem;">
-<strong>Higher score = higher health risk/need.</strong> Schools without tract data use county averages.
+<strong>Higher score = school area has more health challenges.</strong> Most schools use neighborhood-specific data.
 </p>
 </div>
 
-<div class="controls">
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="🔍 Search schools by name, city, or district..." onkeyup="filterTable()">
-    </div>
-    <div class="filter-group">
-        <label for="countyFilter">County:</label>
-        <select id="countyFilter" onchange="filterTable()">
-            <option value="">All Counties</option>
 """
     
     # Add county filter options
@@ -288,11 +285,11 @@ footer a:hover {{text-decoration: underline}}
 </ol>
 
 <div style="background:#fff;padding:12px;margin-top:16px;border-radius:4px;border:1px solid #ffb74d">
-<strong>💡 What the Indicators Mean in Plain English:</strong>
+<strong>💡 What the Numbers Mean:</strong>
 <ul style="margin:8px 0;font-size:0.9rem">
-<li><strong>Chronic Disease %</strong>: How many people in your school's neighborhood have diabetes, obesity, or asthma</li>
-<li><strong>HPSA Score</strong>: How hard it is to find a doctor in your county (higher = fewer doctors)</li>
-<li><strong>Respiratory Activity</strong>: How much flu/COVID/RSV is going around Florida right now</li>
+<li><strong>Chronic Disease %</strong>: People in your school's neighborhood with diabetes, obesity, or asthma (US average: ~20%)</li>
+<li><strong>Doctor Availability</strong>: Higher number = harder to find doctors (25 = severe shortage, 0 = plenty of doctors)</li>
+<li><strong>Respiratory Activity</strong>: Current flu/COVID level in Florida (Minimal/Low/Moderate/High)</li>
 </ul>
 </div>
 
@@ -357,9 +354,9 @@ footer a:hover {{text-decoration: underline}}
     <th onclick="sortTable(2)">County</th>
     <th onclick="sortTable(3)">Type</th>
     <th onclick="sortTable(4)">Enrollment</th>
-    <th onclick="sortTable(5)">Chronic Disease (%)</th>
-    <th onclick="sortTable(6)">HPSA Score</th>
-    <th onclick="sortTable(7)">Readiness Score</th>
+    <th onclick="sortTable(5)">Neighborhood Health<br><small>(chronic disease %)</small></th>
+    <th onclick="sortTable(6)">Doctor Availability<br><small>(county)</small></th>
+    <th onclick="sortTable(7)">Health Need Score<br><small>(0-100)</small></th>
 </tr>
 </thead>
 <tbody>
@@ -396,10 +393,14 @@ footer a:hover {{text-decoration: underline}}
     html += """</tbody>
 </table>
 
-<footer>
-<p><strong>Data Sources:</strong> CDC PLACES (tract-level), HRSA HPSA, EPA AirData, FEMA NRI, CDC Respiratory Surveillance</p>
-<p><strong>Last Updated:</strong> """ + datetime.utcnow().isoformat(timespec="seconds") + """Z | Auto-refreshes daily at 9:15am ET</p>
-<p><strong>View:</strong> <a href="index.html">County Scorecard</a> | <a href="https://github.com/scottmadden/jax-health-scorecard">GitHub Repository</a> | <a href="../data/school_scorecard.csv">Download CSV</a></p>
+<footer style="margin-top:48px; padding-top:32px; border-top:2px solid #eee; color:#666">
+<p style="font-size:0.9rem"><strong>Data Sources:</strong> CDC, EPA, HRSA, FEMA (all federal public data)</p>
+<p style="margin-top:12px; font-size:0.9rem">Last updated: """ + datetime.utcnow().isoformat(timespec="seconds") + """Z | Updates automatically every morning</p>
+<p style="margin-top:16px">
+<a href="counties.html" style="color:#1976d2; font-weight:600">View County Comparison</a> | 
+<a href="../data/school_scorecard.csv" style="color:#1976d2">Download Data (CSV)</a> | 
+<a href="https://github.com/scottmadden/jax-health-scorecard" style="color:#666">Technical Details</a>
+</p>
 </footer>
 
 </div>

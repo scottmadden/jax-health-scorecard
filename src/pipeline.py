@@ -479,10 +479,17 @@ small{{color:#666}}
         rank += 1
         
     html += f"""</tbody></table>
-<small style="margin-top:16px;display:block">Last updated: {datetime.utcnow().isoformat(timespec="seconds")}Z | Auto-refreshes daily 9:15am ET</small>
-<p style="margin-top:12px"><strong>📍 Navigation:</strong> <a href="schools.html" style="font-weight:600;color:#1976d2">View School-Level Scorecard (51 Schools)</a> | <a href="https://github.com/scottmadden/jax-health-scorecard">GitHub Repository</a> | <a href="../data/scorecard.csv">Download CSV</a></p>
+<footer style="margin-top:40px;padding-top:24px;border-top:2px solid #eee">
+<small style="display:block;color:#666">Last updated: {datetime.utcnow().isoformat(timespec="seconds")}Z | Updates daily at 9:15am ET</small>
+<p style="margin-top:16px">
+<a href="schools.html" style="color:#1976d2;font-weight:600">View 132 Individual Schools</a> | 
+<a href="../data/scorecard.csv" style="color:#1976d2">Download CSV</a> | 
+<a href="https://github.com/scottmadden/jax-health-scorecard" style="color:#666">Source Code</a>
+</p>
+</footer>
+</div>
 </body></html>"""
-    DOCS.joinpath("index.html").write_text(html, encoding="utf-8")
+    DOCS.joinpath("counties.html").write_text(html, encoding="utf-8")
 
 if __name__ == "__main__":
     # Phase 3: County-level scorecard
