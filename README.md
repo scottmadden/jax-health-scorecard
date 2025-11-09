@@ -1,8 +1,8 @@
-# Jax Health Readiness Scorecard (Phase 3)
+# Jax Health Readiness Scorecard (Phase 4)
 
-**Automated DAILY county-level health readiness scores with real-time signals**
+**Automated DAILY health readiness scores for 51 individual schools + 5 counties**
 
-This scorecard ranks Duval, Clay, St. Johns, Nassau, and Baker counties on 5 evidence-based public health indicators, now including real-time respiratory virus activity tracking.
+This scorecard provides tract-level health precision for Jacksonville-area schools, enabling data-driven resource allocation at the school level. Ranks 51 schools across Duval, Clay, St. Johns, Nassau, and Baker counties.
 
 ## Current Indicators (Phase 2)
 
@@ -39,10 +39,16 @@ This scorecard ranks Duval, Clay, St. Johns, Nassau, and Baker counties on 5 evi
 - Balanced weighting: healthcare access + chronic disease = 60%, environmental factors = 40%
 - Transparent, evidence-based methodology
 
-## Data Outputs
+## Data Outputs (Phase 4)
 
-- **CSV**: `/data/scorecard.csv` – machine-readable weekly snapshot
-- **HTML Table**: `/docs/index.html` – simple web view (GitHub Pages)
+### County-Level
+- **CSV**: `/data/scorecard.csv` – 5 counties with aggregate indicators
+- **HTML**: `/docs/index.html` – County comparison table
+
+### School-Level ✨ NEW
+- **CSV**: `/data/school_scorecard.csv` – 51 schools with tract-level health data
+- **HTML**: `/docs/schools.html` – Interactive, searchable school table
+- **Features**: Search, filter by county/score, sortable columns, responsive design
 
 ## Automation (Phase 3)
 
@@ -88,19 +94,21 @@ gh repo create jax-health-scorecard --public --source=. --remote=origin --push
 
 ## Roadmap
 
-### ✅ Phase 3: Real-Time Signals (COMPLETED)
-- ✅ **CDC Respiratory Virus Surveillance**: Live state-level flu/COVID/RSV activity tracking
-- ✅ **Daily automated updates**: Switched from weekly to daily refresh
-- ✅ **AirNow API support**: Optional real-time air quality (add API key to use)
-- ✅ **10-point respiratory scoring activated**: All indicators now live
+### ✅ Phase 4: School-Level Granularity (COMPLETED)
+- ✅ **51 individual schools ranked**: Expanded from 5 counties to 51 schools
+- ✅ **Census tract geocoding**: 72.5% success rate (37/51 schools mapped)
+- ✅ **Tract-level health data**: CDC PLACES chronic disease by neighborhood
+- ✅ **Interactive HTML table**: Search, filter, sort functionality
+- ✅ **School statistics dashboard**: Total schools, geocoding rate, averages
+- ✅ **Dual navigation**: County ↔ School seamless switching
 
-### Phase 4: School-Level Granularity (Next Goal)
-
-### Phase 4: School-Level Granularity (Goal)
-- **Urban Institute Education Data API**: Public school roster with locations
-- **Geocoding**: Map schools to census tracts
-- **School-level scoring**: Assign tract/county indicators to 300+ individual schools
-- **Enhanced visualization**: Interactive maps and school search
+### Phase 5: Polish & Promote (Next)
+- Historical trend tracking (week-over-week score changes)
+- Email alerting system (notify when scores spike)
+- Interactive map visualization (Leaflet.js with school markers)
+- Custom report generation (PDF exports)
+- Enhanced analytics dashboard (charts, graphs)
+- Marketing & outreach to stakeholders
 
 ## Data Sources & Credits
 
@@ -148,5 +156,5 @@ For questions or partnership inquiries about expanding to school-level data or a
 ---
 
 **Last Updated**: November 2025  
-**Status**: Phase 3 Complete ✅ (Real-time signals, daily updates, respiratory virus tracking active)
+**Status**: Phase 4 Complete ✅ (51 schools ranked, tract-level precision, interactive search/filter)
 

@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jacksonville-Area School Health Readiness Scorecard (Phase 4)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f5f5f5;
+}
+.container {max-width: 1400px; margin: 0 auto; background: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1)}
+h1 {margin: 0; font-size: 2rem; color: #1a1a1a}
+.badge {display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; background: #7c4dff; color: white; margin-left: 12px; font-weight: 600}
+h2 {margin: 12px 0; color: #666; font-weight: 500; font-size: 1.1rem}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+.stat-card {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 6px;
+    border-left: 4px solid #4CAF50;
+}
+.stat-card h3 {margin: 0 0 8px 0; font-size: 0.85rem; text-transform: uppercase; color: #666; font-weight: 600}
+.stat-card .value {font-size: 2rem; font-weight: bold; color: #1a1a1a}
+.stat-card .label {font-size: 0.85rem; color: #888; margin-top: 4px}
+
+.controls {
+    display: flex;
+    gap: 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.search-box {
+    flex: 1;
+    min-width: 250px;
+}
+.search-box input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+.search-box input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+.filter-group {display: flex; gap: 8px; align-items: center}
+.filter-group label {font-weight: 600; color: #666; font-size: 0.9rem}
+.filter-group select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.legend {
+    background: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+    padding: 16px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+.legend h3 {margin: 0 0 12px 0; font-size: 0.95rem; text-transform: uppercase; color: #2e7d32}
+.legend ul {margin: 0; padding-left: 20px}
+.legend li {font-size: 0.9rem; color: #555; margin: 6px 0}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+thead {position: sticky; top: 0; background: #f7f7f7; z-index: 10}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 10px;
+    text-align: left;
+}
+th {
+    background: #f7f7f7;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    user-select: none;
+}
+th:hover {background: #eee}
+td {vertical-align: middle}
+
+.rank {font-weight: bold; color: #666}
+.school-name {font-weight: 600; color: #1a1a1a}
+.score {font-weight: bold; font-size: 1.1rem}
+.score-high {color: #d32f2f}
+.score-medium {color: #f57c00}
+.score-low {color: #4CAF50}
+
+.county-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.enrollment {color: #666; font-size: 0.85rem}
+.no-data {color: #999; font-style: italic}
+
+footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 2px solid #eee;
+    color: #666;
+    font-size: 0.85rem;
+}
+footer a {color: #1976d2; text-decoration: none}
+footer a:hover {text-decoration: underline}
+
+.hidden {display: none}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Jacksonville-Area School Health Readiness Scorecard (Phase 4) <span class="badge">PHASE 4</span></h1>
+<h2>Individual school rankings with tract-level health data</h2>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Total Schools</h3>
+        <div class="value">51</div>
+        <div class="label">Across 5 counties</div>
+    </div>
+    <div class="stat-card">
+        <h3>Geocoded</h3>
+        <div class="value">37</div>
+        <div class="label">With tract-level data (72.5%)</div>
+    </div>
+    <div class="stat-card">
+        <h3>Average Score</h3>
+        <div class="value">33.8</div>
+        <div class="label">Out of 100 points</div>
+    </div>
+    <div class="stat-card">
+        <h3>Highest Need</h3>
+        <div class="value">48.5</div>
+        <div class="label">Darnell-Cookman School of the </div>
+    </div>
+</div>
+
+<div class="legend">
+<h3>📊 Scoring System (100 Points Total)</h3>
+<ul>
+<li><strong>Primary Care Access (30 pts):</strong> County-level HRSA HPSA shortage score</li>
+<li><strong>Chronic Disease (30 pts):</strong> Tract-level CDC PLACES prevalence (diabetes, obesity, asthma)</li>
+<li><strong>Air Quality (15 pts):</strong> County-level EPA/AirNow data</li>
+<li><strong>Hazard Risk (15 pts):</strong> County-level FEMA National Risk Index</li>
+<li><strong>Respiratory Virus (10 pts):</strong> State-level CDC flu/COVID/RSV activity</li>
+</ul>
+<p style="margin: 12px 0 0 0; color: #666; font-size: 0.9rem;">
+<strong>Higher score = higher health risk/need.</strong> Schools without tract data use county averages.
+</p>
+</div>
+
+<div class="controls">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Search schools by name, city, or district..." onkeyup="filterTable()">
+    </div>
+    <div class="filter-group">
+        <label for="countyFilter">County:</label>
+        <select id="countyFilter" onchange="filterTable()">
+            <option value="">All Counties</option>
+            <option value="Baker">Baker (3)</option>
+            <option value="Clay">Clay (9)</option>
+            <option value="Duval">Duval (25)</option>
+            <option value="Nassau">Nassau (5)</option>
+            <option value="St. Johns">St. Johns (9)</option>
+        </select>
+    </div>
+    <div class="filter-group">
+        <label for="scoreFilter">Score:</label>
+        <select id="scoreFilter" onchange="filterTable()">
+            <option value="">All Scores</option>
+            <option value="high">High Need (45+)</option>
+            <option value="medium">Medium Need (30-45)</option>
+            <option value="low">Low Need (<30)</option>
+        </select>
+    </div>
+</div>
+
+<table id="schoolTable">
+<thead>
+<tr>
+    <th onclick="sortTable(0)">Rank</th>
+    <th onclick="sortTable(1)">School Name</th>
+    <th onclick="sortTable(2)">County</th>
+    <th onclick="sortTable(3)">Type</th>
+    <th onclick="sortTable(4)">Enrollment</th>
+    <th onclick="sortTable(5)">Chronic Disease (%)</th>
+    <th onclick="sortTable(6)">HPSA Score</th>
+    <th onclick="sortTable(7)">Readiness Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class="rank">1</td>
+    <td class="school-name">Darnell-Cookman School of the Medical Arts</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">700</td>
+    <td>31.5</td>
+    <td>23</td>
+    <td class="score score-high">48.5</td>
+</tr>
+<tr>
+    <td class="rank">2</td>
+    <td class="school-name">Lavilla School of the Arts</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">650</td>
+    <td>31.5</td>
+    <td>23</td>
+    <td class="score score-high">48.5</td>
+</tr>
+<tr>
+    <td class="rank">3</td>
+    <td class="school-name">Raines High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">950</td>
+    <td>27.8</td>
+    <td>23</td>
+    <td class="score score-high">46.3</td>
+</tr>
+<tr>
+    <td class="rank">4</td>
+    <td class="school-name">Stanton College Preparatory School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,600</td>
+    <td>27.5</td>
+    <td>23</td>
+    <td class="score score-high">46.1</td>
+</tr>
+<tr>
+    <td class="rank">5</td>
+    <td class="school-name">Ribault High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,100</td>
+    <td>27.1</td>
+    <td>23</td>
+    <td class="score score-high">45.9</td>
+</tr>
+<tr>
+    <td class="rank">6</td>
+    <td class="school-name">Paxon School for Advanced Studies</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,400</td>
+    <td>23.5</td>
+    <td>23</td>
+    <td class="score score-medium">43.7</td>
+</tr>
+<tr>
+    <td class="rank">7</td>
+    <td class="school-name">Robert E. Lee High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,800</td>
+    <td>21.6</td>
+    <td>23</td>
+    <td class="score score-medium">42.6</td>
+</tr>
+<tr>
+    <td class="rank">8</td>
+    <td class="school-name">Atlantic Coast High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,900</td>
+    <td>21.1</td>
+    <td>23</td>
+    <td class="score score-medium">42.3</td>
+</tr>
+<tr>
+    <td class="rank">9</td>
+    <td class="school-name">Douglas Anderson School of the Arts</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,200</td>
+    <td>20.6</td>
+    <td>23</td>
+    <td class="score score-medium">42.0</td>
+</tr>
+<tr>
+    <td class="rank">10</td>
+    <td class="school-name">Terry Parker High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,650</td>
+    <td>20.4</td>
+    <td>23</td>
+    <td class="score score-medium">41.8</td>
+</tr>
+<tr>
+    <td class="rank">11</td>
+    <td class="school-name">Wolfson High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,400</td>
+    <td>20.2</td>
+    <td>23</td>
+    <td class="score score-medium">41.7</td>
+</tr>
+<tr>
+    <td class="rank">12</td>
+    <td class="school-name">Samuel W. Wolfson High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,200</td>
+    <td>20.2</td>
+    <td>23</td>
+    <td class="score score-medium">41.7</td>
+</tr>
+<tr>
+    <td class="rank">13</td>
+    <td class="school-name">Andrew Jackson High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,500</td>
+    <td>19.3</td>
+    <td>23</td>
+    <td class="score score-medium">41.2</td>
+</tr>
+<tr>
+    <td class="rank">14</td>
+    <td class="school-name">First Coast High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">2,100</td>
+    <td>18.9</td>
+    <td>23</td>
+    <td class="score score-medium">41.0</td>
+</tr>
+<tr>
+    <td class="rank">15</td>
+    <td class="school-name">Westside High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,700</td>
+    <td>18.9</td>
+    <td>23</td>
+    <td class="score score-medium">40.9</td>
+</tr>
+<tr>
+    <td class="rank">16</td>
+    <td class="school-name">Landon Middle School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">900</td>
+    <td>18.6</td>
+    <td>23</td>
+    <td class="score score-medium">40.8</td>
+</tr>
+<tr>
+    <td class="rank">17</td>
+    <td class="school-name">Englewood High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,300</td>
+    <td>18.4</td>
+    <td>23</td>
+    <td class="score score-medium">40.7</td>
+</tr>
+<tr>
+    <td class="rank">18</td>
+    <td class="school-name">Mandarin High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">2,200</td>
+    <td>16.8</td>
+    <td>23</td>
+    <td class="score score-medium">39.7</td>
+</tr>
+<tr>
+    <td class="rank">19</td>
+    <td class="school-name">Sandalwood High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">2,400</td>
+    <td>16.5</td>
+    <td>23</td>
+    <td class="score score-medium">39.5</td>
+</tr>
+<tr>
+    <td class="rank">20</td>
+    <td class="school-name">Fletcher High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">2,000</td>
+    <td>15.0</td>
+    <td>23</td>
+    <td class="score score-medium">38.6</td>
+</tr>
+<tr>
+    <td class="rank">21</td>
+    <td class="school-name">Southside Middle School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">850</td>
+    <td>14.8</td>
+    <td>23</td>
+    <td class="score score-medium">38.5</td>
+</tr>
+<tr>
+    <td class="rank">22</td>
+    <td class="school-name">Clay High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">1,450</td>
+    <td>22.2</td>
+    <td>17</td>
+    <td class="score score-medium">35.7</td>
+</tr>
+<tr>
+    <td class="rank">23</td>
+    <td class="school-name">Lakeside Junior High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">920</td>
+    <td>21.9</td>
+    <td>17</td>
+    <td class="score score-medium">35.6</td>
+</tr>
+<tr>
+    <td class="rank">24</td>
+    <td class="school-name">Keystone Heights Junior-Senior High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">850</td>
+    <td>21.5</td>
+    <td>17</td>
+    <td class="score score-medium">35.3</td>
+</tr>
+<tr>
+    <td class="rank">25</td>
+    <td class="school-name">Keller Intermediate School</td>
+    <td><span class="county-badge">Baker</span></td>
+    <td>School</td>
+    <td class="enrollment">480</td>
+    <td>19.7</td>
+    <td>17</td>
+    <td class="score score-medium">34.2</td>
+</tr>
+<tr>
+    <td class="rank">26</td>
+    <td class="school-name">Orange Park Junior High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">980</td>
+    <td>18.7</td>
+    <td>17</td>
+    <td class="score score-medium">33.6</td>
+</tr>
+<tr>
+    <td class="rank">27</td>
+    <td class="school-name">Orange Park High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">2,100</td>
+    <td>18.7</td>
+    <td>17</td>
+    <td class="score score-medium">33.6</td>
+</tr>
+<tr>
+    <td class="rank">28</td>
+    <td class="school-name">St. Augustine High School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">1,600</td>
+    <td>16.4</td>
+    <td>17</td>
+    <td class="score score-medium">32.2</td>
+</tr>
+<tr>
+    <td class="rank">29</td>
+    <td class="school-name">Sebastian Middle School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">920</td>
+    <td>15.8</td>
+    <td>17</td>
+    <td class="score score-medium">31.9</td>
+</tr>
+<tr>
+    <td class="rank">30</td>
+    <td class="school-name">Bartram Trail High School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">2,400</td>
+    <td>15.0</td>
+    <td>17</td>
+    <td class="score score-medium">31.4</td>
+</tr>
+<tr>
+    <td class="rank">31</td>
+    <td class="school-name">Creekside High School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">2,300</td>
+    <td>14.7</td>
+    <td>17</td>
+    <td class="score score-medium">31.2</td>
+</tr>
+<tr>
+    <td class="rank">32</td>
+    <td class="school-name">Nease High School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">2,250</td>
+    <td>14.3</td>
+    <td>17</td>
+    <td class="score score-medium">31.0</td>
+</tr>
+<tr>
+    <td class="rank">33</td>
+    <td class="school-name">Liberty Pines Academy</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">850</td>
+    <td>14.2</td>
+    <td>17</td>
+    <td class="score score-medium">30.9</td>
+</tr>
+<tr>
+    <td class="rank">34</td>
+    <td class="school-name">Tocoi Creek High School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">1,800</td>
+    <td>14.2</td>
+    <td>17</td>
+    <td class="score score-medium">30.9</td>
+</tr>
+<tr>
+    <td class="rank">35</td>
+    <td class="school-name">Lake Shore Middle School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">920</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>23</td>
+    <td class="score score-low">29.6</td>
+</tr>
+<tr>
+    <td class="rank">36</td>
+    <td class="school-name">Ed White High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">1,550</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>23</td>
+    <td class="score score-low">29.6</td>
+</tr>
+<tr>
+    <td class="rank">37</td>
+    <td class="school-name">Baldwin Middle-Senior High School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">800</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>23</td>
+    <td class="score score-low">29.6</td>
+</tr>
+<tr>
+    <td class="rank">38</td>
+    <td class="school-name">Kirby-Smith Middle School</td>
+    <td><span class="county-badge">Duval</span></td>
+    <td>School</td>
+    <td class="enrollment">780</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>23</td>
+    <td class="score score-low">29.6</td>
+</tr>
+<tr>
+    <td class="rank">39</td>
+    <td class="school-name">Yulee Middle School</td>
+    <td><span class="county-badge">Nassau</span></td>
+    <td>School</td>
+    <td class="enrollment">680</td>
+    <td>18.8</td>
+    <td>11</td>
+    <td class="score score-low">26.5</td>
+</tr>
+<tr>
+    <td class="rank">40</td>
+    <td class="school-name">Yulee High School</td>
+    <td><span class="county-badge">Nassau</span></td>
+    <td>School</td>
+    <td class="enrollment">1,200</td>
+    <td>18.8</td>
+    <td>11</td>
+    <td class="score score-low">26.5</td>
+</tr>
+<tr>
+    <td class="rank">41</td>
+    <td class="school-name">Fernandina Beach Middle School</td>
+    <td><span class="county-badge">Nassau</span></td>
+    <td>School</td>
+    <td class="enrollment">550</td>
+    <td>16.6</td>
+    <td>11</td>
+    <td class="score score-low">25.2</td>
+</tr>
+<tr>
+    <td class="rank">42</td>
+    <td class="school-name">Fleming Island High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">2,200</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">43</td>
+    <td class="school-name">Ridgeview High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">1,850</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">44</td>
+    <td class="school-name">Ponte Vedra High School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">1,650</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">45</td>
+    <td class="school-name">Oakleaf High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">2,500</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">46</td>
+    <td class="school-name">Middleburg High School</td>
+    <td><span class="county-badge">Clay</span></td>
+    <td>School</td>
+    <td class="enrollment">1,600</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">47</td>
+    <td class="school-name">Baker County High School</td>
+    <td><span class="county-badge">Baker</span></td>
+    <td>School</td>
+    <td class="enrollment">750</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">48</td>
+    <td class="school-name">Baker County Middle School</td>
+    <td><span class="county-badge">Baker</span></td>
+    <td>School</td>
+    <td class="enrollment">620</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">49</td>
+    <td class="school-name">Pedro Menendez High School</td>
+    <td><span class="county-badge">St. Johns</span></td>
+    <td>School</td>
+    <td class="enrollment">1,500</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>17</td>
+    <td class="score score-low">22.4</td>
+</tr>
+<tr>
+    <td class="rank">50</td>
+    <td class="school-name">Fernandina Beach High School</td>
+    <td><span class="county-badge">Nassau</span></td>
+    <td>School</td>
+    <td class="enrollment">900</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>11</td>
+    <td class="score score-low">15.2</td>
+</tr>
+<tr>
+    <td class="rank">51</td>
+    <td class="school-name">West Nassau High School</td>
+    <td><span class="county-badge">Nassau</span></td>
+    <td>School</td>
+    <td class="enrollment">750</td>
+    <td><span class="no-data">No tract data</span></td>
+    <td>11</td>
+    <td class="score score-low">15.2</td>
+</tr>
+</tbody>
+</table>
+
+<footer>
+<p><strong>Data Sources:</strong> CDC PLACES (tract-level), HRSA HPSA, EPA AirData, FEMA NRI, CDC Respiratory Surveillance</p>
+<p><strong>Last Updated:</strong> 2025-11-09T16:39:26Z | Auto-refreshes daily at 9:15am ET</p>
+<p><strong>View:</strong> <a href="index.html">County Scorecard</a> | <a href="https://github.com/scottmadden/jax-health-scorecard">GitHub Repository</a> | <a href="../data/school_scorecard.csv">Download CSV</a></p>
+</footer>
+
+</div>
+
+<script>
+// Search and filter functionality
+function filterTable() {
+    const searchValue = document.getElementById('searchInput').value.toLowerCase();
+    const countyFilter = document.getElementById('countyFilter').value;
+    const scoreFilter = document.getElementById('scoreFilter').value;
+    
+    const table = document.getElementById('schoolTable');
+    const rows = table.getElementsByTagName('tr');
+    
+    let visibleCount = 0;
+    
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const schoolName = row.cells[1].textContent.toLowerCase();
+        const county = row.cells[2].textContent;
+        const scoreText = row.cells[7].textContent;
+        const score = parseFloat(scoreText);
+        
+        let showRow = true;
+        
+        // Search filter
+        if (searchValue && !schoolName.includes(searchValue) && 
+            !row.cells[2].textContent.toLowerCase().includes(searchValue)) {
+            showRow = false;
+        }
+        
+        // County filter
+        if (countyFilter && !county.includes(countyFilter)) {
+            showRow = false;
+        }
+        
+        // Score filter
+        if (scoreFilter === 'high' && score < 45) showRow = false;
+        if (scoreFilter === 'medium' && (score < 30 || score >= 45)) showRow = false;
+        if (scoreFilter === 'low' && score >= 30) showRow = false;
+        
+        row.style.display = showRow ? '' : 'none';
+        if (showRow) {
+            visibleCount++;
+            row.cells[0].textContent = visibleCount; // Update rank
+        }
+    }
+}
+
+// Simple sort functionality
+let sortOrder = {};
+function sortTable(columnIndex) {
+    const table = document.getElementById('schoolTable');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    
+    const currentOrder = sortOrder[columnIndex] || 'asc';
+    const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
+    sortOrder = {}; // Reset other columns
+    sortOrder[columnIndex] = newOrder;
+    
+    rows.sort((a, b) => {
+        let aVal = a.cells[columnIndex].textContent;
+        let bVal = b.cells[columnIndex].textContent;
+        
+        // Try numeric comparison
+        const aNum = parseFloat(aVal.replace(/[^0-9.-]/g, ''));
+        const bNum = parseFloat(bVal.replace(/[^0-9.-]/g, ''));
+        
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+            return newOrder === 'asc' ? aNum - bNum : bNum - aNum;
+        }
+        
+        // String comparison
+        return newOrder === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+    });
+    
+    rows.forEach(row => tbody.appendChild(row));
+    
+    // Update ranks
+    rows.forEach((row, index) => {
+        if (row.style.display !== 'none') {
+            row.cells[0].textContent = index + 1;
+        }
+    });
+}
+</script>
+</body>
+</html>

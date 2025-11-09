@@ -1,0 +1,53 @@
+school_id,school_name,district,address,city,state,zipcode,lat,lon,enrollment,fips,county,school_type
+120310000001,Robert E. Lee High School,Duval County School District,6135 Arlington Expressway,Jacksonville,FL,32211,30.3110,-81.6060,1800,12031,Duval,High School
+120310000002,Douglas Anderson School of the Arts,Duval County School District,2445 San Diego Road,Jacksonville,FL,32207,30.3022,-81.6934,1200,12031,Duval,High School
+120310000003,Paxon School for Advanced Studies,Duval County School District,3239 Norman E. Thagard Boulevard,Jacksonville,FL,32254,30.2389,-81.5569,1400,12031,Duval,High School
+120310000004,Stanton College Preparatory School,Duval County School District,1149 West 13th Street,Jacksonville,FL,32209,30.3394,-81.6711,1600,12031,Duval,High School
+120310000005,Andrew Jackson High School,Duval County School District,7500 Lone Star Road,Jacksonville,FL,32211,30.2856,-81.5867,1500,12031,Duval,High School
+120310000006,Fletcher High School,Duval County School District,700 Seagate Avenue,Neptune Beach,FL,32266,30.3197,-81.4019,2000,12031,Duval,High School
+120310000007,Mandarin High School,Duval County School District,4831 Greenland Road,Jacksonville,FL,32258,30.1578,-81.7231,2200,12031,Duval,High School
+120310000008,Sandalwood High School,Duval County School District,2750 John Prom Boulevard,Jacksonville,FL,32246,30.2161,-81.4936,2400,12031,Duval,High School
+120310000009,Englewood High School,Duval County School District,4412 Barnes Road,Jacksonville,FL,32207,30.2886,-81.7106,1300,12031,Duval,High School
+120310000010,Raines High School,Duval County School District,3663 Raines Avenue,Jacksonville,FL,32209,30.3642,-81.7281,950,12031,Duval,High School
+120310000011,Westside High School,Duval County School District,5530 Firestone Road,Jacksonville,FL,32244,30.2644,-81.8053,1700,12031,Duval,High School
+120310000012,First Coast High School,Duval County School District,590 Duval Station Road,Jacksonville,FL,32218,30.4494,-81.7153,2100,12031,Duval,High School
+120310000013,Ribault High School,Duval County School District,3701 Winton Drive,Jacksonville,FL,32208,30.3781,-81.6731,1100,12031,Duval,High School
+120310000014,Atlantic Coast High School,Duval County School District,5230 Collins Road,Jacksonville,FL,32244,30.2653,-81.7847,1900,12031,Duval,High School
+120310000015,Terry Parker High School,Duval County School District,7301 Parker School Road,Jacksonville,FL,32211,30.2767,-81.5722,1650,12031,Duval,High School
+120310000016,Wolfson High School,Duval County School District,7000 Powers Avenue,Jacksonville,FL,32217,30.2319,-81.6453,1400,12031,Duval,High School
+120310000017,Ed White High School,Duval County School District,3820 Monument Road,Jacksonville,FL,32225,30.3836,-81.5808,1550,12031,Duval,High School
+120310000018,Samuel W. Wolfson High School,Duval County School District,7000 Powers Avenue,Jacksonville,FL,32217,30.2319,-81.6453,1200,12031,Duval,High School
+120310000019,Baldwin Middle-Senior High School,Duval County School District,1750 US Highway 301 North,Baldwin,FL,32234,30.3019,-81.9772,800,12031,Duval,Middle-High
+120310000020,Lavilla School of the Arts,Duval County School District,1701 North Davis Street,Jacksonville,FL,32209,30.3447,-81.6578,650,12031,Duval,Middle School
+120310000021,Darnell-Cookman School of the Medical Arts,Duval County School District,1701 North Davis Street,Jacksonville,FL,32209,30.3447,-81.6578,700,12031,Duval,Middle-High
+120310000022,Landon Middle School,Duval County School District,5350 Beach Boulevard,Jacksonville,FL,32207,30.2939,-81.6369,900,12031,Duval,Middle School
+120310000023,Southside Middle School,Duval County School District,2905 Oak Street,Jacksonville,FL,32205,30.2883,-81.6917,850,12031,Duval,Middle School
+120310000024,Kirby-Smith Middle School,Duval County School District,1800 South Myrtle Avenue,Jacksonville,FL,32205,30.3056,-81.6839,780,12031,Duval,Middle School
+120310000025,Lake Shore Middle School,Duval County School District,5440 Barnes Road South,Jacksonville,FL,32216,30.2572,-81.6986,920,12031,Duval,Middle School
+120190000001,Orange Park High School,Clay County School District,2300 Kingsley Avenue,Orange Park,FL,32073,30.1662,-81.7045,2100,12019,Clay,High School
+120190000002,Ridgeview High School,Clay County School District,4555 Longmire Road,Orange Park,FL,32065,30.0847,-81.8247,1850,12019,Clay,High School
+120190000003,Middleburg High School,Clay County School District,2333 Palmetto Street,Middleburg,FL,32068,30.0706,-81.8942,1600,12019,Clay,High School
+120190000004,Oakleaf High School,Clay County School District,7003 Oakleaf Plantation Parkway,Orange Park,FL,32065,30.1667,-81.8333,2500,12019,Clay,High School
+120190000005,Clay High School,Clay County School District,525 Walnut Street,Green Cove Springs,FL,32043,29.9925,-81.6789,1450,12019,Clay,High School
+120190000006,Keystone Heights Junior-Senior High School,Clay County School District,333 East Walker Drive,Keystone Heights,FL,32656,29.7864,-82.0364,850,12019,Clay,High School
+120190000007,Orange Park Junior High School,Clay County School District,1800 Kingsley Avenue,Orange Park,FL,32073,30.1689,-81.7089,980,12019,Clay,Middle School
+120190000008,Lakeside Junior High School,Clay County School District,5001 CR 218,Middleburg,FL,32068,30.0833,-81.9333,920,12019,Clay,Middle School
+120190000009,Fleming Island High School,Clay County School District,2233 Village Square Parkway,Fleming Island,FL,32003,30.0914,-81.7128,2200,12019,Clay,High School
+121090000001,St. Augustine High School,St. Johns County School District,3205 Varella Avenue,St. Augustine,FL,32084,29.8858,-81.3117,1600,12109,St. Johns,High School
+121090000002,Bartram Trail High School,St. Johns County School District,7399 Longleaf Pine Parkway,St. Johns,FL,32259,30.0642,-81.5656,2400,12109,St. Johns,High School
+121090000003,Creekside High School,St. Johns County School District,100 Knights Lane,St. Johns,FL,32259,30.0489,-81.5578,2300,12109,St. Johns,High School
+121090000004,Nease High School,St. Johns County School District,10550 Ray Road,Ponte Vedra,FL,32081,30.1097,-81.4589,2250,12109,St. Johns,High School
+121090000005,Pedro Menendez High School,St. Johns County School District,600 State Road 206 West,St. Augustine,FL,32086,29.8994,-81.3644,1500,12109,St. Johns,High School
+121090000006,Tocoi Creek High School,St. Johns County School District,2845 Race Track Road,St. Johns,FL,32259,30.0333,-81.5833,1800,12109,St. Johns,High School
+121090000007,Ponte Vedra High School,St. Johns County School District,200 Davis Park Rd,Ponte Vedra Beach,FL,32082,30.2142,-81.3797,1650,12109,St. Johns,High School
+121090000008,Sebastian Middle School,St. Johns County School District,3985 Lewis Speedway,St. Augustine,FL,32084,29.9286,-81.3781,920,12109,St. Johns,Middle School
+121090000009,Liberty Pines Academy,St. Johns County School District,3595 Race Track Road,St. Johns,FL,32259,30.0419,-81.5756,850,12109,St. Johns,Middle School
+120890000001,Fernandina Beach High School,Nassau County School District,1 Pirate Place,Fernandina Beach,FL,32034,30.6591,-81.4612,900,12089,Nassau,High School
+120890000002,West Nassau High School,Nassau County School District,45461 Third Avenue,Callahan,FL,32011,30.5622,-81.8292,750,12089,Nassau,High School
+120890000003,Yulee High School,Nassau County School District,85439 Miner Road,Yulee,FL,32097,30.6311,-81.6056,1200,12089,Nassau,High School
+120890000004,Yulee Middle School,Nassau County School District,85350 Miner Road,Yulee,FL,32097,30.6300,-81.6067,680,12089,Nassau,Middle School
+120890000005,Fernandina Beach Middle School,Nassau County School District,1115 South 11th Street,Fernandina Beach,FL,32034,30.6553,-81.4656,550,12089,Nassau,Middle School
+120030000001,Baker County High School,Baker County School District,1 Wildcat Drive,Glen St. Mary,FL,32040,30.2769,-82.1687,750,12003,Baker,High School
+120030000002,Baker County Middle School,Baker County School District,42 Georgia Avenue,Macclenny,FL,32063,30.2828,-82.1244,620,12003,Baker,Middle School
+120030000003,Keller Intermediate School,Baker County School District,109 South Boulevard West,Macclenny,FL,32063,30.2811,-82.1267,480,12003,Baker,Elementary
+

@@ -1,0 +1,78 @@
+/Users/scottmadden/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+============================================================
+Phase 4: School-Level Health Readiness Scorecard
+============================================================
+
+Fetching schools from NCES...
+Fetching schools from NCES CCD (year 2022)...
+  Downloading NCES school directory (may take 30-60 seconds)...
+  Download failed: HTTP Error 404: Not Found
+  Trying alternative: creating sample data...
+  Loading extended Jacksonville schools dataset...
+  Loaded 51 schools from extended dataset
+
+Geocoding schools...
+Geocoding 51 schools to census tracts...
+(Using batch size of 5, ~1.0s per batch)
+    Progress: 5/51 (9.8%) - 5 successful, 0 failed
+    Progress: 10/51 (19.6%) - 10 successful, 0 failed
+    Progress: 15/51 (29.4%) - 15 successful, 0 failed
+    Progress: 20/51 (39.2%) - 18 successful, 2 failed
+    Progress: 25/51 (49.0%) - 21 successful, 4 failed
+    Progress: 30/51 (58.8%) - 23 successful, 7 failed
+    Progress: 35/51 (68.6%) - 27 successful, 8 failed
+    Progress: 40/51 (78.4%) - 31 successful, 9 failed
+    Progress: 45/51 (88.2%) - 33 successful, 12 failed
+    Progress: 50/51 (98.0%) - 36 successful, 14 failed
+✅ Geocoded 37/51 schools (72.5% success rate)
+💾 Saved 51 schools to /Users/scottmadden/Jax Health Scorecard/data/schools_phase4.csv
+
+============================================================
+Step 2: Joining Health Data
+============================================================
+Joining health data to schools...
+Fetching CDC PLACES data for 32 census tracts...
+  Fetching batch 1...
+✅ Fetched tract health data for 32 tracts
+✅ Joined county-level health indicators
+
+============================================================
+Step 3: Calculating Readiness Scores
+============================================================
+Calculating school-level readiness scores...
+✅ Calculated readiness scores for 51 schools
+
+============================================================
+Step 4: Saving School Scorecard
+============================================================
+💾 Saved 51 schools to /Users/scottmadden/Jax Health Scorecard/data/school_scorecard.csv
+
+============================================================
+RESULTS: School Health Readiness Rankings
+============================================================
+
+Top 10 Schools (Highest Need):
+                               school_name county  chronic_disease_prev  readiness_score
+Darnell-Cookman School of the Medical Arts  Duval             31.533333             48.5
+                Lavilla School of the Arts  Duval             31.533333             48.5
+                        Raines High School  Duval             27.833333             46.3
+        Stanton College Preparatory School  Duval             27.533333             46.1
+                       Ribault High School  Duval             27.133333             45.9
+         Paxon School for Advanced Studies  Duval             23.500000             43.7
+                 Robert E. Lee High School  Duval             21.600000             42.6
+                Atlantic Coast High School  Duval             21.133333             42.3
+       Douglas Anderson School of the Arts  Duval             20.600000             42.0
+                  Terry Parker High School  Duval             20.400000             41.8
+
+Bottom 5 Schools (Lowest Need):
+                 school_name    county  chronic_disease_prev  readiness_score
+    Baker County High School     Baker                   NaN             22.4
+  Baker County Middle School     Baker                   NaN             22.4
+  Pedro Menendez High School St. Johns                   NaN             22.4
+Fernandina Beach High School    Nassau                   NaN             15.2
+     West Nassau High School    Nassau                   NaN             15.2
+
+✅ Phase 4 Complete!
+   📊 51 schools ranked
+   💾 Saved to: data/school_scorecard.csv

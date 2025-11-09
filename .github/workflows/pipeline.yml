@@ -18,8 +18,14 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - name: Run Phase 3 pipeline
+      - name: Run Phase 3 county pipeline
         run: python src/pipeline.py
+      - name: Run Phase 4 school pipeline
+        run: python src/schools.py
+        continue-on-error: true
+      - name: Regenerate school HTML
+        run: python src/schools_html.py
+        continue-on-error: true
       - name: Commit artifacts
         run: |
           git config user.name "scorecard-bot"

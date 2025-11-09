@@ -479,12 +479,41 @@ small{{color:#666}}
         rank += 1
         
     html += f"""</tbody></table>
-<small style="margin-top:16px;display:block">Last updated: {datetime.utcnow().isoformat(timespec="seconds")}Z | Auto-refreshes daily 9:15am ET | <a href="https://github.com/scottmadden/jax-health-scorecard">View Source</a></small>
+<small style="margin-top:16px;display:block">Last updated: {datetime.utcnow().isoformat(timespec="seconds")}Z | Auto-refreshes daily 9:15am ET</small>
+<p style="margin-top:12px"><strong>📍 Navigation:</strong> <a href="schools.html" style="font-weight:600;color:#1976d2">View School-Level Scorecard (51 Schools)</a> | <a href="https://github.com/scottmadden/jax-health-scorecard">GitHub Repository</a> | <a href="../data/scorecard.csv">Download CSV</a></p>
 </body></html>"""
     DOCS.joinpath("index.html").write_text(html, encoding="utf-8")
 
 if __name__ == "__main__":
+    # Phase 3: County-level scorecard
+    print("=" * 60)
+    print("Building County-Level Scorecard")
+    print("=" * 60)
     df = build_scorecard()
     write_html_table(df)
     print("✅ Wrote data/scorecard.csv and docs/index.html")
+    
+    # Phase 4: School-level scorecard
+    print("\n" + "=" * 60)
+    print("Building School-Level Scorecard (Phase 4)")
+    print("=" * 60)
+    try:
+        # Import and run school module
+        import sys
+        sys.path.insert(0, str(BASE / "src"))
+        from schools_html import write_school_html
+        
+        # Load school scorecard if it exists
+        school_csv = OUT / "school_scorecard.csv"
+        if school_csv.exists():
+            schools = pd.read_csv(school_csv)
+            schools = schools.sort_values("readiness_score", ascending=False)
+            write_school_html(schools)
+            print(f"✅ Wrote docs/schools.html with {len(schools)} schools")
+        else:
+            print("⚠️  School scorecard not found - run src/schools.py first")
+            print("   Skipping school-level HTML generation")
+    except Exception as e:
+        print(f"⚠️  Could not generate school HTML: {e}")
+        print("   County scorecard complete, school scorecard skipped")
 
