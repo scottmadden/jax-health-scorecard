@@ -75,33 +75,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .search-box{width:100%}
 .search-box input{width:100%;padding:14px;border:2px solid #ddd;border-radius:6px;font-size:1rem;-webkit-appearance:none;min-height:48px}
 .school-grid{display:flex;flex-direction:column;gap:0;margin-bottom:32px;background:white;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden}
-.school-card{background:white;border:none;border-bottom:1px solid #f0f0f0;padding:14px 16px;transition:all 0.15s;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.school-card{background:white;border:none;border-bottom:1px solid #f0f0f0;padding:16px;transition:background 0.15s;-webkit-tap-highlight-color:transparent}
 .school-card:last-child{border-bottom:none}
-.school-card:active{background:#f5f5f5}
 .school-card.no-nurse{border-left:3px solid #d32f2f;padding-left:13px}
-.school-card .header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.school-card .header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:12px}
 .school-card .left{flex:1;min-width:0}
-.school-card .school-name{font-size:0.95rem;font-weight:600;margin-bottom:2px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.school-card .meta{font-size:0.75rem;color:#888;display:flex;gap:8px}
-.school-card .right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.school-card .nurse-badge{font-size:0.65rem;padding:3px 6px}
+.school-card .school-name{font-size:1rem;font-weight:600;margin-bottom:4px;line-height:1.3}
+.school-card .meta{font-size:0.8rem;color:#888;margin-bottom:8px}
+.school-card .right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.school-card .nurse-badge{font-size:0.65rem;padding:4px 7px}
 .score.danger{color:#d32f2f}
 .score.warning{color:#f57c00}
 .score.success{color:#2e7d32}
 .score-label{font-size:0.7rem;color:#888;text-transform:uppercase;margin-top:2px}
 """ + grading.get_grade_styles() + """
-.grade-display{font-size:2rem;font-family:Georgia,serif}
-.grade-label-text{display:none}
-.school-details{display:none;padding:16px;background:#fafafa;border-top:1px solid #e0e0e0;margin:0}
-.school-details.show{display:block}
-.score-breakdown{background:white;padding:12px;border-radius:6px;margin-bottom:12px;border:1px solid #e0e0e0}
-.score-breakdown h4{font-size:0.85rem;color:#666;margin-bottom:8px;font-weight:600}
-.score-item{display:flex;justify-content:space-between;padding:6px 0;font-size:0.8rem;border-bottom:1px solid #f5f5f5}
-.score-item:last-child{border-bottom:none}
-.score-item.total{font-weight:700;color:#1a1a1a;border-top:2px solid #e0e0e0;padding-top:8px;margin-top:4px}
-.score-item .label{color:#666}
-.score-item .value{font-weight:600}
-.recommendation{background:white;padding:12px;border-radius:6px;font-size:0.8rem;color:#555;line-height:1.4;border:1px solid #e0e0e0}
+.grade-display{font-size:1.5rem;font-family:Georgia,serif;line-height:1;font-weight:700}
+.grade-label-text{font-size:0.65rem;color:#888;margin-top:2px}
+.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.detail-item{display:flex;flex-direction:column;font-size:0.75rem}
+.detail-item .label{color:#888;margin-bottom:2px;font-size:0.7rem}
+.detail-item .value{font-weight:600;font-size:0.8rem}
+.recommendation{background:#f9f9f9;padding:10px;border-radius:4px;font-size:0.75rem;color:#555;line-height:1.4;margin-top:8px;border-left:3px solid #e0e0e0}
 .recommendation strong{color:#1a1a1a}
 .nurse-badge{display:inline-block;padding:4px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em}
 .nurse-badge.full{background:#e8f5e9;color:#2e7d32}
@@ -133,12 +127,15 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:20px 16px;text-alig
 .filter-label{min-width:100px;margin-bottom:0}
 .filter-btn{padding:8px 16px}
 .filter-btn:hover{border-color:#1a1a1a}
-.school-card{padding:16px 20px}
+.school-card{padding:20px}
 .school-card:hover{background:#f9f9f9}
-.school-card .school-name{font-size:1rem;white-space:normal}
-.school-card .meta{white-space:normal}
-.grade-display{font-size:2.5rem}
-.grade-label-text{display:block}
+.school-card .school-name{font-size:1.05rem}
+.school-card .meta{font-size:0.85rem}
+.school-card .header{margin-bottom:14px}
+.grade-display{font-size:1.8rem}
+.grade-label-text{font-size:0.7rem}
+.details-grid{grid-template-columns:repeat(3,1fr)}
+.recommendation{font-size:0.85rem;padding:12px}
 .insights-panel{padding:28px;margin-bottom:32px}
 .insights-panel h3{font-size:1.3rem;margin-bottom:16px}
 .insight-item{font-size:0.95rem;gap:12px}
@@ -284,47 +281,38 @@ for idx, row in schools_df.iterrows():
     card_class = 'no-nurse' if nurse_status == 'None' else ''
     
     html += f"""
-<div class="school-card {card_class}" data-need="{need_level}" data-name="{row['school_name'].lower()}" data-county="{row.get('county', '').lower()}" data-nurse="{nurse_status.lower().replace('-', '')}"" onclick="toggleSchoolDetails(this, {idx})">
+<div class="school-card {card_class}" data-need="{need_level}" data-name="{row['school_name'].lower()}" data-county="{row.get('county', '').lower()}" data-nurse="{nurse_status.lower().replace('-', '')}">
 <div class="header">
 <div class="left">
 <div class="school-name">{row['school_name']}</div>
-<div class="meta">{row.get('county', 'Unknown')} • {row.get('school_type', 'School')}</div>
+<div class="meta">{row.get('county', 'Unknown')} County • {row.get('school_type', 'School')} • {enrollment_val if isinstance(enrollment_val, str) else f'{enrollment_val:,}'} students</div>
 </div>
 <div class="right">
-<span class="nurse-badge {nurse_badge_class}">{nurse_status}</span>
+<div>
 <div class="grade-display grade-{letter.lower()}">{letter}</div>
+<div class="grade-label-text">{grade_label}</div>
 </div>
 </div>
-<div class="school-details" id="details-{idx}">
-<div class="score-breakdown">
-<h4>Why This School Got a {letter}</h4>
-<div class="score-item">
-<span class="label">Chronic Disease in Area</span>
-<span class="value">{chronic:.1f}% ({"High" if chronic > 25 else "Moderate" if chronic > 18 else "Low"})</span>
 </div>
-<div class="score-item">
-<span class="label">Doctor Availability</span>
-<span class="value">{"Shortage" if pd.notna(hpsa) and hpsa > 15 else "Adequate"} ({hpsa_val})</span>
+<div class="details-grid">
+<div class="detail-item">
+<span class="label">Chronic Disease</span>
+<span class="value">{chronic:.1f}%</span>
 </div>
-<div class="score-item">
+<div class="detail-item">
+<span class="label">Doctor Shortage</span>
+<span class="value">{hpsa_val}</span>
+</div>
+<div class="detail-item">
 <span class="label">Air Quality</span>
-<span class="value">Good (0 bad days)</span>
+<span class="value">Good</span>
 </div>
-<div class="score-item">
-<span class="label">Nurse on Staff</span>
-<span class="value">{nurse_status} ({"✓" if nurse_status == "Full-time" else "⚠" if nurse_status == "Part-time" else "✗"})</span>
-</div>
-<div class="score-item">
-<span class="label">Enrollment</span>
-<span class="value">{enrollment_val if isinstance(enrollment_val, str) else f'{enrollment_val:,}'} students</span>
-</div>
-<div class="score-item total">
-<span class="label">Overall Grade</span>
-<span class="value">{letter} ({grade_label})</span>
+<div class="detail-item">
+<span class="label">Nurse Staffing</span>
+<span class="value"><span class="nurse-badge {nurse_badge_class}">{nurse_status}</span></span>
 </div>
 </div>
 <div class="recommendation">{rec}</div>
-</div>
 </div>
 """
 
