@@ -43,12 +43,16 @@ html = """<!doctype html>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;background:#fafafa;line-height:1.5;-webkit-font-smoothing:antialiased}
-.topbar{background:white;border-bottom:1px solid #e0e0e0;padding:12px 16px;position:sticky;top:0;z-index:100}
-.topbar-content{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:1.1rem;font-weight:600}
-.nav{display:none}
-.nav a{margin-left:20px;color:#666;text-decoration:none;font-size:0.85rem}
-.nav a:hover{color:#1a1a1a}
+.app-nav{background:#1a1a1a;color:white;position:sticky;top:0;z-index:200}
+.app-nav-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer}
+.app-nav-logo{font-size:1rem;font-weight:600}
+.app-nav-toggle{font-size:1.5rem;transition:transform 0.2s}
+.app-nav-toggle.open{transform:rotate(180deg)}
+.app-nav-menu{display:none;border-top:1px solid rgba(255,255,255,0.1)}
+.app-nav-menu.show{display:block}
+.app-nav-menu a{display:block;padding:14px 16px;color:rgba(255,255,255,0.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.9rem;min-height:48px}
+.app-nav-menu a:active{background:rgba(255,255,255,0.1)}
+.app-nav-menu a.active{color:white;background:rgba(255,255,255,0.05);font-weight:600}
 .container{max-width:1400px;margin:0 auto;padding:16px}
 .dashboard-header{margin-bottom:24px}
 .dashboard-header h1{font-size:1.75rem;font-weight:700;margin-bottom:6px;line-height:1.2}
@@ -71,29 +75,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .search-box{width:100%}
 .search-box input{width:100%;padding:14px;border:2px solid #ddd;border-radius:6px;font-size:1rem;-webkit-appearance:none;min-height:48px}
 .school-grid{display:flex;flex-direction:column;gap:0;margin-bottom:32px;background:white;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden}
-.school-card{background:white;border:none;border-bottom:1px solid #f0f0f0;padding:16px;transition:all 0.15s;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.school-card{background:white;border:none;border-bottom:1px solid #f0f0f0;padding:14px 16px;transition:all 0.15s;-webkit-tap-highlight-color:transparent;cursor:pointer}
 .school-card:last-child{border-bottom:none}
 .school-card:active{background:#f5f5f5}
 .school-card.no-nurse{border-left:3px solid #d32f2f;padding-left:13px}
 .school-card .header{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .school-card .left{flex:1;min-width:0}
-.school-card .school-name{font-size:1rem;font-weight:600;margin-bottom:2px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.school-card .meta{font-size:0.75rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.school-card .right{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.school-card .quick-info{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
-.school-card .nurse-status{font-size:0.7rem;color:#888}
+.school-card .school-name{font-size:0.95rem;font-weight:600;margin-bottom:2px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.school-card .meta{font-size:0.75rem;color:#888;display:flex;gap:8px}
+.school-card .right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.school-card .nurse-badge{font-size:0.65rem;padding:3px 6px}
 .score.danger{color:#d32f2f}
 .score.warning{color:#f57c00}
 .score.success{color:#2e7d32}
 .score-label{font-size:0.7rem;color:#888;text-transform:uppercase;margin-top:2px}
 """ + grading.get_grade_styles() + """
-.grade-display{font-size:2.5rem}
-.school-details{display:none;padding:16px;background:#fafafa;border-top:1px solid #e0e0e0;margin:0 -16px -16px -16px}
+.grade-display{font-size:2rem;font-family:Georgia,serif}
+.grade-label-text{display:none}
+.school-details{display:none;padding:16px;background:#fafafa;border-top:1px solid #e0e0e0;margin:0}
 .school-details.show{display:block}
-.indicators{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.indicator{display:flex;flex-direction:column;font-size:0.75rem;padding:8px;background:white;border-radius:4px}
-.indicator .name{color:#888;margin-bottom:2px;font-size:0.7rem}
-.indicator .value{font-weight:600;font-size:0.85rem}
+.score-breakdown{background:white;padding:12px;border-radius:6px;margin-bottom:12px;border:1px solid #e0e0e0}
+.score-breakdown h4{font-size:0.85rem;color:#666;margin-bottom:8px;font-weight:600}
+.score-item{display:flex;justify-content:space-between;padding:6px 0;font-size:0.8rem;border-bottom:1px solid #f5f5f5}
+.score-item:last-child{border-bottom:none}
+.score-item.total{font-weight:700;color:#1a1a1a;border-top:2px solid #e0e0e0;padding-top:8px;margin-top:4px}
+.score-item .label{color:#666}
+.score-item .value{font-weight:600}
 .recommendation{background:white;padding:12px;border-radius:6px;font-size:0.8rem;color:#555;line-height:1.4;border:1px solid #e0e0e0}
 .recommendation strong{color:#1a1a1a}
 .nurse-badge{display:inline-block;padding:4px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em}
@@ -107,9 +114,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .insight-item .bullet{color:#4caf50;font-weight:700;flex-shrink:0}
 footer{background:white;border-top:1px solid #e0e0e0;padding:20px 16px;text-align:center;font-size:0.8rem;color:#888;margin-top:40px;line-height:1.6}
 @media (min-width:768px){
-.topbar{padding:16px 24px}
-.logo{font-size:1.2rem}
-.nav{display:block}
+.app-nav-header{padding:14px 24px}
+.app-nav-logo{font-size:1.1rem}
+.app-nav-toggle{display:none}
+.app-nav-menu{display:flex!important;border:none}
+.app-nav-menu a{padding:0 20px;border:none;line-height:48px;min-height:auto}
+.app-nav-menu a:hover{color:white;background:rgba(255,255,255,0.1)}
 .container{padding:32px 24px}
 .dashboard-header{margin-bottom:32px}
 .dashboard-header h1{font-size:2.2rem;margin-bottom:8px}
@@ -123,16 +133,12 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:20px 16px;text-alig
 .filter-label{min-width:100px;margin-bottom:0}
 .filter-btn{padding:8px 16px}
 .filter-btn:hover{border-color:#1a1a1a}
-.school-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;background:transparent;border:none}
-.school-card{border:1px solid #e0e0e0;border-radius:8px;padding:20px}
+.school-card{padding:16px 20px}
 .school-card:hover{background:#f9f9f9}
-.school-card .school-name{font-size:1.05rem;white-space:normal}
+.school-card .school-name{font-size:1rem;white-space:normal}
 .school-card .meta{white-space:normal}
-.school-card .header{align-items:start}
-.school-card .right{flex-direction:row-reverse;gap:16px}
-.grade-display{font-size:3rem}
-.school-details{margin:16px 0 0 0;padding:16px 0 0 0}
-.indicators{grid-template-columns:repeat(3,1fr)}
+.grade-display{font-size:2.5rem}
+.grade-label-text{display:block}
 .insights-panel{padding:28px;margin-bottom:32px}
 .insights-panel h3{font-size:1.3rem;margin-bottom:16px}
 .insight-item{font-size:0.95rem;gap:12px}
@@ -141,15 +147,18 @@ footer{padding:24px;margin-top:60px;font-size:0.85rem}
 </style>
 </head>
 <body>
-<div class="topbar">
-<div class="topbar-content">
-<div class="logo">Jacksonville School Health</div>
-<div class="nav">
+<nav class="app-nav">
+<div class="app-nav-header" onclick="toggleNav()">
+<div class="app-nav-logo">Jacksonville School Health</div>
+<div class="app-nav-toggle" id="navToggle">▼</div>
+</div>
+<div class="app-nav-menu" id="navMenu">
 <a href="index.html">Home</a>
+<a href="schools.html" class="active">Schools</a>
 <a href="counties.html">Counties</a>
+<a href="../data/school_scorecard.csv">Download Data</a>
 </div>
-</div>
-</div>
+</nav>
 <div class="container">
 <div class="dashboard-header">
 <h1>School Health Dashboard</h1>
@@ -282,39 +291,36 @@ for idx, row in schools_df.iterrows():
 <div class="meta">{row.get('county', 'Unknown')} • {row.get('school_type', 'School')}</div>
 </div>
 <div class="right">
-<div class="quick-info">
 <span class="nurse-badge {nurse_badge_class}">{nurse_status}</span>
-</div>
-<div>
 <div class="grade-display grade-{letter.lower()}">{letter}</div>
 </div>
 </div>
-</div>
 <div class="school-details" id="details-{idx}">
-<div class="indicators">
-<div class="indicator">
-<span class="name">Health Need</span>
-<span class="value">{score:.1f} pts</span>
+<div class="score-breakdown">
+<h4>Why This School Got a {letter}</h4>
+<div class="score-item">
+<span class="label">Chronic Disease in Area</span>
+<span class="value">{chronic:.1f}% ({"High" if chronic > 25 else "Moderate" if chronic > 18 else "Low"})</span>
 </div>
-<div class="indicator">
-<span class="name">Nurse Penalty</span>
-<span class="value">+{nurse_penalty} pts</span>
+<div class="score-item">
+<span class="label">Doctor Availability</span>
+<span class="value">{"Shortage" if pd.notna(hpsa) and hpsa > 15 else "Adequate"} ({hpsa_val})</span>
 </div>
-<div class="indicator">
-<span class="name">Chronic Disease</span>
-<span class="value">{chronic:.1f}%</span>
+<div class="score-item">
+<span class="label">Air Quality</span>
+<span class="value">Good (0 bad days)</span>
 </div>
-<div class="indicator">
-<span class="name">Doctor Shortage</span>
-<span class="value">{hpsa_val}</span>
+<div class="score-item">
+<span class="label">Nurse on Staff</span>
+<span class="value">{nurse_status} ({"✓" if nurse_status == "Full-time" else "⚠" if nurse_status == "Part-time" else "✗"})</span>
 </div>
-<div class="indicator">
-<span class="name">Enrollment</span>
-<span class="value">{enrollment_val if isinstance(enrollment_val, str) else f'{enrollment_val:,}'}</span>
+<div class="score-item">
+<span class="label">Enrollment</span>
+<span class="value">{enrollment_val if isinstance(enrollment_val, str) else f'{enrollment_val:,}'} students</span>
 </div>
-<div class="indicator">
-<span class="name">Total Score</span>
-<span class="value">{unmet_score:.1f} pts</span>
+<div class="score-item total">
+<span class="label">Overall Grade</span>
+<span class="value">{letter} ({grade_label})</span>
 </div>
 </div>
 <div class="recommendation">{rec}</div>

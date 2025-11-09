@@ -1,0 +1,51 @@
+<!-- Collapsible App-Wide Navigation -->
+<style>
+.app-nav{background:#1a1a1a;color:white;position:sticky;top:0;z-index:200}
+.app-nav-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer}
+.app-nav-logo{font-size:1rem;font-weight:600}
+.app-nav-toggle{font-size:1.5rem;transition:transform 0.2s}
+.app-nav-toggle.open{transform:rotate(180deg)}
+.app-nav-menu{display:none;border-top:1px solid rgba(255,255,255,0.1)}
+.app-nav-menu.show{display:block}
+.app-nav-menu a{display:block;padding:14px 16px;color:rgba(255,255,255,0.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.9rem;min-height:48px}
+.app-nav-menu a:active{background:rgba(255,255,255,0.1)}
+.app-nav-menu a.active{color:white;background:rgba(255,255,255,0.05);font-weight:600}
+@media (min-width:768px){
+.app-nav-header{padding:14px 24px}
+.app-nav-logo{font-size:1.1rem}
+.app-nav-toggle{display:none}
+.app-nav-menu{display:flex!important;border:none}
+.app-nav-menu a{padding:0 20px;border:none;line-height:48px;min-height:auto}
+.app-nav-menu a:hover{color:white;background:rgba(255,255,255,0.1)}
+}
+</style>
+<nav class="app-nav">
+<div class="app-nav-header" onclick="toggleNav()">
+<div class="app-nav-logo">Jacksonville School Health</div>
+<div class="app-nav-toggle" id="navToggle">▼</div>
+</div>
+<div class="app-nav-menu" id="navMenu">
+<a href="index.html">Home</a>
+<a href="schools.html">Schools</a>
+<a href="counties.html">Counties</a>
+<a href="../data/school_scorecard.csv">Download Data</a>
+</div>
+</nav>
+<script>
+function toggleNav(){
+if(window.innerWidth<768){
+const menu=document.getElementById('navMenu');
+const toggle=document.getElementById('navToggle');
+menu.classList.toggle('show');
+toggle.classList.toggle('open');
+}
+}
+// Set active link
+const path=window.location.pathname;
+document.querySelectorAll('.app-nav-menu a').forEach(a=>{
+if(a.getAttribute('href')===path.split('/').pop()){
+a.classList.add('active');
+}
+});
+</script>
+
