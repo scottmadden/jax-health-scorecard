@@ -18,10 +18,10 @@ school_id,school_name,district,address,city,state,zipcode,lat,lon,enrollment,fip
 120310000017,Ed White High School,Duval County School District,3820 Monument Road,Jacksonville,FL,32225,30.3836,-81.5808,1550,12031,Duval,High School,
 120310000018,Samuel W. Wolfson High School,Duval County School District,7000 Powers Avenue,Jacksonville,FL,32217,30.2319,-81.6453,1200,12031,Duval,High School,12031016606
 120310000019,Baldwin Middle-Senior High School,Duval County School District,1750 US Highway 301 North,Baldwin,FL,32234,30.3019,-81.9772,800,12031,Duval,Middle-High,
-120310000020,Lavilla School of the Arts,Duval County School District,1701 North Davis Street,Jacksonville,FL,32209,30.3447,-81.6578,650,12031,Duval,Middle School,12031001600
+120310000020,Lavilla School of the Arts,Duval County School District,1701 North Davis Street,Jacksonville,FL,32209,30.3447,-81.6578,650,12031,Duval,Middle School,
 120310000021,Darnell-Cookman School of the Medical Arts,Duval County School District,1701 North Davis Street,Jacksonville,FL,32209,30.3447,-81.6578,700,12031,Duval,Middle-High,12031001600
 120310000022,Landon Middle School,Duval County School District,5350 Beach Boulevard,Jacksonville,FL,32207,30.2939,-81.6369,900,12031,Duval,Middle School,12031016101
-120310000023,Southside Middle School,Duval County School District,2905 Oak Street,Jacksonville,FL,32205,30.2883,-81.6917,850,12031,Duval,Middle School,12031002102
+120310000023,Southside Middle School,Duval County School District,2905 Oak Street,Jacksonville,FL,32205,30.2883,-81.6917,850,12031,Duval,Middle School,
 120310000024,Kirby-Smith Middle School,Duval County School District,1800 South Myrtle Avenue,Jacksonville,FL,32205,30.3056,-81.6839,780,12031,Duval,Middle School,
 120310000025,Lake Shore Middle School,Duval County School District,5440 Barnes Road South,Jacksonville,FL,32216,30.2572,-81.6986,920,12031,Duval,Middle School,
 120190000001,Orange Park High School,Clay County School District,2300 Kingsley Avenue,Orange Park,FL,32073,30.1662,-81.7045,2100,12019,Clay,High School,12019030801
@@ -29,7 +29,7 @@ school_id,school_name,district,address,city,state,zipcode,lat,lon,enrollment,fip
 120190000003,Middleburg High School,Clay County School District,2333 Palmetto Street,Middleburg,FL,32068,30.0706,-81.8942,1600,12019,Clay,High School,
 120190000004,Oakleaf High School,Clay County School District,7003 Oakleaf Plantation Parkway,Orange Park,FL,32065,30.1667,-81.8333,2500,12019,Clay,High School,
 120190000005,Clay High School,Clay County School District,525 Walnut Street,Green Cove Springs,FL,32043,29.9925,-81.6789,1450,12019,Clay,High School,12019031400
-120190000006,Keystone Heights Junior-Senior High School,Clay County School District,333 East Walker Drive,Keystone Heights,FL,32656,29.7864,-82.0364,850,12019,Clay,High School,12019031109
+120190000006,Keystone Heights Junior-Senior High School,Clay County School District,333 East Walker Drive,Keystone Heights,FL,32656,29.7864,-82.0364,850,12019,Clay,High School,
 120190000007,Orange Park Junior High School,Clay County School District,1800 Kingsley Avenue,Orange Park,FL,32073,30.1689,-81.7089,980,12019,Clay,Middle School,12019030801
 120190000008,Lakeside Junior High School,Clay County School District,5001 CR 218,Middleburg,FL,32068,30.0833,-81.9333,920,12019,Clay,Middle School,12019030105
 120190000009,Fleming Island High School,Clay County School District,2233 Village Square Parkway,Fleming Island,FL,32003,30.0914,-81.7128,2200,12019,Clay,High School,
@@ -46,7 +46,49 @@ school_id,school_name,district,address,city,state,zipcode,lat,lon,enrollment,fip
 120890000002,West Nassau High School,Nassau County School District,45461 Third Avenue,Callahan,FL,32011,30.5622,-81.8292,750,12089,Nassau,High School,
 120890000003,Yulee High School,Nassau County School District,85439 Miner Road,Yulee,FL,32097,30.6311,-81.6056,1200,12089,Nassau,High School,12089050304
 120890000004,Yulee Middle School,Nassau County School District,85350 Miner Road,Yulee,FL,32097,30.63,-81.6067,680,12089,Nassau,Middle School,12089050304
-120890000005,Fernandina Beach Middle School,Nassau County School District,1115 South 11th Street,Fernandina Beach,FL,32034,30.6553,-81.4656,550,12089,Nassau,Middle School,12089050204
+120890000005,Fernandina Beach Middle School,Nassau County School District,1115 South 11th Street,Fernandina Beach,FL,32034,30.6553,-81.4656,550,12089,Nassau,Middle School,
 120030000001,Baker County High School,Baker County School District,1 Wildcat Drive,Glen St. Mary,FL,32040,30.2769,-82.1687,750,12003,Baker,High School,
 120030000002,Baker County Middle School,Baker County School District,42 Georgia Avenue,Macclenny,FL,32063,30.2828,-82.1244,620,12003,Baker,Middle School,
 120030000003,Keller Intermediate School,Baker County School District,109 South Boulevard West,Macclenny,FL,32063,30.2811,-82.1267,480,12003,Baker,Elementary,12003040102
+120030000004,J. Franklin Keller Elementary,Baker County School District,551 South 6th Street,Macclenny,FL,32063,30.2789,-82.1156,420,12003,Baker,Elementary,12003040102
+120030000005,Westside Elementary School,Baker County School District,1651 Mudlake Road,Macclenny,FL,32063,30.3122,-82.1433,380,12003,Baker,Elementary,
+120310001001,Fishweir Elementary School,Duval County School District,4343 Herschel Street,Jacksonville,FL,32210,30.2931,-81.6189,650,12031,Duval,Elementary,12031002300
+120310001002,San Jose Elementary School,Duval County School District,1551 Naldo Avenue,Jacksonville,FL,32207,30.2725,-81.6692,580,12031,Duval,Elementary,12031000800
+120310001003,Love Grove Elementary School,Duval County School District,1075 Love Grove Boulevard,Jacksonville,FL,32225,30.3856,-81.5833,520,12031,Duval,Elementary,
+120310001004,Highlands Elementary School,Duval County School District,1780 Dunn Avenue,Jacksonville,FL,32218,30.4161,-81.6756,480,12031,Duval,Elementary,12031010306
+120310001005,Holiday Hill Elementary School,Duval County School District,6969 Holiday Road,Jacksonville,FL,32216,30.2344,-81.7153,510,12031,Duval,Elementary,12031015803
+120310001006,Hendricks Avenue Elementary School,Duval County School District,4305 Hendricks Avenue,Jacksonville,FL,32207,30.2786,-81.6444,490,12031,Duval,Elementary,12031016400
+120310001007,Arlington Heights Elementary School,Duval County School District,1965 University Boulevard North,Jacksonville,FL,32211,30.3069,-81.5903,530,12031,Duval,Elementary,12031015200
+120310001008,Lone Star Elementary School,Duval County School District,7450 Lone Star Road,Jacksonville,FL,32211,30.2867,-81.5881,560,12031,Duval,Elementary,12031015100
+120310001009,Duncan U. Fletcher Elementary,Duval County School District,125 Sherry Drive,Neptune Beach,FL,32266,30.3086,-81.4064,480,12031,Duval,Elementary,12031014001
+120310001010,Beauclerc Elementary School,Duval County School District,8950 Beauclerc Terrace,Jacksonville,FL,32257,30.1561,-81.6486,520,12031,Duval,Elementary,12031016711
+120310001011,Greenland Pines Elementary School,Duval County School District,5035 Greenland Road,Jacksonville,FL,32258,30.1597,-81.7275,590,12031,Duval,Elementary,12031016810
+120310001012,Pinedale Elementary School,Duval County School District,7110 Wiley Road,Jacksonville,FL,32210,30.2647,-81.6008,470,12031,Duval,Elementary,12031012602
+120310001013,Gregory Drive Elementary School,Duval County School District,3737 Gregory Drive,Jacksonville,FL,32277,30.1647,-81.5403,500,12031,Duval,Elementary,
+120310001014,Timucuan Elementary School,Duval County School District,1057 Redbud Lane,Jacksonville,FL,32259,30.1906,-81.5431,550,12031,Duval,Elementary,
+120310001015,Abess Park Elementary School,Duval County School District,4320 Timuquana Road,Jacksonville,FL,32210,30.2911,-81.6311,460,12031,Duval,Elementary,12031013100
+120310001016,Mayport Elementary School,Duval County School District,2650 Mayport Road,Jacksonville,FL,32233,30.3992,-81.4247,380,12031,Duval,Elementary,12031013904
+120310001017,Brentwood Elementary School,Duval County School District,800 Arlingwood Avenue,Jacksonville,FL,32211,30.3181,-81.6081,440,12031,Duval,Elementary,12031015002
+120310001018,Brookview Elementary School,Duval County School District,8013 Brookview Drive,Jacksonville,FL,32210,30.255,-81.6236,490,12031,Duval,Elementary,
+120310001019,Chaffee Trail Elementary School,Duval County School District,13460 Chaffee Road,Jacksonville,FL,32221,30.2539,-81.9344,620,12031,Duval,Elementary,
+120310001020,Chet's Creek Elementary School,Duval County School District,10200 Hood Road South,Jacksonville,FL,32257,30.1178,-81.6931,580,12031,Duval,Elementary,12031016730
+120190001001,W.E. Cherry Elementary School,Clay County School District,2350 Cherry Drive,Orange Park,FL,32073,30.1733,-81.7139,520,12019,Clay,Elementary,
+120190001002,Lakeside Elementary School,Clay County School District,4390 County Road 218,Middleburg,FL,32068,30.0872,-81.9369,590,12019,Clay,Elementary,
+120190001003,Ridgeview Elementary School,Clay County School District,4670 Longmire Road,Orange Park,FL,32065,30.0831,-81.8247,580,12019,Clay,Elementary,
+120190001004,Grove Park Elementary School,Clay County School District,6101 Blanding Boulevard,Jacksonville,FL,32244,30.2578,-81.8222,510,12019,Clay,Elementary,12031013402
+120190001005,Fleming Island Elementary School,Clay County School District,1795 Town Center Boulevard,Fleming Island,FL,32003,30.0936,-81.7192,670,12019,Clay,Elementary,
+120190001006,McRae Elementary School,Clay County School District,1106 Moosehead Drive,Orange Park,FL,32065,30.1489,-81.7981,540,12019,Clay,Elementary,12019030208
+120190001007,Shadowlawn Elementary School,Clay County School District,3939 County Road 220,Middleburg,FL,32068,30.0747,-81.8622,490,12019,Clay,Elementary,12019030204
+120190001008,Oakleaf Village Elementary School,Clay County School District,675 Oakleaf Village Parkway,Orange Park,FL,32065,30.1722,-81.8456,710,12019,Clay,Elementary,
+121090001001,R.B. Hunt Elementary School,St. Johns County School District,2925 State Road 16,St. Augustine,FL,32084,29.8836,-81.3558,580,12109,St. Johns,Elementary,12109020906
+121090001002,Palencia Elementary School,St. Johns County School District,385 Palencia Village Drive,St. Augustine,FL,32095,29.9772,-81.4383,640,12109,St. Johns,Elementary,12109020606
+121090001003,Webster Elementary School,St. Johns County School District,2375 Pullman Court,St. Augustine,FL,32084,29.8608,-81.3256,520,12109,St. Johns,Elementary,
+121090001004,Fruit Cove Middle School,St. Johns County School District,3375 Race Track Road,St. Johns,FL,32259,30.0403,-81.5811,890,12109,St. Johns,Middle School,12109020801
+121090001005,Cunningham Creek Elementary School,St. Johns County School District,220 Cunningham Creek Drive,St. Johns,FL,32259,30.0647,-81.5692,690,12109,St. Johns,Elementary,
+121090001006,Hickory Creek Elementary School,St. Johns County School District,1025 Hickory Creek Trail,St. Johns,FL,32259,30.0325,-81.5919,650,12109,St. Johns,Elementary,
+121090001007,Patriot Oaks Academy,St. Johns County School District,345 Pullara Court,St. Johns,FL,32259,30.0522,-81.5647,720,12109,St. Johns,Elementary,
+121090001008,Valley Ridge Academy,St. Johns County School District,377 Cobblestone Drive,St. Johns,FL,32259,30.0611,-81.5725,630,12109,St. Johns,Elementary,
+121090001009,Julington Creek Elementary School,St. Johns County School District,1180 Race Track Road,St. Johns,FL,32259,30.0889,-81.5661,710,12109,St. Johns,Elementary,
+120890001001,Emma Love Hardee Elementary School,Nassau County School District,1382 Ida Street,Fernandina Beach,FL,32034,30.6658,-81.4519,420,12089,Nassau,Elementary,
+120890001002,Yulee Primary School,Nassau County School District,85165 Miner Road,Yulee,FL,32097,30.6325,-81.6078,480,12089,Nassau,Elementary,12089050304
+120890001003,Callahan Elementary School,Nassau County School District,450054 State Road 200,Callahan,FL,32011,30.5625,-81.8378,380,12089,Nassau,Elementary,12089050509
