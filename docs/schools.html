@@ -239,7 +239,7 @@ footer a:hover {text-decoration: underline}
 </div>
 
 <div class="legend">
-<h3>📊 How We Calculate Health Scores (100 Points Total)</h3>
+<h3>How We Calculate Health Scores (100 Points Total)</h3>
 <ul>
 <li><strong>Doctor Availability (30 pts):</strong> How easy is it to find a doctor in your county</li>
 <li><strong>Neighborhood Health (30 pts):</strong> % of people nearby with diabetes, obesity, or asthma</li>
@@ -277,11 +277,11 @@ Click any school to see its specific health breakdown
 
 <div class="charts-grid">
     <div class="chart-card">
-        <h3>📊 Schools by County</h3>
+        <h3>Schools by County</h3>
         <canvas id="countyChart" style="max-height: 300px"></canvas>
     </div>
     <div class="chart-card">
-        <h3>📈 Score Distribution</h3>
+        <h3>Score Distribution</h3>
         <canvas id="scoreChart" style="max-height: 300px"></canvas>
     </div>
 </div>
@@ -292,26 +292,18 @@ Click any school to see its specific health breakdown
     <th onclick="sortTable(0)">Rank</th>
     <th onclick="sortTable(1)">School Name</th>
     <th onclick="sortTable(2)">County</th>
-    <th onclick="sortTable(3)">Type</th>
-    <th onclick="sortTable(4)">Enrollment</th>
-    <th onclick="sortTable(5)">Neighborhood Health<br><small>(chronic disease %)</small></th>
-    <th onclick="sortTable(6)">Doctor Availability<br><small>(county)</small></th>
-    <th onclick="sortTable(7)">Health Need Score<br><small>(0-100)</small></th>
+    <th onclick="sortTable(3)">Score</th>
 </tr>
 </thead>
 <tbody>
-<tr onclick="toggleDetails(this, 0)">
+<tr onclick="toggleDetails(this, 0)" data-row-id="0">
     <td class="rank">1</td>
     <td class="school-name">Darnell-Cookman School of the Medical Arts</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">700</td>
-    <td>31.5</td>
-    <td>23</td>
     <td class="score score-high">48.5</td>
 </tr>
 <tr class="detail-row" id="details-0" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Darnell-Cookman School of the Medical Arts - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -338,18 +330,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 1)">
+<tr onclick="toggleDetails(this, 1)" data-row-id="1">
     <td class="rank">2</td>
     <td class="school-name">Lavilla School of the Arts</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">650</td>
-    <td>31.5</td>
-    <td>23</td>
     <td class="score score-high">48.5</td>
 </tr>
 <tr class="detail-row" id="details-1" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Lavilla School of the Arts - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -376,18 +364,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 2)">
+<tr onclick="toggleDetails(this, 2)" data-row-id="2">
     <td class="rank">3</td>
     <td class="school-name">Raines High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">950</td>
-    <td>27.8</td>
-    <td>23</td>
     <td class="score score-high">46.3</td>
 </tr>
 <tr class="detail-row" id="details-2" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Raines High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -414,18 +398,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 3)">
+<tr onclick="toggleDetails(this, 3)" data-row-id="3">
     <td class="rank">4</td>
     <td class="school-name">Stanton College Preparatory School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,600</td>
-    <td>27.5</td>
-    <td>23</td>
     <td class="score score-high">46.1</td>
 </tr>
 <tr class="detail-row" id="details-3" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Stanton College Preparatory School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -452,18 +432,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 4)">
+<tr onclick="toggleDetails(this, 4)" data-row-id="4">
     <td class="rank">5</td>
     <td class="school-name">Annie R. Morgan Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">450</td>
-    <td>27.5</td>
-    <td>23</td>
     <td class="score score-high">46.1</td>
 </tr>
 <tr class="detail-row" id="details-4" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Annie R. Morgan Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -490,18 +466,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 5)">
+<tr onclick="toggleDetails(this, 5)" data-row-id="5">
     <td class="rank">6</td>
     <td class="school-name">Ribault High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,100</td>
-    <td>27.1</td>
-    <td>23</td>
     <td class="score score-high">45.9</td>
 </tr>
 <tr class="detail-row" id="details-5" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ribault High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -528,18 +500,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 6)">
+<tr onclick="toggleDetails(this, 6)" data-row-id="6">
     <td class="rank">7</td>
     <td class="school-name">Paxon School for Advanced Studies</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,400</td>
-    <td>23.5</td>
-    <td>23</td>
     <td class="score score-medium">43.7</td>
 </tr>
 <tr class="detail-row" id="details-6" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Paxon School for Advanced Studies - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -566,18 +534,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 7)">
+<tr onclick="toggleDetails(this, 7)" data-row-id="7">
     <td class="rank">8</td>
     <td class="school-name">Pinedale Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">470</td>
-    <td>22.9</td>
-    <td>23</td>
     <td class="score score-medium">43.4</td>
 </tr>
 <tr class="detail-row" id="details-7" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Pinedale Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -604,18 +568,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 8)">
+<tr onclick="toggleDetails(this, 8)" data-row-id="8">
     <td class="rank">9</td>
     <td class="school-name">Loretto Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">420</td>
-    <td>21.9</td>
-    <td>23</td>
     <td class="score score-medium">42.7</td>
 </tr>
 <tr class="detail-row" id="details-8" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Loretto Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -642,18 +602,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 9)">
+<tr onclick="toggleDetails(this, 9)" data-row-id="9">
     <td class="rank">10</td>
     <td class="school-name">Highlands Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">480</td>
-    <td>21.7</td>
-    <td>23</td>
     <td class="score score-medium">42.6</td>
 </tr>
 <tr class="detail-row" id="details-9" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Highlands Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -680,18 +636,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 10)">
+<tr onclick="toggleDetails(this, 10)" data-row-id="10">
     <td class="rank">11</td>
     <td class="school-name">Robert E. Lee High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,800</td>
-    <td>21.6</td>
-    <td>23</td>
     <td class="score score-medium">42.6</td>
 </tr>
 <tr class="detail-row" id="details-10" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Robert E. Lee High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -718,18 +670,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 11)">
+<tr onclick="toggleDetails(this, 11)" data-row-id="11">
     <td class="rank">12</td>
     <td class="school-name">Atlantic Coast High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,900</td>
-    <td>21.1</td>
-    <td>23</td>
     <td class="score score-medium">42.3</td>
 </tr>
 <tr class="detail-row" id="details-11" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Atlantic Coast High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -756,18 +704,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 12)">
+<tr onclick="toggleDetails(this, 12)" data-row-id="12">
     <td class="rank">13</td>
     <td class="school-name">Douglas Anderson School of the Arts</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,200</td>
-    <td>20.6</td>
-    <td>23</td>
     <td class="score score-medium">42.0</td>
 </tr>
 <tr class="detail-row" id="details-12" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Douglas Anderson School of the Arts - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -794,18 +738,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 13)">
+<tr onclick="toggleDetails(this, 13)" data-row-id="13">
     <td class="rank">14</td>
     <td class="school-name">Arlington Heights Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">530</td>
-    <td>20.4</td>
-    <td>23</td>
     <td class="score score-medium">41.8</td>
 </tr>
 <tr class="detail-row" id="details-13" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Arlington Heights Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -832,18 +772,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 14)">
+<tr onclick="toggleDetails(this, 14)" data-row-id="14">
     <td class="rank">15</td>
     <td class="school-name">Lone Star Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">560</td>
-    <td>20.3</td>
-    <td>23</td>
     <td class="score score-medium">41.8</td>
 </tr>
 <tr class="detail-row" id="details-14" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Lone Star Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -870,18 +806,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 15)">
+<tr onclick="toggleDetails(this, 15)" data-row-id="15">
     <td class="rank">16</td>
     <td class="school-name">Wolfson High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,400</td>
-    <td>20.2</td>
-    <td>23</td>
     <td class="score score-medium">41.7</td>
 </tr>
 <tr class="detail-row" id="details-15" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Wolfson High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -908,18 +840,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 16)">
+<tr onclick="toggleDetails(this, 16)" data-row-id="16">
     <td class="rank">17</td>
     <td class="school-name">Samuel W. Wolfson High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,200</td>
-    <td>20.2</td>
-    <td>23</td>
     <td class="score score-medium">41.7</td>
 </tr>
 <tr class="detail-row" id="details-16" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Samuel W. Wolfson High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -946,18 +874,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 18)">
+<tr onclick="toggleDetails(this, 18)" data-row-id="18">
     <td class="rank">18</td>
     <td class="school-name">Brentwood Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">440</td>
-    <td>19.3</td>
-    <td>23</td>
     <td class="score score-medium">41.2</td>
 </tr>
 <tr class="detail-row" id="details-18" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Brentwood Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -984,18 +908,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 17)">
+<tr onclick="toggleDetails(this, 17)" data-row-id="17">
     <td class="rank">19</td>
     <td class="school-name">Andrew Jackson High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,500</td>
-    <td>19.3</td>
-    <td>23</td>
     <td class="score score-medium">41.2</td>
 </tr>
 <tr class="detail-row" id="details-17" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Andrew Jackson High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1022,18 +942,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 19)">
+<tr onclick="toggleDetails(this, 19)" data-row-id="19">
     <td class="rank">20</td>
     <td class="school-name">Holiday Hill Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">510</td>
-    <td>19.2</td>
-    <td>23</td>
     <td class="score score-medium">41.1</td>
 </tr>
 <tr class="detail-row" id="details-19" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Holiday Hill Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1060,18 +976,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 20)">
+<tr onclick="toggleDetails(this, 20)" data-row-id="20">
     <td class="rank">21</td>
     <td class="school-name">First Coast High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">2,100</td>
-    <td>18.9</td>
-    <td>23</td>
     <td class="score score-medium">41.0</td>
 </tr>
 <tr class="detail-row" id="details-20" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>First Coast High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1098,18 +1010,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 21)">
+<tr onclick="toggleDetails(this, 21)" data-row-id="21">
     <td class="rank">22</td>
     <td class="school-name">Westside High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,700</td>
-    <td>18.9</td>
-    <td>23</td>
     <td class="score score-medium">40.9</td>
 </tr>
 <tr class="detail-row" id="details-21" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Westside High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1136,18 +1044,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 22)">
+<tr onclick="toggleDetails(this, 22)" data-row-id="22">
     <td class="rank">23</td>
     <td class="school-name">Mayport Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">380</td>
-    <td>18.8</td>
-    <td>23</td>
     <td class="score score-medium">40.9</td>
 </tr>
 <tr class="detail-row" id="details-22" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Mayport Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1174,18 +1078,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 23)">
+<tr onclick="toggleDetails(this, 23)" data-row-id="23">
     <td class="rank">24</td>
     <td class="school-name">Landon Middle School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">900</td>
-    <td>18.6</td>
-    <td>23</td>
     <td class="score score-medium">40.8</td>
 </tr>
 <tr class="detail-row" id="details-23" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Landon Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1212,18 +1112,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 24)">
+<tr onclick="toggleDetails(this, 24)" data-row-id="24">
     <td class="rank">25</td>
     <td class="school-name">Englewood High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,300</td>
-    <td>18.4</td>
-    <td>23</td>
     <td class="score score-medium">40.7</td>
 </tr>
 <tr class="detail-row" id="details-24" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Englewood High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1250,18 +1146,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 25)">
+<tr onclick="toggleDetails(this, 25)" data-row-id="25">
     <td class="rank">26</td>
     <td class="school-name">Mandarin High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">2,200</td>
-    <td>16.8</td>
-    <td>23</td>
     <td class="score score-medium">39.7</td>
 </tr>
 <tr class="detail-row" id="details-25" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Mandarin High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1288,18 +1180,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 26)">
+<tr onclick="toggleDetails(this, 26)" data-row-id="26">
     <td class="rank">27</td>
     <td class="school-name">Sandalwood High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">2,400</td>
-    <td>16.5</td>
-    <td>23</td>
     <td class="score score-medium">39.5</td>
 </tr>
 <tr class="detail-row" id="details-26" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Sandalwood High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1326,18 +1214,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 27)">
+<tr onclick="toggleDetails(this, 27)" data-row-id="27">
     <td class="rank">28</td>
     <td class="school-name">San Jose Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">580</td>
-    <td>16.2</td>
-    <td>23</td>
     <td class="score score-medium">39.3</td>
 </tr>
 <tr class="detail-row" id="details-27" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>San Jose Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1364,18 +1248,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 28)">
+<tr onclick="toggleDetails(this, 28)" data-row-id="28">
     <td class="rank">29</td>
     <td class="school-name">Abess Park Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">460</td>
-    <td>15.8</td>
-    <td>23</td>
     <td class="score score-medium">39.1</td>
 </tr>
 <tr class="detail-row" id="details-28" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Abess Park Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1402,18 +1282,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 29)">
+<tr onclick="toggleDetails(this, 29)" data-row-id="29">
     <td class="rank">30</td>
     <td class="school-name">Southside Estates Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">490</td>
-    <td>15.4</td>
-    <td>23</td>
     <td class="score score-medium">38.9</td>
 </tr>
 <tr class="detail-row" id="details-29" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Southside Estates Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1440,18 +1316,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 30)">
+<tr onclick="toggleDetails(this, 30)" data-row-id="30">
     <td class="rank">31</td>
     <td class="school-name">Hendricks Avenue Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">490</td>
-    <td>15.4</td>
-    <td>23</td>
     <td class="score score-medium">38.9</td>
 </tr>
 <tr class="detail-row" id="details-30" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Hendricks Avenue Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1478,18 +1350,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 31)">
+<tr onclick="toggleDetails(this, 31)" data-row-id="31">
     <td class="rank">32</td>
     <td class="school-name">Fishweir Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">650</td>
-    <td>15.3</td>
-    <td>23</td>
     <td class="score score-medium">38.8</td>
 </tr>
 <tr class="detail-row" id="details-31" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Fishweir Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1516,18 +1384,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 32)">
+<tr onclick="toggleDetails(this, 32)" data-row-id="32">
     <td class="rank">33</td>
     <td class="school-name">Chet's Creek Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">580</td>
-    <td>15.4</td>
-    <td>23</td>
     <td class="score score-medium">38.8</td>
 </tr>
 <tr class="detail-row" id="details-32" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Chet's Creek Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1554,18 +1418,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 35)">
+<tr onclick="toggleDetails(this, 35)" data-row-id="35">
     <td class="rank">34</td>
     <td class="school-name">Fletcher High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">2,000</td>
-    <td>15.0</td>
-    <td>23</td>
     <td class="score score-medium">38.6</td>
 </tr>
 <tr class="detail-row" id="details-35" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Fletcher High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1592,18 +1452,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 33)">
+<tr onclick="toggleDetails(this, 33)" data-row-id="33">
     <td class="rank">35</td>
     <td class="school-name">Beauclerc Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">520</td>
-    <td>15.1</td>
-    <td>23</td>
     <td class="score score-medium">38.6</td>
 </tr>
 <tr class="detail-row" id="details-33" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Beauclerc Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1630,18 +1486,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 34)">
+<tr onclick="toggleDetails(this, 34)" data-row-id="34">
     <td class="rank">36</td>
     <td class="school-name">Duncan U. Fletcher Elementary</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">480</td>
-    <td>15.0</td>
-    <td>23</td>
     <td class="score score-medium">38.6</td>
 </tr>
 <tr class="detail-row" id="details-34" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Duncan U. Fletcher Elementary - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1668,18 +1520,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 36)">
+<tr onclick="toggleDetails(this, 36)" data-row-id="36">
     <td class="rank">37</td>
     <td class="school-name">Southside Middle School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">850</td>
-    <td>14.8</td>
-    <td>23</td>
     <td class="score score-medium">38.5</td>
 </tr>
 <tr class="detail-row" id="details-36" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Southside Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1706,18 +1554,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 37)">
+<tr onclick="toggleDetails(this, 37)" data-row-id="37">
     <td class="rank">38</td>
     <td class="school-name">Clay High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">1,450</td>
-    <td>22.2</td>
-    <td>17</td>
     <td class="score score-medium">35.7</td>
 </tr>
 <tr class="detail-row" id="details-37" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Clay High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1744,18 +1588,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 38)">
+<tr onclick="toggleDetails(this, 38)" data-row-id="38">
     <td class="rank">39</td>
     <td class="school-name">Tynes Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">540</td>
-    <td>22.0</td>
-    <td>17</td>
     <td class="score score-medium">35.6</td>
 </tr>
 <tr class="detail-row" id="details-38" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Tynes Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1782,18 +1622,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 39)">
+<tr onclick="toggleDetails(this, 39)" data-row-id="39">
     <td class="rank">40</td>
     <td class="school-name">Lakeside Junior High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">920</td>
-    <td>21.9</td>
-    <td>17</td>
     <td class="score score-medium">35.6</td>
 </tr>
 <tr class="detail-row" id="details-39" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Lakeside Junior High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1820,18 +1656,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 40)">
+<tr onclick="toggleDetails(this, 40)" data-row-id="40">
     <td class="rank">41</td>
     <td class="school-name">Grove Park Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">510</td>
-    <td>22.0</td>
-    <td>17</td>
     <td class="score score-medium">35.6</td>
 </tr>
 <tr class="detail-row" id="details-40" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Grove Park Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1858,18 +1690,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 41)">
+<tr onclick="toggleDetails(this, 41)" data-row-id="41">
     <td class="rank">42</td>
     <td class="school-name">Argyle Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">510</td>
-    <td>21.9</td>
-    <td>17</td>
     <td class="score score-medium">35.6</td>
 </tr>
 <tr class="detail-row" id="details-41" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Argyle Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1896,18 +1724,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 42)">
+<tr onclick="toggleDetails(this, 42)" data-row-id="42">
     <td class="rank">43</td>
     <td class="school-name">Keystone Heights Junior-Senior High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">850</td>
-    <td>21.5</td>
-    <td>17</td>
     <td class="score score-medium">35.3</td>
 </tr>
 <tr class="detail-row" id="details-42" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Keystone Heights Junior-Senior High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1934,18 +1758,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 43)">
+<tr onclick="toggleDetails(this, 43)" data-row-id="43">
     <td class="rank">44</td>
     <td class="school-name">Wilkinson Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">490</td>
-    <td>20.8</td>
-    <td>17</td>
     <td class="score score-medium">34.9</td>
 </tr>
 <tr class="detail-row" id="details-43" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Wilkinson Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -1972,18 +1792,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 44)">
+<tr onclick="toggleDetails(this, 44)" data-row-id="44">
     <td class="rank">45</td>
     <td class="school-name">Doctors Inlet Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">580</td>
-    <td>20.7</td>
-    <td>17</td>
     <td class="score score-medium">34.8</td>
 </tr>
 <tr class="detail-row" id="details-44" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Doctors Inlet Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2010,18 +1826,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 45)">
+<tr onclick="toggleDetails(this, 45)" data-row-id="45">
     <td class="rank">46</td>
     <td class="school-name">Lakeside Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">590</td>
-    <td>20.7</td>
-    <td>17</td>
     <td class="score score-medium">34.8</td>
 </tr>
 <tr class="detail-row" id="details-45" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Lakeside Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2048,18 +1860,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 46)">
+<tr onclick="toggleDetails(this, 46)" data-row-id="46">
     <td class="rank">47</td>
     <td class="school-name">Green Cove Springs Junior High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">850</td>
-    <td>20.2</td>
-    <td>17</td>
     <td class="score score-medium">34.5</td>
 </tr>
 <tr class="detail-row" id="details-46" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Green Cove Springs Junior High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2086,18 +1894,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 47)">
+<tr onclick="toggleDetails(this, 47)" data-row-id="47">
     <td class="rank">48</td>
     <td class="school-name">Shadowlawn Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">490</td>
-    <td>19.8</td>
-    <td>17</td>
     <td class="score score-medium">34.3</td>
 </tr>
 <tr class="detail-row" id="details-47" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Shadowlawn Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2124,18 +1928,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 48)">
+<tr onclick="toggleDetails(this, 48)" data-row-id="48">
     <td class="rank">49</td>
     <td class="school-name">Keller Intermediate School</td>
     <td><span class="county-badge">Baker</span></td>
-    <td>School</td>
-    <td class="enrollment">480</td>
-    <td>19.7</td>
-    <td>17</td>
     <td class="score score-medium">34.2</td>
 </tr>
 <tr class="detail-row" id="details-48" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Keller Intermediate School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2162,18 +1962,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 49)">
+<tr onclick="toggleDetails(this, 49)" data-row-id="49">
     <td class="rank">50</td>
     <td class="school-name">J. Franklin Keller Elementary</td>
     <td><span class="county-badge">Baker</span></td>
-    <td>School</td>
-    <td class="enrollment">420</td>
-    <td>19.7</td>
-    <td>17</td>
     <td class="score score-medium">34.2</td>
 </tr>
 <tr class="detail-row" id="details-49" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>J. Franklin Keller Elementary - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2200,18 +1996,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 51)">
+<tr onclick="toggleDetails(this, 51)" data-row-id="51">
     <td class="rank">51</td>
     <td class="school-name">Keystone Heights Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">420</td>
-    <td>19.6</td>
-    <td>17</td>
     <td class="score score-medium">34.1</td>
 </tr>
 <tr class="detail-row" id="details-51" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Keystone Heights Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2238,18 +2030,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 50)">
+<tr onclick="toggleDetails(this, 50)" data-row-id="50">
     <td class="rank">52</td>
     <td class="school-name">Discovery Oaks Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">680</td>
-    <td>19.4</td>
-    <td>17</td>
     <td class="score score-medium">34.1</td>
 </tr>
 <tr class="detail-row" id="details-50" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Discovery Oaks Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2276,18 +2064,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 52)">
+<tr onclick="toggleDetails(this, 52)" data-row-id="52">
     <td class="rank">53</td>
     <td class="school-name">Oakleaf Junior High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">1,020</td>
-    <td>19.0</td>
-    <td>17</td>
     <td class="score score-medium">33.8</td>
 </tr>
 <tr class="detail-row" id="details-52" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Oakleaf Junior High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2314,18 +2098,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 53)">
+<tr onclick="toggleDetails(this, 53)" data-row-id="53">
     <td class="rank">54</td>
     <td class="school-name">Plantation Oaks Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">740</td>
-    <td>19.0</td>
-    <td>17</td>
     <td class="score score-medium">33.8</td>
 </tr>
 <tr class="detail-row" id="details-53" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Plantation Oaks Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2352,18 +2132,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 54)">
+<tr onclick="toggleDetails(this, 54)" data-row-id="54">
     <td class="rank">55</td>
     <td class="school-name">Charles E. Bennett Elementary</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">520</td>
-    <td>18.9</td>
-    <td>17</td>
     <td class="score score-medium">33.8</td>
 </tr>
 <tr class="detail-row" id="details-54" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Charles E. Bennett Elementary - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2390,18 +2166,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 55)">
+<tr onclick="toggleDetails(this, 55)" data-row-id="55">
     <td class="rank">56</td>
     <td class="school-name">Robert M. Paterson Elementary</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">610</td>
-    <td>18.7</td>
-    <td>17</td>
     <td class="score score-medium">33.6</td>
 </tr>
 <tr class="detail-row" id="details-55" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Robert M. Paterson Elementary - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2428,18 +2200,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 56)">
+<tr onclick="toggleDetails(this, 56)" data-row-id="56">
     <td class="rank">57</td>
     <td class="school-name">Orange Park Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">550</td>
-    <td>18.7</td>
-    <td>17</td>
     <td class="score score-medium">33.6</td>
 </tr>
 <tr class="detail-row" id="details-56" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Orange Park Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2466,18 +2234,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 57)">
+<tr onclick="toggleDetails(this, 57)" data-row-id="57">
     <td class="rank">58</td>
     <td class="school-name">Lake Asbury Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">620</td>
-    <td>18.5</td>
-    <td>17</td>
     <td class="score score-medium">33.5</td>
 </tr>
 <tr class="detail-row" id="details-57" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Lake Asbury Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2504,18 +2268,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 58)">
+<tr onclick="toggleDetails(this, 58)" data-row-id="58">
     <td class="rank">59</td>
     <td class="school-name">McRae Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">540</td>
-    <td>17.2</td>
-    <td>17</td>
     <td class="score score-medium">32.7</td>
 </tr>
 <tr class="detail-row" id="details-58" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>McRae Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2542,18 +2302,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 59)">
+<tr onclick="toggleDetails(this, 59)" data-row-id="59">
     <td class="rank">60</td>
     <td class="school-name">Palencia Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">640</td>
-    <td>17.1</td>
-    <td>17</td>
     <td class="score score-medium">32.6</td>
 </tr>
 <tr class="detail-row" id="details-59" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Palencia Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2580,18 +2336,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 60)">
+<tr onclick="toggleDetails(this, 60)" data-row-id="60">
     <td class="rank">61</td>
     <td class="school-name">St. Augustine High School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">1,600</td>
-    <td>16.4</td>
-    <td>17</td>
     <td class="score score-medium">32.2</td>
 </tr>
 <tr class="detail-row" id="details-60" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>St. Augustine High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2618,18 +2370,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 61)">
+<tr onclick="toggleDetails(this, 61)" data-row-id="61">
     <td class="rank">62</td>
     <td class="school-name">Crookshank Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">360</td>
-    <td>16.4</td>
-    <td>17</td>
     <td class="score score-medium">32.2</td>
 </tr>
 <tr class="detail-row" id="details-61" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Crookshank Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2656,18 +2404,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 62)">
+<tr onclick="toggleDetails(this, 62)" data-row-id="62">
     <td class="rank">63</td>
     <td class="school-name">Ketterlinus Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">380</td>
-    <td>16.4</td>
-    <td>17</td>
     <td class="score score-medium">32.2</td>
 </tr>
 <tr class="detail-row" id="details-62" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ketterlinus Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2694,18 +2438,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 63)">
+<tr onclick="toggleDetails(this, 63)" data-row-id="63">
     <td class="rank">64</td>
     <td class="school-name">R.B. Hunt Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">580</td>
-    <td>16.1</td>
-    <td>17</td>
     <td class="score score-medium">32.1</td>
 </tr>
 <tr class="detail-row" id="details-63" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>R.B. Hunt Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2732,18 +2472,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 64)">
+<tr onclick="toggleDetails(this, 64)" data-row-id="64">
     <td class="rank">65</td>
     <td class="school-name">Sebastian Middle School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">920</td>
-    <td>15.8</td>
-    <td>17</td>
     <td class="score score-medium">31.9</td>
 </tr>
 <tr class="detail-row" id="details-64" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Sebastian Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2770,18 +2506,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 65)">
+<tr onclick="toggleDetails(this, 65)" data-row-id="65">
     <td class="rank">66</td>
     <td class="school-name">Wards Creek Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">680</td>
-    <td>15.8</td>
-    <td>17</td>
     <td class="score score-medium">31.9</td>
 </tr>
 <tr class="detail-row" id="details-65" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Wards Creek Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2808,18 +2540,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 66)">
+<tr onclick="toggleDetails(this, 66)" data-row-id="66">
     <td class="rank">67</td>
     <td class="school-name">Bartram Trail High School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">2,400</td>
-    <td>15.0</td>
-    <td>17</td>
     <td class="score score-medium">31.4</td>
 </tr>
 <tr class="detail-row" id="details-66" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Bartram Trail High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2846,18 +2574,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 67)">
+<tr onclick="toggleDetails(this, 67)" data-row-id="67">
     <td class="rank">68</td>
     <td class="school-name">Creekside High School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">2,300</td>
-    <td>14.7</td>
-    <td>17</td>
     <td class="score score-medium">31.2</td>
 </tr>
 <tr class="detail-row" id="details-67" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Creekside High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2884,18 +2608,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 69)">
+<tr onclick="toggleDetails(this, 69)" data-row-id="69">
     <td class="rank">69</td>
     <td class="school-name">Nease High School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">2,250</td>
-    <td>14.3</td>
-    <td>17</td>
     <td class="score score-medium">31.0</td>
 </tr>
 <tr class="detail-row" id="details-69" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Nease High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2922,18 +2642,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 68)">
+<tr onclick="toggleDetails(this, 68)" data-row-id="68">
     <td class="rank">70</td>
     <td class="school-name">Ocean Palms Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">610</td>
-    <td>14.4</td>
-    <td>17</td>
     <td class="score score-medium">31.0</td>
 </tr>
 <tr class="detail-row" id="details-68" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ocean Palms Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2960,18 +2676,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 70)">
+<tr onclick="toggleDetails(this, 70)" data-row-id="70">
     <td class="rank">71</td>
     <td class="school-name">Liberty Pines Academy</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">850</td>
-    <td>14.2</td>
-    <td>17</td>
     <td class="score score-medium">30.9</td>
 </tr>
 <tr class="detail-row" id="details-70" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Liberty Pines Academy - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -2998,18 +2710,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 71)">
+<tr onclick="toggleDetails(this, 71)" data-row-id="71">
     <td class="rank">72</td>
     <td class="school-name">Fruit Cove Middle School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">890</td>
-    <td>14.2</td>
-    <td>17</td>
     <td class="score score-medium">30.9</td>
 </tr>
 <tr class="detail-row" id="details-71" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Fruit Cove Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3036,18 +2744,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 72)">
+<tr onclick="toggleDetails(this, 72)" data-row-id="72">
     <td class="rank">73</td>
     <td class="school-name">Tocoi Creek High School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">1,800</td>
-    <td>14.2</td>
-    <td>17</td>
     <td class="score score-medium">30.9</td>
 </tr>
 <tr class="detail-row" id="details-72" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Tocoi Creek High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3074,18 +2778,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 73)">
+<tr onclick="toggleDetails(this, 73)" data-row-id="73">
     <td class="rank">74</td>
     <td class="school-name">Durbin Creek Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">720</td>
-    <td>14.1</td>
-    <td>17</td>
     <td class="score score-medium">30.9</td>
 </tr>
 <tr class="detail-row" id="details-73" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Durbin Creek Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3112,18 +2812,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 82)">
+<tr onclick="toggleDetails(this, 82)" data-row-id="82">
     <td class="rank">75</td>
     <td class="school-name">Ed White High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,550</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-82" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ed White High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3150,18 +2846,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 89)">
+<tr onclick="toggleDetails(this, 89)" data-row-id="89">
     <td class="rank">76</td>
     <td class="school-name">Brookview Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">490</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-89" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Brookview Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3188,18 +2880,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 87)">
+<tr onclick="toggleDetails(this, 87)" data-row-id="87">
     <td class="rank">77</td>
     <td class="school-name">Kirby-Smith Middle School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">780</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-87" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Kirby-Smith Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3226,18 +2914,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 86)">
+<tr onclick="toggleDetails(this, 86)" data-row-id="86">
     <td class="rank">78</td>
     <td class="school-name">Gregory Drive Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">500</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-86" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Gregory Drive Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3264,18 +2948,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 85)">
+<tr onclick="toggleDetails(this, 85)" data-row-id="85">
     <td class="rank">79</td>
     <td class="school-name">Greenland Pines Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">590</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-85" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Greenland Pines Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3302,18 +2982,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 84)">
+<tr onclick="toggleDetails(this, 84)" data-row-id="84">
     <td class="rank">80</td>
     <td class="school-name">Love Grove Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">520</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-84" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Love Grove Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3340,18 +3016,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 83)">
+<tr onclick="toggleDetails(this, 83)" data-row-id="83">
     <td class="rank">81</td>
     <td class="school-name">Baldwin Middle-Senior High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">800</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-83" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Baldwin Middle-Senior High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3378,18 +3050,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 88)">
+<tr onclick="toggleDetails(this, 88)" data-row-id="88">
     <td class="rank">82</td>
     <td class="school-name">Lake Shore Middle School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">920</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-88" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Lake Shore Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3416,18 +3084,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 81)">
+<tr onclick="toggleDetails(this, 81)" data-row-id="81">
     <td class="rank">83</td>
     <td class="school-name">Terry Parker High School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">1,650</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-81" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Terry Parker High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3454,18 +3118,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 79)">
+<tr onclick="toggleDetails(this, 79)" data-row-id="79">
     <td class="rank">84</td>
     <td class="school-name">Timucuan Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">550</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-79" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Timucuan Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3492,18 +3152,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 78)">
+<tr onclick="toggleDetails(this, 78)" data-row-id="78">
     <td class="rank">85</td>
     <td class="school-name">Lackawanna Alternative Education Center</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">320</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-78" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Lackawanna Alternative Education Center - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3530,18 +3186,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 77)">
+<tr onclick="toggleDetails(this, 77)" data-row-id="77">
     <td class="rank">86</td>
     <td class="school-name">Greenfield Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">540</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-77" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Greenfield Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3568,18 +3220,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 76)">
+<tr onclick="toggleDetails(this, 76)" data-row-id="76">
     <td class="rank">87</td>
     <td class="school-name">Venetia Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">510</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-76" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Venetia Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3606,18 +3254,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 74)">
+<tr onclick="toggleDetails(this, 74)" data-row-id="74">
     <td class="rank">88</td>
     <td class="school-name">West Riverside Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">410</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-74" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>West Riverside Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3644,18 +3288,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 75)">
+<tr onclick="toggleDetails(this, 75)" data-row-id="75">
     <td class="rank">89</td>
     <td class="school-name">Ramona Boulevard Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">480</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-75" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ramona Boulevard Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3682,18 +3322,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 80)">
+<tr onclick="toggleDetails(this, 80)" data-row-id="80">
     <td class="rank">90</td>
     <td class="school-name">Chaffee Trail Elementary School</td>
     <td><span class="county-badge">Duval</span></td>
-    <td>School</td>
-    <td class="enrollment">620</td>
-    <td><span class="no-data">No data</span></td>
-    <td>23</td>
     <td class="score score-low">29.6</td>
 </tr>
 <tr class="detail-row" id="details-80" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Chaffee Trail Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3720,18 +3356,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 92)">
+<tr onclick="toggleDetails(this, 92)" data-row-id="92">
     <td class="rank">91</td>
     <td class="school-name">Yulee Primary School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">480</td>
-    <td>18.8</td>
-    <td>11</td>
     <td class="score score-low">26.5</td>
 </tr>
 <tr class="detail-row" id="details-92" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Yulee Primary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3758,18 +3390,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 91)">
+<tr onclick="toggleDetails(this, 91)" data-row-id="91">
     <td class="rank">92</td>
     <td class="school-name">Yulee High School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">1,200</td>
-    <td>18.8</td>
-    <td>11</td>
     <td class="score score-low">26.5</td>
 </tr>
 <tr class="detail-row" id="details-91" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Yulee High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3796,18 +3424,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 90)">
+<tr onclick="toggleDetails(this, 90)" data-row-id="90">
     <td class="rank">93</td>
     <td class="school-name">Yulee Middle School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">680</td>
-    <td>18.8</td>
-    <td>11</td>
     <td class="score score-low">26.5</td>
 </tr>
 <tr class="detail-row" id="details-90" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Yulee Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3834,18 +3458,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 93)">
+<tr onclick="toggleDetails(this, 93)" data-row-id="93">
     <td class="rank">94</td>
     <td class="school-name">Fernandina Beach Middle School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">550</td>
-    <td>16.6</td>
-    <td>11</td>
     <td class="score score-low">25.2</td>
 </tr>
 <tr class="detail-row" id="details-93" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Fernandina Beach Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3872,18 +3492,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 118)">
+<tr onclick="toggleDetails(this, 118)" data-row-id="118">
     <td class="rank">95</td>
     <td class="school-name">Montclair Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">630</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-118" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Montclair Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3910,18 +3526,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 113)">
+<tr onclick="toggleDetails(this, 113)" data-row-id="113">
     <td class="rank">96</td>
     <td class="school-name">Valley Ridge Academy</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">630</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-113" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Valley Ridge Academy - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3948,18 +3560,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 114)">
+<tr onclick="toggleDetails(this, 114)" data-row-id="114">
     <td class="rank">97</td>
     <td class="school-name">Julington Creek Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">710</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-114" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Julington Creek Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -3986,18 +3594,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 115)">
+<tr onclick="toggleDetails(this, 115)" data-row-id="115">
     <td class="rank">98</td>
     <td class="school-name">Webster Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">520</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-115" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Webster Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4024,18 +3628,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 116)">
+<tr onclick="toggleDetails(this, 116)" data-row-id="116">
     <td class="rank">99</td>
     <td class="school-name">Middleburg Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">560</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-116" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Middleburg Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4062,18 +3662,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 112)">
+<tr onclick="toggleDetails(this, 112)" data-row-id="112">
     <td class="rank">100</td>
     <td class="school-name">Patriot Oaks Academy</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">720</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-112" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Patriot Oaks Academy - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4100,18 +3696,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 117)">
+<tr onclick="toggleDetails(this, 117)" data-row-id="117">
     <td class="rank">101</td>
     <td class="school-name">Thunderbolt Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">560</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-117" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Thunderbolt Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4138,18 +3730,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 123)">
+<tr onclick="toggleDetails(this, 123)" data-row-id="123">
     <td class="rank">102</td>
     <td class="school-name">Baker County High School</td>
     <td><span class="county-badge">Baker</span></td>
-    <td>School</td>
-    <td class="enrollment">750</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-123" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Baker County High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4176,18 +3764,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 119)">
+<tr onclick="toggleDetails(this, 119)" data-row-id="119">
     <td class="rank">103</td>
     <td class="school-name">S. Bryan Jennings Elementary</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">590</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-119" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>S. Bryan Jennings Elementary - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4214,18 +3798,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 120)">
+<tr onclick="toggleDetails(this, 120)" data-row-id="120">
     <td class="rank">104</td>
     <td class="school-name">Jack L. Wilkinson Junior High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">940</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-120" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Jack L. Wilkinson Junior High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4252,18 +3832,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 121)">
+<tr onclick="toggleDetails(this, 121)" data-row-id="121">
     <td class="rank">105</td>
     <td class="school-name">Westside Elementary School</td>
     <td><span class="county-badge">Baker</span></td>
-    <td>School</td>
-    <td class="enrollment">380</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-121" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Westside Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4290,18 +3866,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 122)">
+<tr onclick="toggleDetails(this, 122)" data-row-id="122">
     <td class="rank">106</td>
     <td class="school-name">Baker County Middle School</td>
     <td><span class="county-badge">Baker</span></td>
-    <td>School</td>
-    <td class="enrollment">620</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-122" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Baker County Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4328,18 +3900,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 124)">
+<tr onclick="toggleDetails(this, 124)" data-row-id="124">
     <td class="rank">107</td>
     <td class="school-name">Ridgeview Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">580</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-124" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ridgeview Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4366,18 +3934,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 125)">
+<tr onclick="toggleDetails(this, 125)" data-row-id="125">
     <td class="rank">108</td>
     <td class="school-name">Cunningham Creek Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">690</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-125" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Cunningham Creek Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4404,18 +3968,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 110)">
+<tr onclick="toggleDetails(this, 110)" data-row-id="110">
     <td class="rank">109</td>
     <td class="school-name">W.E. Cherry Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">520</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-110" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>W.E. Cherry Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4442,18 +4002,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 111)">
+<tr onclick="toggleDetails(this, 111)" data-row-id="111">
     <td class="rank">110</td>
     <td class="school-name">Hickory Creek Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">650</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-111" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Hickory Creek Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4480,18 +4036,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 99)">
+<tr onclick="toggleDetails(this, 99)" data-row-id="99">
     <td class="rank">111</td>
     <td class="school-name">Switzerland Point Middle School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">920</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-99" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Switzerland Point Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4518,18 +4070,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 109)">
+<tr onclick="toggleDetails(this, 109)" data-row-id="109">
     <td class="rank">112</td>
     <td class="school-name">Fleming Island Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">670</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-109" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Fleming Island Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4556,18 +4104,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 101)">
+<tr onclick="toggleDetails(this, 101)" data-row-id="101">
     <td class="rank">113</td>
     <td class="school-name">Pacetti Bay Middle School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">850</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-101" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Pacetti Bay Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4594,18 +4138,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 94)">
+<tr onclick="toggleDetails(this, 94)" data-row-id="94">
     <td class="rank">114</td>
     <td class="school-name">Rideout Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">480</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-94" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Rideout Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4632,18 +4172,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 95)">
+<tr onclick="toggleDetails(this, 95)" data-row-id="95">
     <td class="rank">115</td>
     <td class="school-name">Oakleaf High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">2,500</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-95" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Oakleaf High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4670,18 +4206,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 96)">
+<tr onclick="toggleDetails(this, 96)" data-row-id="96">
     <td class="rank">116</td>
     <td class="school-name">Orange Park Junior High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">980</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-96" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Orange Park Junior High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4708,18 +4240,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 97)">
+<tr onclick="toggleDetails(this, 97)" data-row-id="97">
     <td class="rank">117</td>
     <td class="school-name">Ridgeview High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">1,850</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-97" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ridgeview High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4746,18 +4274,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 108)">
+<tr onclick="toggleDetails(this, 108)" data-row-id="108">
     <td class="rank">118</td>
     <td class="school-name">Oakleaf Village Elementary School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">710</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-108" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Oakleaf Village Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4784,18 +4308,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 100)">
+<tr onclick="toggleDetails(this, 100)" data-row-id="100">
     <td class="rank">119</td>
     <td class="school-name">Alice B. Landrum Middle School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">880</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-100" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Alice B. Landrum Middle School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4822,18 +4342,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 98)">
+<tr onclick="toggleDetails(this, 98)" data-row-id="98">
     <td class="rank">120</td>
     <td class="school-name">Orange Park High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">2,100</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-98" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Orange Park High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4860,18 +4376,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 102)">
+<tr onclick="toggleDetails(this, 102)" data-row-id="102">
     <td class="rank">121</td>
     <td class="school-name">Fleming Island High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">2,200</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-102" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Fleming Island High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4898,18 +4410,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 103)">
+<tr onclick="toggleDetails(this, 103)" data-row-id="103">
     <td class="rank">122</td>
     <td class="school-name">Pedro Menendez High School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">1,500</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-103" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Pedro Menendez High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4936,18 +4444,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 104)">
+<tr onclick="toggleDetails(this, 104)" data-row-id="104">
     <td class="rank">123</td>
     <td class="school-name">Ponte Vedra High School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">1,650</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-104" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Ponte Vedra High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -4974,18 +4478,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 105)">
+<tr onclick="toggleDetails(this, 105)" data-row-id="105">
     <td class="rank">124</td>
     <td class="school-name">Swimming Pen Creek Elementary</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">770</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-105" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Swimming Pen Creek Elementary - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5012,18 +4512,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 106)">
+<tr onclick="toggleDetails(this, 106)" data-row-id="106">
     <td class="rank">125</td>
     <td class="school-name">Mill Creek Elementary School</td>
     <td><span class="county-badge">St. Johns</span></td>
-    <td>School</td>
-    <td class="enrollment">640</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-106" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Mill Creek Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5050,18 +4546,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 107)">
+<tr onclick="toggleDetails(this, 107)" data-row-id="107">
     <td class="rank">126</td>
     <td class="school-name">Middleburg High School</td>
     <td><span class="county-badge">Clay</span></td>
-    <td>School</td>
-    <td class="enrollment">1,600</td>
-    <td><span class="no-data">No data</span></td>
-    <td>17</td>
     <td class="score score-low">22.4</td>
 </tr>
 <tr class="detail-row" id="details-107" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Middleburg High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5088,18 +4580,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 126)">
+<tr onclick="toggleDetails(this, 126)" data-row-id="126">
     <td class="rank">127</td>
     <td class="school-name">Hilliard Elementary School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">310</td>
-    <td><span class="no-data">No data</span></td>
-    <td>11</td>
     <td class="score score-low">15.2</td>
 </tr>
 <tr class="detail-row" id="details-126" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Hilliard Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5126,18 +4614,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 127)">
+<tr onclick="toggleDetails(this, 127)" data-row-id="127">
     <td class="rank">128</td>
     <td class="school-name">Callahan Elementary School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">380</td>
-    <td><span class="no-data">No data</span></td>
-    <td>11</td>
     <td class="score score-low">15.2</td>
 </tr>
 <tr class="detail-row" id="details-127" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Callahan Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5164,18 +4648,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 128)">
+<tr onclick="toggleDetails(this, 128)" data-row-id="128">
     <td class="rank">129</td>
     <td class="school-name">Emma Love Hardee Elementary School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">420</td>
-    <td><span class="no-data">No data</span></td>
-    <td>11</td>
     <td class="score score-low">15.2</td>
 </tr>
 <tr class="detail-row" id="details-128" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Emma Love Hardee Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5202,18 +4682,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 129)">
+<tr onclick="toggleDetails(this, 129)" data-row-id="129">
     <td class="rank">130</td>
     <td class="school-name">Fernandina Beach High School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">900</td>
-    <td><span class="no-data">No data</span></td>
-    <td>11</td>
     <td class="score score-low">15.2</td>
 </tr>
 <tr class="detail-row" id="details-129" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Fernandina Beach High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5240,18 +4716,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 130)">
+<tr onclick="toggleDetails(this, 130)" data-row-id="130">
     <td class="rank">131</td>
     <td class="school-name">West Nassau High School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">750</td>
-    <td><span class="no-data">No data</span></td>
-    <td>11</td>
     <td class="score score-low">15.2</td>
 </tr>
 <tr class="detail-row" id="details-130" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>West Nassau High School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5278,18 +4750,14 @@ Click any school to see its specific health breakdown
         </div>
     </td>
 </tr>
-<tr onclick="toggleDetails(this, 131)">
+<tr onclick="toggleDetails(this, 131)" data-row-id="131">
     <td class="rank">132</td>
     <td class="school-name">Bryceville Elementary School</td>
     <td><span class="county-badge">Nassau</span></td>
-    <td>School</td>
-    <td class="enrollment">280</td>
-    <td><span class="no-data">No data</span></td>
-    <td>11</td>
     <td class="score score-low">15.2</td>
 </tr>
 <tr class="detail-row" id="details-131" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>Bryceville Elementary School - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -5321,7 +4789,7 @@ Click any school to see its specific health breakdown
 
 <footer style="margin-top:48px; padding-top:32px; border-top:2px solid #eee; color:#666">
 <p style="font-size:0.9rem"><strong>Data Sources:</strong> CDC, EPA, HRSA, FEMA (all federal public data)</p>
-<p style="margin-top:12px; font-size:0.9rem">Last updated: 2025-11-09T17:34:07Z | Updates automatically every morning</p>
+<p style="margin-top:12px; font-size:0.9rem">Last updated: 2025-11-09T17:41:06Z | Updates automatically every morning</p>
 <p style="margin-top:16px">
 <a href="counties.html" style="color:#1976d2; font-weight:600">View County Comparison</a> | 
 <a href="../data/school_scorecard.csv" style="color:#1976d2">Download Data (CSV)</a> | 
@@ -5359,22 +4827,31 @@ function filterTable() {
     const scoreFilter = document.getElementById('scoreFilter').value;
     
     const table = document.getElementById('schoolTable');
-    const rows = table.getElementsByTagName('tr');
+    const tbody = table.querySelector('tbody');
+    const allRows = tbody.querySelectorAll('tr');
     
     let visibleCount = 0;
     
-    for (let i = 1; i < rows.length; i++) {
-        const row = rows[i];
+    allRows.forEach(row => {
+        // Skip detail rows
+        if (row.classList.contains('detail-row')) {
+            row.style.display = 'none';
+            return;
+        }
+        
+        // Only process main school rows
+        if (!row.hasAttribute('data-row-id')) return;
+        
         const schoolName = row.cells[1].textContent.toLowerCase();
         const county = row.cells[2].textContent;
-        const scoreText = row.cells[7].textContent;
+        const scoreText = row.cells[3].textContent;
         const score = parseFloat(scoreText);
         
         let showRow = true;
         
         // Search filter
         if (searchValue && !schoolName.includes(searchValue) && 
-            !row.cells[2].textContent.toLowerCase().includes(searchValue)) {
+            !county.toLowerCase().includes(searchValue)) {
             showRow = false;
         }
         
@@ -5393,7 +4870,7 @@ function filterTable() {
             visibleCount++;
             row.cells[0].textContent = visibleCount; // Update rank
         }
-    }
+    });
 }
 
 // Simple sort functionality

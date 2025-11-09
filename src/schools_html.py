@@ -270,7 +270,7 @@ footer a:hover {{text-decoration: underline}}
 </div>
 
 <div class="legend">
-<h3>📊 How We Calculate Health Scores (100 Points Total)</h3>
+<h3>How We Calculate Health Scores (100 Points Total)</h3>
 <ul>
 <li><strong>Doctor Availability (30 pts):</strong> How easy is it to find a doctor in your county</li>
 <li><strong>Neighborhood Health (30 pts):</strong> % of people nearby with diabetes, obesity, or asthma</li>
@@ -310,11 +310,11 @@ Click any school to see its specific health breakdown
 
 <div class="charts-grid">
     <div class="chart-card">
-        <h3>📊 Schools by County</h3>
+        <h3>Schools by County</h3>
         <canvas id="countyChart" style="max-height: 300px"></canvas>
     </div>
     <div class="chart-card">
-        <h3>📈 Score Distribution</h3>
+        <h3>Score Distribution</h3>
         <canvas id="scoreChart" style="max-height: 300px"></canvas>
     </div>
 </div>
@@ -325,11 +325,7 @@ Click any school to see its specific health breakdown
     <th onclick="sortTable(0)">Rank</th>
     <th onclick="sortTable(1)">School Name</th>
     <th onclick="sortTable(2)">County</th>
-    <th onclick="sortTable(3)">Type</th>
-    <th onclick="sortTable(4)">Enrollment</th>
-    <th onclick="sortTable(5)">Neighborhood Health<br><small>(chronic disease %)</small></th>
-    <th onclick="sortTable(6)">Doctor Availability<br><small>(county)</small></th>
-    <th onclick="sortTable(7)">Health Need Score<br><small>(0-100)</small></th>
+    <th onclick="sortTable(3)">Score</th>
 </tr>
 </thead>
 <tbody>
@@ -361,18 +357,14 @@ Click any school to see its specific health breakdown
         score_class = "score-high" if score >= 45 else "score-medium" if score >= 30 else "score-low"
         need_level = "High Need" if score >= 45 else "Medium Need" if score >= 30 else "Low Need"
         
-        html += f"""<tr onclick="toggleDetails(this, {idx})">
+        html += f"""<tr onclick="toggleDetails(this, {idx})" data-row-id="{idx}">
     <td class="rank">{rank}</td>
     <td class="school-name">{school_name}</td>
     <td><span class="county-badge">{county}</span></td>
-    <td>{school_type}</td>
-    <td class="enrollment">{enrollment if isinstance(enrollment, str) else f'{enrollment:,}'}</td>
-    <td>{chronic}</td>
-    <td>{hpsa}</td>
     <td class="score {score_class}">{score:.1f}</td>
 </tr>
 <tr class="detail-row" id="details-{idx}" style="display:none">
-    <td colspan="8" style="padding:0">
+    <td colspan="4" style="padding:0">
         <div class="school-details">
             <h4>{school_name} - Detailed Breakdown</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
@@ -445,22 +437,31 @@ function filterTable() {
     const scoreFilter = document.getElementById('scoreFilter').value;
     
     const table = document.getElementById('schoolTable');
-    const rows = table.getElementsByTagName('tr');
+    const tbody = table.querySelector('tbody');
+    const allRows = tbody.querySelectorAll('tr');
     
     let visibleCount = 0;
     
-    for (let i = 1; i < rows.length; i++) {
-        const row = rows[i];
+    allRows.forEach(row => {
+        // Skip detail rows
+        if (row.classList.contains('detail-row')) {
+            row.style.display = 'none';
+            return;
+        }
+        
+        // Only process main school rows
+        if (!row.hasAttribute('data-row-id')) return;
+        
         const schoolName = row.cells[1].textContent.toLowerCase();
         const county = row.cells[2].textContent;
-        const scoreText = row.cells[7].textContent;
+        const scoreText = row.cells[3].textContent;
         const score = parseFloat(scoreText);
         
         let showRow = true;
         
         // Search filter
         if (searchValue && !schoolName.includes(searchValue) && 
-            !row.cells[2].textContent.toLowerCase().includes(searchValue)) {
+            !county.toLowerCase().includes(searchValue)) {
             showRow = false;
         }
         
@@ -479,7 +480,7 @@ function filterTable() {
             visibleCount++;
             row.cells[0].textContent = visibleCount; // Update rank
         }
-    }
+    });
 }
 
 // Simple sort functionality
@@ -607,7 +608,7 @@ def write_school_html(schools_df: pd.DataFrame):
     html = generate_school_html(schools_df)
     output_path = DOCS / "schools.html"
     output_path.write_text(html, encoding="utf-8")
-    print(f"✅ Wrote school HTML to {output_path}")
+    print(f" Wrote school HTML to {output_path}")
 
 
 if __name__ == "__main__":
@@ -626,7 +627,7 @@ if __name__ == "__main__":
     
     write_school_html(schools)
     
-    print(f"\n✅ School HTML generated!")
+    print(f"\n School HTML generated!")
     print(f"   View at: docs/schools.html")
     print(f"   Will be live at: https://scottmadden.github.io/jax-health-scorecard/schools.html")
 
