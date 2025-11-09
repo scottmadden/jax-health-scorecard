@@ -132,24 +132,67 @@ h2 {{margin: 12px 0 24px; color: #666; font-weight: 400; font-size: 1.15rem}}
 table {{
     width: 100%;
     border-collapse: collapse;
-    margin-top: 16px;
-    font-size: 0.9rem;
+    margin-top: 24px;
+    font-size: 0.95rem;
 }}
-thead {{position: sticky; top: 0; background: #f7f7f7; z-index: 10}}
+thead {{position: sticky; top: 0; background: white; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.05)}}
 th, td {{
-    border: 1px solid #ddd;
-    padding: 12px 10px;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 14px 12px;
     text-align: left;
 }}
 th {{
-    background: #f7f7f7;
+    background: white;
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
     user-select: none;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }}
-th:hover {{background: #eee}}
+th:hover {{color: #1976d2}}
 td {{vertical-align: middle}}
+
+tbody tr {{
+    cursor: pointer;
+    transition: background 0.15s;
+}}
+tbody tr:hover {{
+    background: #f5f5f5;
+}}
+tbody tr.expanded {{
+    background: #e3f2fd;
+}}
+
+.school-details {{
+    display: none;
+    background: #fafafa;
+    padding: 20px;
+    border-left: 4px solid #1976d2;
+    margin: 0;
+}}
+.school-details.show {{
+    display: block;
+}}
+.school-details h4 {{
+    margin: 0 0 16px 0;
+    color: #1976d2;
+    font-size: 1.1rem;
+}}
+.school-details table {{
+    margin: 0;
+    font-size: 0.9rem;
+    background: white;
+    border-radius: 4px;
+}}
+.school-details td {{
+    border: none;
+    padding: 10px;
+}}
+.school-details tr:nth-child(even) {{
+    background: #f9f9f9;
+}}
 
 .rank {{font-weight: bold; color: #666}}
 .school-name {{font-weight: 600; color: #1a1a1a}}
@@ -170,6 +213,22 @@ td {{vertical-align: middle}}
 
 .enrollment {{color: #666; font-size: 0.85rem}}
 .no-data {{color: #999; font-style: italic}}
+
+@media (max-width: 768px) {{
+    .container {{padding: 16px}}
+    h1 {{font-size: 1.8rem}}
+    .stats-grid {{grid-template-columns: 1fr 1fr; gap: 12px}}
+    .stat-card {{padding: 16px}}
+    .stat-card .value {{font-size: 2rem}}
+    .charts-grid {{grid-template-columns: 1fr; gap: 16px}}
+    .chart-card {{padding: 16px}}
+    table {{font-size: 0.85rem}}
+    th, td {{padding: 10px 6px}}
+    .controls {{flex-direction: column; align-items: stretch}}
+    .search-box {{min-width: 100%}}
+    th:nth-child(4), td:nth-child(4) {{display: none}} /* Hide Type column on mobile */
+    th:nth-child(5), td:nth-child(5) {{display: none}} /* Hide Enrollment on mobile */
+}}
 
 footer {{
     margin-top: 32px;
@@ -244,157 +303,9 @@ footer a:hover {{text-decoration: underline}}
     </div>
 </div>
 
-<div class="info-box" style="background:#e3f2fd;border-left:4px solid #1976d2;padding:24px;margin:32px 0;border-radius:8px">
-<h3 style="margin:0 0 16px 0;color:#1976d2;font-size:1.3rem">📖 Understanding School Health Scores</h3>
-
-<div style="background:white;padding:20px;border-radius:6px;margin-bottom:20px">
-<p style="margin-bottom:16px;font-size:1.05rem;color:#333">
-Each school receives a <strong>Health Need Score (0-100)</strong> based on 5 factors in its area. 
-<strong>Higher score = more health challenges</strong> that may affect students.
+<p style="text-align:center;color:#999;font-size:0.95rem;margin:24px 0">
+Click any school to see its specific health breakdown
 </p>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:16px">
-  <div style="padding:16px;background:#ffebee;border-radius:6px;border-left:3px solid #d32f2f">
-    <strong style="color:#d32f2f">40-50: High Need</strong>
-    <p style="margin:8px 0 0;font-size:0.95rem;color:#555">Area has significant health challenges. May need additional nurses, wellness programs, or health screenings.</p>
-  </div>
-  <div style="padding:16px;background:#fff3e0;border-radius:6px;border-left:3px solid #f57c00">
-    <strong style="color:#f57c00">30-40: Medium Need</strong>
-    <p style="margin:8px 0 0;font-size:0.95rem;color:#555">Moderate health factors present. Standard health programs recommended.</p>
-  </div>
-  <div style="padding:16px;background:#e8f5e9;border-radius:6px;border-left:3px solid #2e7d32">
-    <strong style="color:#2e7d32">15-30: Low Need</strong>
-    <p style="margin:8px 0 0;font-size:0.95rem;color:#555">Relatively healthy area. Maintain existing health support programs.</p>
-  </div>
-</div>
-</div>
-
-<details style="margin-top:20px">
-<summary style="font-size:1.05rem">🔍 What Do The Individual Indicators Mean? (Click to expand)</summary>
-<div style="padding:16px 0">
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
-
-<div>
-<h4 style="color:#1976d2;margin-bottom:8px">🏥 Neighborhood Health (30 pts)</h4>
-<p style="font-size:0.95rem;color:#555;line-height:1.6">
-<strong>What it is:</strong> % of people in the school's neighborhood with diabetes, obesity, or asthma.<br>
-<strong>Why it matters:</strong> Higher rates = students more likely to have health needs.<br>
-<strong>US Average:</strong> ~20%<br>
-<strong>Range here:</strong> 10-32%
-</p>
-</div>
-
-<div>
-<h4 style="color:#1976d2;margin-bottom:8px">👨‍⚕️ Doctor Availability (30 pts)</h4>
-<p style="font-size:0.95rem;color:#555;line-height:1.6">
-<strong>What it is:</strong> Healthcare shortage score for the county (0-25 scale).<br>
-<strong>Why it matters:</strong> Harder to find doctors = families struggle to get care.<br>
-<strong>25 = severe shortage</strong> (Duval)<br>
-<strong>11 = less shortage</strong> (Nassau)
-</p>
-</div>
-
-<div>
-<h4 style="color:#1976d2;margin-bottom:8px">💨 Air Quality (15 pts)</h4>
-<p style="font-size:0.95rem;color:#555;line-height:1.6">
-<strong>What it is:</strong> Days per year with unhealthy air in the county.<br>
-<strong>Why it matters:</strong> Poor air quality worsens asthma, affects outdoor activities.<br>
-<strong>Most counties:</strong> 0 unhealthy days (good!)
-</p>
-</div>
-
-<div>
-<h4 style="color:#1976d2;margin-bottom:8px">🌪️ Natural Disaster Risk (15 pts)</h4>
-<p style="font-size:0.95rem;color:#555;line-height:1.6">
-<strong>What it is:</strong> County's risk from hurricanes, flooding, storms.<br>
-<strong>Why it matters:</strong> Emergency preparedness, evacuation planning, resilience.<br>
-<strong>Current:</strong> Low risk across region
-</p>
-</div>
-
-<div>
-<h4 style="color:#1976d2;margin-bottom:8px">🦠 Respiratory Illness (10 pts)</h4>
-<p style="font-size:0.95rem;color:#555;line-height:1.6">
-<strong>What it is:</strong> Current flu/COVID/RSV activity level in Florida.<br>
-<strong>Why it matters:</strong> High activity = more student absences, spread prevention needed.<br>
-<strong>Current:</strong> Minimal activity (2 pts)
-</p>
-</div>
-
-</div>
-
-</div>
-</details>
-
-<details>
-<summary style="font-size:1.05rem">💡 What Can Be Done to Improve a School's Score? (Click to expand)</summary>
-<div style="padding:16px 0;line-height:1.7">
-
-<strong>For Parents:</strong>
-<ul style="margin:12px 0">
-<li>✓ Ask: "Do we have a full-time school nurse?"</li>
-<li>✓ Request: Wellness programs and health screenings</li>
-<li>✓ Support: PTA health committees</li>
-<li>✓ At home: Healthy eating, daily physical activity, regular checkups</li>
-</ul>
-
-<strong>For Schools & Administrators:</strong>
-<ul style="margin:12px 0">
-<li>✓ Apply for federal wellness grants (use this data to justify need)</li>
-<li>✓ Hire or expand school nurse coverage</li>
-<li>✓ Partner with local clinics for free student health screenings</li>
-<li>✓ Improve lunch nutrition and increase PE time</li>
-<li>✓ Install air quality monitors and HEPA filters</li>
-<li>✓ Launch chronic disease prevention programs</li>
-</ul>
-
-<strong>For District Leadership:</strong>
-<ul style="margin:12px 0">
-<li>✓ Compare schools to identify which need resources most</li>
-<li>✓ Use tract-level data for targeted interventions (not county-wide)</li>
-<li>✓ Track improvements over time (data updates daily)</li>
-<li>✓ Justify budget requests with objective federal data</li>
-</ul>
-
-</div>
-</details>
-
-<details>
-<summary style="font-size:1.05rem">📈 Example: What Does a Score of 35 Mean? (Click to expand)</summary>
-<div style="padding:16px 0">
-
-<div style="background:white;padding:20px;border-radius:6px;border:1px solid #e0e0e0">
-<h4 style="color:#f57c00;margin-bottom:12px">Example School: Score 35 (Medium Need)</h4>
-
-<p style="margin-bottom:16px;color:#555">
-<strong>Score Breakdown:</strong>
-</p>
-
-<table style="width:100%;font-size:0.9rem;border:none">
-<tr><td style="border:none;padding:8px 0"><strong>Doctor Availability:</strong></td><td style="border:none;padding:8px 0">20 pts (moderate shortage)</td></tr>
-<tr><td style="border:none;padding:8px 0"><strong>Neighborhood Health:</strong></td><td style="border:none;padding:8px 0">10 pts (18% chronic disease - near US avg)</td></tr>
-<tr><td style="border:none;padding:8px 0"><strong>Air Quality:</strong></td><td style="border:none;padding:8px 0">0 pts (clean air)</td></tr>
-<tr><td style="border:none;padding:8px 0"><strong>Disaster Risk:</strong></td><td style="border:none;padding:8px 0">0 pts (low risk)</td></tr>
-<tr><td style="border:none;padding:8px 0"><strong>Respiratory Illness:</strong></td><td style="border:none;padding:8px 0">2 pts (minimal activity)</td></tr>
-<tr style="border-top:2px solid #ddd"><td style="border:none;padding:12px 0"><strong>Total Score:</strong></td><td style="border:none;padding:12px 0"><strong>35 pts</strong></td></tr>
-</table>
-
-<div style="background:#fff3e0;padding:16px;margin-top:20px;border-radius:6px">
-<strong>What This Means:</strong>
-<ul style="margin:8px 0">
-<li>School is in a <strong>moderately healthy area</strong> with some doctor shortage</li>
-<li>About 1 in 5 neighbors have chronic disease (close to national average)</li>
-<li>Air quality is good, disaster risk is low</li>
-<li>Recommended: Standard wellness programs, part-time nurse minimum</li>
-</ul>
-</div>
-
-</div>
-
-</div>
-</details>
-</div>
 </div>
 
 <div class="charts-grid">
@@ -424,30 +335,69 @@ Each school receives a <strong>Health Need Score (0-100)</strong> based on 5 fac
 <tbody>
 """
     
-    # Add table rows
+    # Add table rows with school-specific details
     rank = 1
-    for _, row in schools_df.iterrows():
+    for idx, row in schools_df.iterrows():
         school_name = row["school_name"]
         county = row.get("county", "Unknown")
         school_type = row.get("school_type", "School")
         enrollment = int(row["enrollment"]) if pd.notna(row.get("enrollment")) else "N/A"
         
-        chronic = f"{row['chronic_disease_prev']:.1f}" if pd.notna(row.get("chronic_disease_prev")) else '<span class="no-data">No tract data</span>'
+        chronic = f"{row['chronic_disease_prev']:.1f}" if pd.notna(row.get("chronic_disease_prev")) else '<span class="no-data">No data</span>'
+        chronic_val = row.get("chronic_disease_prev", 0)
         hpsa = f"{int(row['hpsa_primary_care_max'])}" if pd.notna(row.get("hpsa_primary_care_max")) else "-"
+        hpsa_val = row.get("hpsa_primary_care_max", 0)
         score = row["readiness_score"]
+        
+        # Get individual scores
+        score_chronic = row.get("score_chronic", 0)
+        score_hpsa = row.get("score_hpsa", 0)
+        score_air = row.get("score_air_q", 0)
+        score_hazard = row.get("score_hazard", 0)
+        score_resp = row.get("score_respiratory", 0)
+        resp_activity = row.get("respiratory_activity", "Unknown")
         
         # Score coloring
         score_class = "score-high" if score >= 45 else "score-medium" if score >= 30 else "score-low"
+        need_level = "High Need" if score >= 45 else "Medium Need" if score >= 30 else "Low Need"
         
-        html += f"""<tr>
+        html += f"""<tr onclick="toggleDetails(this, {idx})">
     <td class="rank">{rank}</td>
     <td class="school-name">{school_name}</td>
     <td><span class="county-badge">{county}</span></td>
     <td>{school_type}</td>
-    <td class="enrollment">{enrollment:,}</td>
+    <td class="enrollment">{enrollment if isinstance(enrollment, str) else f'{enrollment:,}'}</td>
     <td>{chronic}</td>
     <td>{hpsa}</td>
     <td class="score {score_class}">{score:.1f}</td>
+</tr>
+<tr class="detail-row" id="details-{idx}" style="display:none">
+    <td colspan="8" style="padding:0">
+        <div class="school-details">
+            <h4>{school_name} - Detailed Breakdown</h4>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+                <div>
+                    <table style="width:100%;margin:0">
+                        <tr><td style="font-weight:600;color:#555">Overall Score:</td><td style="font-weight:700;color:{('#d32f2f' if score >= 45 else '#f57c00' if score >= 30 else '#2e7d32')}">{score:.1f} pts ({need_level})</td></tr>
+                        <tr><td>County:</td><td>{county}</td></tr>
+                        <tr><td>Type:</td><td>{school_type}</td></tr>
+                        <tr><td>Enrollment:</td><td>{enrollment if isinstance(enrollment, str) else f'{enrollment:,}'} students</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <table style="width:100%;margin:0">
+                        <tr style="background:#f0f0f0"><td colspan="2" style="font-weight:600;padding:8px">Score Components:</td></tr>
+                        <tr><td>Neighborhood Health:</td><td><strong>{score_chronic:.1f} pts</strong> ({chronic_val:.1f}% chronic disease)</td></tr>
+                        <tr><td>Doctor Availability:</td><td><strong>{score_hpsa:.1f} pts</strong> (shortage score: {hpsa_val if pd.notna(hpsa_val) else 'N/A'})</td></tr>
+                        <tr><td>Air Quality:</td><td><strong>{score_air:.1f} pts</strong></td></tr>
+                        <tr><td>Disaster Risk:</td><td><strong>{score_hazard:.1f} pts</strong></td></tr>
+                        <tr><td>Respiratory Illness:</td><td><strong>{score_resp:.1f} pts</strong> ({resp_activity})</td></tr>
+                    </table>
+                </div>
+            </div>
+            <p style="margin-top:16px;font-size:0.9rem;color:#666">Click row again to collapse</p>
+        </div>
+    </td>
 </tr>
 """
         rank += 1
@@ -468,6 +418,26 @@ Each school receives a <strong>Health Need Score (0-100)</strong> based on 5 fac
 </div>
 
 <script>
+// Toggle school-specific details
+function toggleDetails(rowElement, schoolId) {
+    const detailRow = document.getElementById('details-' + schoolId);
+    const isVisible = detailRow.style.display !== 'none';
+    
+    // Close all other detail rows
+    document.querySelectorAll('.detail-row').forEach(row => {
+        row.style.display = 'none';
+    });
+    document.querySelectorAll('tbody tr').forEach(row => {
+        row.classList.remove('expanded');
+    });
+    
+    // Toggle this one
+    if (!isVisible) {
+        detailRow.style.display = 'table-row';
+        rowElement.classList.add('expanded');
+    }
+}
+
 // Search and filter functionality
 function filterTable() {
     const searchValue = document.getElementById('searchInput').value.toLowerCase();

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Jacksonville School Health Scorecard - Know Your School's Health Needs</title>
+<title>Jacksonville School Health</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Track health readiness for 132 Jacksonville-area schools with daily-updated federal data. Free, automated, and actionable.">
+<meta name="description" content="Health readiness scores for 132 Jacksonville schools. Updated daily.">
 <style>
 * {box-sizing:border-box; margin:0; padding:0}
 body {
@@ -15,204 +15,146 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
-  color: white;
-  padding: 100px 24px 80px;
+  background: #fff;
+  padding: 80px 24px 60px;
   text-align: center;
+  border-bottom: 1px solid #e0e0e0;
 }
 .hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 16px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 3rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #1a1a1a;
 }
 .hero p {
-  font-size: 1.4rem;
-  opacity: 0.95;
-  max-width: 700px;
-  margin: 0 auto 40px;
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto 32px;
   font-weight: 400;
+  color: #666;
 }
 .hero .cta {
   display: inline-block;
-  background: white;
-  color: #1976d2;
-  padding: 18px 40px;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  font-weight: 600;
+  background: #1976d2;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .hero .cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: #1565c0;
 }
 
 /* Quick Stats */
 .quick-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin: -50px auto 0;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 900px;
+  margin: 40px auto;
   padding: 0 24px;
-  position: relative;
-  z-index: 10;
-}
-.stat {
-  background: white;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   text-align: center;
 }
 .stat-value {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 600;
   color: #1976d2;
 }
 .stat-label {
-  font-size: 0.95rem;
-  color: #666;
-  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 4px;
 }
 
 /* Search Section */
 .search-section {
-  max-width: 700px;
-  margin: 80px auto;
+  max-width: 600px;
+  margin: 60px auto;
   padding: 0 24px;
   text-align: center;
 }
-.search-section h2 {
-  font-size: 2rem;
-  margin-bottom: 24px;
-  color: #1a1a1a;
-}
 .search-box-large {
   width: 100%;
-  padding: 18px 24px;
-  font-size: 1.2rem;
-  border: 3px solid #e0e0e0;
-  border-radius: 12px;
-  transition: all 0.3s;
+  padding: 16px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.2s;
 }
 .search-box-large:focus {
   outline: none;
   border-color: #1976d2;
-  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.08);
 }
 
-/* Role Selector */
+/* Role Selector - Minimal */
 .roles {
-  max-width: 1200px;
-  margin: 80px auto;
+  max-width: 900px;
+  margin: 60px auto 80px;
   padding: 0 24px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
-.roles h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 48px;
-  color: #1a1a1a;
-}
-.role-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-}
-.role-card {
-  background: #f9f9f9;
-  padding: 36px;
-  border-radius: 12px;
-  border: 2px solid #e0e0e0;
-  transition: all 0.3s;
-  text-align: left;
-}
-.role-card:hover {
-  border-color: #1976d2;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  transform: translateY(-4px);
-  background: white;
-}
-.role-card h3 {
-  font-size: 1.6rem;
-  margin-bottom: 16px;
-  color: #1976d2;
-}
-.role-card p {
-  line-height: 1.7;
-  color: #555;
-  margin-bottom: 24px;
-  font-size: 1.05rem;
-}
-.role-card a {
-  display: inline-block;
-  color: #1976d2;
-  font-weight: 600;
+.role-link {
+  padding: 16px 28px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  color: #333;
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+  font-weight: 500;
 }
-.role-card a:after {
-  content: " →";
+.role-link:hover {
+  background: #1976d2;
+  color: white;
+  border-color: #1976d2;
 }
 
-/* Featured Insight */
+/* Simplified Insight */
 .insight {
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-  padding: 60px 24px;
-  margin: 80px 0;
-}
-.insight-content {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 24px;
   text-align: center;
-}
-.insight-content h2 {
-  font-size: 2rem;
-  margin-bottom: 24px;
-  color: #1a1a1a;
-}
-.insight-content .highlight {
-  font-size: 1.8rem;
-  color: #d32f2f;
-  font-weight: 700;
-  display: block;
-  margin: 16px 0;
-}
-.insight-content p {
-  font-size: 1.15rem;
-  color: #444;
-  line-height: 1.8;
+  color: #666;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 /* Footer */
 footer {
-  background: #1a1a1a;
-  color: #999;
-  padding: 48px 24px;
-  margin-top: 80px;
+  background: #f9f9f9;
+  color: #888;
+  padding: 32px 24px;
+  margin-top: 60px;
   text-align: center;
-}
-footer p {
-  margin: 8px 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #e0e0e0;
 }
 footer a {
   color: #1976d2;
   text-decoration: none;
 }
-footer a:hover {
-  text-decoration: underline;
-}
 
-/* Mobile */
+/* Mobile First */
 @media (max-width: 768px) {
-  .hero h1 {font-size: 2.5rem}
+  .hero {padding: 60px 20px 40px}
+  .hero h1 {font-size: 2rem}
   .hero p {font-size: 1.1rem}
-  .quick-stats {grid-template-columns: 1fr 1fr; margin-top: -40px}
-  .role-grid {grid-template-columns: 1fr}
+  .hero .cta {font-size: 1rem; padding: 14px 24px}
+  .quick-stats {grid-template-columns: 1fr 1fr; gap: 16px}
+  .stat-value {font-size: 2rem}
+  .search-section {margin: 40px auto}
+  .search-box-large {font-size: 1rem; padding: 14px 16px}
+  .roles {flex-direction: column}
+  .role-link {width: 100%; text-align: center}
 }
 </style>
 </head>
@@ -225,70 +167,31 @@ footer a:hover {
 </div>
 
 <div class="quick-stats">
-  <div class="stat">
-    <div class="stat-value">132</div>
-    <div class="stat-label">K-12 Schools Tracked</div>
-  </div>
-  <div class="stat">
-    <div class="stat-value">5</div>
-    <div class="stat-label">Jacksonville Counties</div>
-  </div>
-  <div class="stat">
-    <div class="stat-value">Daily</div>
-    <div class="stat-label">Automatic Updates</div>
-  </div>
-  <div class="stat">
-    <div class="stat-value">Free</div>
-    <div class="stat-label">Always Free</div>
-  </div>
+  <div><div class="stat-value">132</div><div class="stat-label">Schools</div></div>
+  <div><div class="stat-value">5</div><div class="stat-label">Counties</div></div>
+  <div><div class="stat-value">Daily</div><div class="stat-label">Updates</div></div>
+  <div><div class="stat-value">Free</div><div class="stat-label">Always</div></div>
 </div>
 
 <div class="search-section">
-  <h2>Find Your School</h2>
   <input type="text" 
          class="search-box-large" 
          id="quickSearch"
-         placeholder="Type your school name (e.g., 'Orange Park Elementary')..."
+         placeholder="Search your school..."
          onkeyup="handleQuickSearch(event)">
-  <p style="margin-top:16px; color:#666; font-size:0.95rem">
-    Or <a href="schools.html" style="color:#1976d2; font-weight:600">browse all 132 schools →</a>
+  <p style="margin-top:16px; color:#999; font-size:0.9rem">
+    <a href="schools.html" style="color:#1976d2">Browse all schools</a> or <a href="counties.html" style="color:#1976d2">compare counties</a>
   </p>
 </div>
 
 <div class="insight">
-  <div class="insight-content">
-    <h2>Key Finding</h2>
-    <span class="highlight">63% Variation</span>
-    <p>Chronic disease rates vary by 63% within Duval County—from 19% to 32% depending on your school's neighborhood. County-level data hides these critical differences.</p>
-    <p style="margin-top:20px; font-size:1.05rem">
-      <strong>This scorecard reveals which specific schools need health resources most.</strong>
-    </p>
-  </div>
+  <p>Health needs vary significantly between schools in the same county. See which schools need resources most.</p>
 </div>
 
 <div class="roles">
-  <h2>Choose Your Perspective</h2>
-  <div class="role-grid">
-    
-    <div class="role-card">
-      <h3>👨‍👩‍👧 I'm a Parent</h3>
-      <p>Find your child's school, understand what the health score means, and learn practical steps you can take to support your child's wellbeing.</p>
-      <a href="schools.html?guide=parent">Search Schools</a>
-    </div>
-    
-    <div class="role-card">
-      <h3>🏫 I'm an Educator</h3>
-      <p>See which schools need resources most, compare to similar schools, justify grant applications with federal data, and track improvements over time.</p>
-      <a href="schools.html?guide=educator">View Rankings</a>
-    </div>
-    
-    <div class="role-card">
-      <h3>📊 I'm a Researcher</h3>
-      <p>Download complete CSV datasets, analyze trends, study correlations with academic performance, and integrate with your own data systems.</p>
-      <a href="schools.html?guide=data">Access Data</a>
-    </div>
-    
-  </div>
+  <a href="schools.html" class="role-link">View Schools</a>
+  <a href="counties.html" class="role-link">View Counties</a>
+  <a href="../data/school_scorecard.csv" class="role-link">Download Data</a>
 </div>
 
 <footer>
