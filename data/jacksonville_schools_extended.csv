@@ -93,3 +93,42 @@ school_id,school_name,district,address,city,state,zipcode,lat,lon,enrollment,fip
 120890001002,Yulee Primary School,Nassau County School District,85165 Miner Road,Yulee,FL,32097,30.6325,-81.6078,480,12089,Nassau,Elementary
 120890001003,Callahan Elementary School,Nassau County School District,450054 State Road 200,Callahan,FL,32011,30.5625,-81.8378,380,12089,Nassau,Elementary
 
+120190001009,Thunderbolt Elementary School,Clay County School District,1000 Thunderbolt Trail,Orange Park,FL,32065,30.1556,-81.7894,560,12019,Clay,Elementary
+120190001010,Montclair Elementary School,Clay County School District,5575 Pulaski Road,Jacksonville,FL,32244,30.2728,-81.8094,630,12019,Clay,Elementary
+120190001011,S. Bryan Jennings Elementary,Clay County School District,3750 County Road 218,Middleburg,FL,32068,30.0594,-81.8897,590,12019,Clay,Elementary
+120190001012,Jack L. Wilkinson Junior High School,Clay County School District,2909 Jack L. Wilkinson Parkway,Orange Park,FL,32073,30.1578,-81.7369,940,12019,Clay,Middle School
+120190001013,Argyle Elementary School,Clay County School District,5005 County Road 218,Middleburg,FL,32068,30.0511,-81.8844,510,12019,Clay,Elementary
+120190001014,Doctors Inlet Elementary School,Clay County School District,180 Dolphin Drive East,Middleburg,FL,32068,30.0631,-81.8506,580,12019,Clay,Elementary
+120190001015,Lake Asbury Elementary School,Clay County School District,470 Branscomb Road,Green Cove Springs,FL,32043,30.0408,-81.7558,620,12019,Clay,Elementary
+120190001016,Tynes Elementary School,Clay County School District,6355 Blanding Boulevard,Jacksonville,FL,32244,30.2664,-81.8244,540,12019,Clay,Elementary
+120190001017,Wilkinson Elementary School,Clay County School District,1735 Kingsley Avenue,Orange Park,FL,32073,30.1667,-81.7053,490,12019,Clay,Elementary
+120190001018,Green Cove Springs Junior High School,Clay County School District,2901 Russell Road,Green Cove Springs,FL,32043,29.9847,-81.6944,850,12019,Clay,Middle School
+120190001019,Discovery Oaks Elementary School,Clay County School District,795 Blanding Boulevard,Orange Park,FL,32065,30.1597,-81.7108,680,12019,Clay,Elementary
+120190001020,Charles E. Bennett Elementary,Clay County School District,2350 Sandridge Road,Green Cove Springs,FL,32043,29.9872,-81.7169,520,12019,Clay,Elementary
+120190001021,Middleburg Elementary School,Clay County School District,2400 Palmetto Street,Middleburg,FL,32068,30.0700,-81.8936,560,12019,Clay,Elementary
+120190001022,Oakleaf Junior High School,Clay County School District,900 Oakleaf Plantation Parkway,Orange Park,FL,32065,30.1644,-81.8311,1020,12019,Clay,Middle School
+120190001023,Plantation Oaks Elementary School,Clay County School District,845 Oakleaf Plantation Parkway,Orange Park,FL,32065,30.1661,-81.8356,740,12019,Clay,Elementary
+120190001024,Rideout Elementary School,Clay County School District,2155 Russell Road,Green Cove Springs,FL,32043,29.9906,-81.7044,480,12019,Clay,Elementary
+120190001025,Robert M. Paterson Elementary,Clay County School District,2780 Moody Road,Orange Park,FL,32073,30.1486,-81.7506,610,12019,Clay,Elementary
+120190001026,Swimming Pen Creek Elementary,Clay County School District,605 Oakleaf Plantation Parkway,Orange Park,FL,32065,30.1703,-81.8283,770,12019,Clay,Elementary
+120190001027,Keystone Heights Elementary School,Clay County School District,525 South Lawrence Boulevard,Keystone Heights,FL,32656,29.7856,-82.0317,420,12019,Clay,Elementary
+120190001028,Orange Park Elementary School,Clay County School District,1700 Kingsley Avenue,Orange Park,FL,32073,30.1686,-81.7075,550,12019,Clay,Elementary
+120310001021,Greenfield Elementary School,Duval County School District,6550 Greenfield Drive,Jacksonville,FL,32277,30.1472,-81.5508,540,12031,Duval,Elementary
+120310001022,Southside Estates Elementary School,Duval County School District,3535 Hendricks Avenue,Jacksonville,FL,32207,30.2767,-81.6539,490,12031,Duval,Elementary
+120310001023,Venetia Elementary School,Duval County School District,3850 Spring Glen Road,Jacksonville,FL,32207,30.2619,-81.6319,510,12031,Duval,Elementary
+120310001024,Loretto Elementary School,Duval County School District,1119 Edgewood Avenue South,Jacksonville,FL,32205,30.2944,-81.7011,420,12031,Duval,Elementary
+120310001025,Annie R. Morgan Elementary School,Duval County School District,4039 Moncrief Road,Jacksonville,FL,32209,30.3758,-81.6633,450,12031,Duval,Elementary
+120310001026,Ramona Boulevard Elementary School,Duval County School District,5005 Ramona Boulevard,Jacksonville,FL,32205,30.2742,-81.7272,480,12031,Duval,Elementary
+120310001027,West Riverside Elementary School,Duval County School District,1801 Post Street,Jacksonville,FL,32204,30.3200,-81.6797,410,12031,Duval,Elementary
+120310001028,Lackawanna Alternative Education Center,Duval County School District,3870 Lackawanna Street,Jacksonville,FL,32254,30.2464,-81.5489,320,12031,Duval,Alternative
+121090001010,Wards Creek Elementary School,St. Johns County School District,805 International Golf Parkway,St. Augustine,FL,32092,29.9286,-81.3944,680,12109,St. Johns,Elementary
+121090001011,Durbin Creek Elementary School,St. Johns County School District,355 Honey Blossom Road,St. Johns,FL,32259,30.0556,-81.5883,720,12109,St. Johns,Elementary
+121090001012,Switzerland Point Middle School,St. Johns County School District,400 Swiss Point Drive,St. Johns,FL,32259,30.0369,-81.5794,920,12109,St. Johns,Middle School
+121090001013,Alice B. Landrum Middle School,St. Johns County School District,1200 Greenbriar Road,Ponte Vedra Beach,FL,32082,30.2044,-81.3933,880,12109,St. Johns,Middle School
+121090001014,Pacetti Bay Middle School,St. Johns County School District,305 Pacetti Road,St. Augustine,FL,32084,29.9150,-81.3594,850,12109,St. Johns,Middle School
+121090001015,Mill Creek Elementary School,St. Johns County School District,4355 Lewis Speedway,St. Augustine,FL,32084,29.9211,-81.3803,640,12109,St. Johns,Elementary
+121090001016,Ocean Palms Elementary School,St. Johns County School District,445 Landrum Lane,Ponte Vedra Beach,FL,32082,30.2050,-81.3967,610,12109,St. Johns,Elementary
+121090001017,Ketterlinus Elementary School,St. Johns County School District,75 Orange Street,St. Augustine,FL,32084,29.8933,-81.3122,380,12109,St. Johns,Elementary
+121090001018,Crookshank Elementary School,St. Johns County School District,651 Riberia Street,St. Augustine,FL,32084,29.8803,-81.3153,360,12109,St. Johns,Elementary
+120890001004,Hilliard Elementary School,Nassau County School District,37086 Pecan Street,Hilliard,FL,32046,30.6881,-81.9203,310,12089,Nassau,Elementary
+120890001005,Bryceville Elementary School,Nassau County School District,6940 North Old Dixie Highway,Bryceville,FL,32009,30.4419,-81.8431,280,12089,Nassau,Elementary

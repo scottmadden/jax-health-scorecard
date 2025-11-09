@@ -34,6 +34,7 @@ def generate_school_html(schools_df: pd.DataFrame) -> str:
 <meta charset="utf-8">
 <title>{title}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 * {{box-sizing: border-box}}
 body {{
@@ -104,6 +105,20 @@ h2 {{margin: 12px 0; color: #666; font-weight: 500; font-size: 1.1rem}}
 .legend h3 {{margin: 0 0 12px 0; font-size: 0.95rem; text-transform: uppercase; color: #2e7d32}}
 .legend ul {{margin: 0; padding-left: 20px}}
 .legend li {{font-size: 0.9rem; color: #555; margin: 6px 0}}
+
+.charts-grid {{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+}}
+.chart-card {{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}}
+.chart-card h3 {{margin: 0 0 16px 0; font-size: 1rem; color: #333}}
 
 table {{
     width: 100%;
@@ -228,6 +243,17 @@ footer a:hover {{text-decoration: underline}}
             <option value="medium">Medium Need (30-45)</option>
             <option value="low">Low Need (<30)</option>
         </select>
+    </div>
+</div>
+
+<div class="charts-grid">
+    <div class="chart-card">
+        <h3>📊 Schools by County</h3>
+        <canvas id="countyChart" style="max-height: 300px"></canvas>
+    </div>
+    <div class="chart-card">
+        <h3>📈 Score Distribution</h3>
+        <canvas id="scoreChart" style="max-height: 300px"></canvas>
     </div>
 </div>
 
@@ -367,6 +393,82 @@ function sortTable(columnIndex) {
             row.cells[0].textContent = index + 1;
         }
     });
+}
+
+// Initialize charts on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initCharts();
+});
+
+function initCharts() {
+    // County distribution chart
+    const countyCtx = document.getElementById('countyChart');
+    if (countyCtx) {
+        const countyData = """ + str(list(county_counts.items())) + """;
+        new Chart(countyCtx, {
+            type: 'bar',
+            data: {
+                labels: countyData.map(d => d[0]),
+                datasets: [{
+                    label: 'Number of Schools',
+                    data: countyData.map(d => d[1]),
+                    backgroundColor: ['#1976d2', '#388e3c', '#f57c00', '#7b1fa2', '#c2185b'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 10 } }
+                }
+            }
+        });
+    }
+    
+    // Score distribution histogram
+    const scoreCtx = document.getElementById('scoreChart');
+    if (scoreCtx) {
+        const table = document.getElementById('schoolTable');
+        const rows = Array.from(table.getElementsByTagName('tr')).slice(1);
+        const scores = rows.map(row => parseFloat(row.cells[7].textContent));
+        
+        // Create histogram bins
+        const bins = [0, 20, 25, 30, 35, 40, 45, 50];
+        const counts = new Array(bins.length - 1).fill(0);
+        scores.forEach(score => {
+            for (let i = 0; i < bins.length - 1; i++) {
+                if (score >= bins[i] && score < bins[i + 1]) {
+                    counts[i]++;
+                    break;
+                }
+            }
+        });
+        
+        new Chart(scoreCtx, {
+            type: 'bar',
+            data: {
+                labels: bins.slice(0, -1).map((b, i) => `${b}-${bins[i+1]}`),
+                datasets: [{
+                    label: 'Number of Schools',
+                    data: counts,
+                    backgroundColor: '#4CAF50',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 5 } }
+                }
+            }
+        });
+    }
 }
 </script>
 </body>
