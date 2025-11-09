@@ -244,95 +244,157 @@ footer a:hover {{text-decoration: underline}}
     </div>
 </div>
 
-<div class="parent-guide" style="background:#fff3e0;padding:20px;margin:24px 0;border-radius:8px;border-left:4px solid #ff9800">
-<h3 style="margin:0 0 12px 0;color:#e65100">👨‍👩‍👧 For Parents: What Do These Scores Mean?</h3>
+<div class="info-box" style="background:#e3f2fd;border-left:4px solid #1976d2;padding:24px;margin:32px 0;border-radius:8px">
+<h3 style="margin:0 0 16px 0;color:#1976d2;font-size:1.3rem">📖 Understanding School Health Scores</h3>
 
-<div style="margin-bottom:16px;line-height:1.6">
-<strong>Your School's Score Range:</strong>
-<ul style="margin:8px 0">
-<li><strong>40-50 (High Need)</strong>: School in area with significant health challenges. <em>Consider: Does school have full-time nurse? Are wellness programs available?</em></li>
-<li><strong>30-40 (Medium Need)</strong>: School has moderate health factors. <em>Look for: Healthy lunch options, daily PE programs, air quality measures.</em></li>
-<li><strong>15-30 (Low Need)</strong>: School in relatively healthy area. <em>Maintain: Current health programs, preventive care access.</em></li>
-</ul>
+<div style="background:white;padding:20px;border-radius:6px;margin-bottom:20px">
+<p style="margin-bottom:16px;font-size:1.05rem;color:#333">
+Each school receives a <strong>Health Need Score (0-100)</strong> based on 5 factors in its area. 
+<strong>Higher score = more health challenges</strong> that may affect students.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:16px">
+  <div style="padding:16px;background:#ffebee;border-radius:6px;border-left:3px solid #d32f2f">
+    <strong style="color:#d32f2f">40-50: High Need</strong>
+    <p style="margin:8px 0 0;font-size:0.95rem;color:#555">Area has significant health challenges. May need additional nurses, wellness programs, or health screenings.</p>
+  </div>
+  <div style="padding:16px;background:#fff3e0;border-radius:6px;border-left:3px solid #f57c00">
+    <strong style="color:#f57c00">30-40: Medium Need</strong>
+    <p style="margin:8px 0 0;font-size:0.95rem;color:#555">Moderate health factors present. Standard health programs recommended.</p>
+  </div>
+  <div style="padding:16px;background:#e8f5e9;border-radius:6px;border-left:3px solid #2e7d32">
+    <strong style="color:#2e7d32">15-30: Low Need</strong>
+    <p style="margin:8px 0 0;font-size:0.95rem;color:#555">Relatively healthy area. Maintain existing health support programs.</p>
+  </div>
+</div>
 </div>
 
-<details style="margin-top:16px">
-<summary style="cursor:pointer;font-weight:600;color:#e65100;padding:8px 0">▶ What Can You Do as a Parent? (Click to expand)</summary>
-<div style="margin-top:12px;padding-left:16px;line-height:1.6">
+<details style="margin-top:20px">
+<summary style="font-size:1.05rem">🔍 What Do The Individual Indicators Mean? (Click to expand)</summary>
+<div style="padding:16px 0">
 
-<strong>If your school has HIGH NEED (40+):</strong>
-<ul style="margin:8px 0">
-<li>✓ <strong>Ask school</strong>: "Do we have a full-time nurse?" (Request one through PTA if not)</li>
-<li>✓ <strong>Advocate for</strong>: Free/reduced-cost health screenings at school</li>
-<li>✓ <strong>Support</strong>: School wellness committees and PTA health initiatives</li>
-<li>✓ <strong>At home</strong>: Focus on healthy eating, physical activity, regular checkups</li>
-</ul>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
 
-<strong>For ANY score:</strong>
-<ul style="margin:8px 0">
-<li>✓ Know your child's health status (asthma, allergies, chronic conditions)</li>
-<li>✓ Ensure school has updated emergency contacts & medication info</li>
-<li>✓ Ask about: Indoor air quality, water testing, allergen management</li>
-<li>✓ Participate in: School health advisory councils or PTA health committees</li>
-</ul>
-
-<strong style="display:block;margin:12px 0 8px 0">Questions to ask at your next parent-teacher conference:</strong>
-<ol style="margin:8px 0">
-<li>"Do we have a school nurse? How many days per week?"</li>
-<li>"What wellness programs are available to students?"</li>
-<li>"Is the school applying for any wellness or health grants?"</li>
-<li>"How does our school's health support compare to other schools?"</li>
-</ol>
-
-<div style="background:#fff;padding:12px;margin-top:16px;border-radius:4px;border:1px solid #ffb74d">
-<strong>💡 What the Numbers Mean:</strong>
-<ul style="margin:8px 0;font-size:0.9rem">
-<li><strong>Chronic Disease %</strong>: People in your school's neighborhood with diabetes, obesity, or asthma (US average: ~20%)</li>
-<li><strong>Doctor Availability</strong>: Higher number = harder to find doctors (25 = severe shortage, 0 = plenty of doctors)</li>
-<li><strong>Respiratory Activity</strong>: Current flu/COVID level in Florida (Minimal/Low/Moderate/High)</li>
-</ul>
+<div>
+<h4 style="color:#1976d2;margin-bottom:8px">🏥 Neighborhood Health (30 pts)</h4>
+<p style="font-size:0.95rem;color:#555;line-height:1.6">
+<strong>What it is:</strong> % of people in the school's neighborhood with diabetes, obesity, or asthma.<br>
+<strong>Why it matters:</strong> Higher rates = students more likely to have health needs.<br>
+<strong>US Average:</strong> ~20%<br>
+<strong>Range here:</strong> 10-32%
+</p>
 </div>
 
+<div>
+<h4 style="color:#1976d2;margin-bottom:8px">👨‍⚕️ Doctor Availability (30 pts)</h4>
+<p style="font-size:0.95rem;color:#555;line-height:1.6">
+<strong>What it is:</strong> Healthcare shortage score for the county (0-25 scale).<br>
+<strong>Why it matters:</strong> Harder to find doctors = families struggle to get care.<br>
+<strong>25 = severe shortage</strong> (Duval)<br>
+<strong>11 = less shortage</strong> (Nassau)
+</p>
 </div>
-</details>
 
-<details style="margin-top:12px">
-<summary style="cursor:pointer;font-weight:600;color:#e65100;padding:8px 0">▶ What Can Schools Do to Improve? (Click to expand)</summary>
-<div style="margin-top:12px;padding-left:16px;line-height:1.6">
+<div>
+<h4 style="color:#1976d2;margin-bottom:8px">💨 Air Quality (15 pts)</h4>
+<p style="font-size:0.95rem;color:#555;line-height:1.6">
+<strong>What it is:</strong> Days per year with unhealthy air in the county.<br>
+<strong>Why it matters:</strong> Poor air quality worsens asthma, affects outdoor activities.<br>
+<strong>Most counties:</strong> 0 unhealthy days (good!)
+</p>
+</div>
 
-<strong>Immediate Actions (Free/Low Cost):</strong>
-<ul style="margin:8px 0">
-<li>✓ Apply for federal wellness grants (CDC, USDA) - <em>use this scorecard data to justify need</em></li>
-<li>✓ Partner with local health clinics for free student/family health screenings</li>
-<li>✓ Improve lunch nutrition (healthier options within existing budget)</li>
-<li>✓ Increase recess/PE time (no cost, proven to reduce obesity)</li>
-<li>✓ Create walking school buses (parent volunteers walk kids to school)</li>
-</ul>
+<div>
+<h4 style="color:#1976d2;margin-bottom:8px">🌪️ Natural Disaster Risk (15 pts)</h4>
+<p style="font-size:0.95rem;color:#555;line-height:1.6">
+<strong>What it is:</strong> County's risk from hurricanes, flooding, storms.<br>
+<strong>Why it matters:</strong> Emergency preparedness, evacuation planning, resilience.<br>
+<strong>Current:</strong> Low risk across region
+</p>
+</div>
 
-<strong>Medium-Term (Requires Funding):</strong>
-<ul style="margin:8px 0">
-<li>✓ Hire full-time school nurse or expand nurse hours</li>
-<li>✓ Install air quality monitors & HEPA filters in classrooms</li>
-<li>✓ Launch chronic disease prevention programs (diabetes screening, nutrition education)</li>
-<li>✓ Create school-based health center (nurse + social services)</li>
-<li>✓ Install water bottle filling stations (reduce sugary drink consumption)</li>
-</ul>
+<div>
+<h4 style="color:#1976d2;margin-bottom:8px">🦠 Respiratory Illness (10 pts)</h4>
+<p style="font-size:0.95rem;color:#555;line-height:1.6">
+<strong>What it is:</strong> Current flu/COVID/RSV activity level in Florida.<br>
+<strong>Why it matters:</strong> High activity = more student absences, spread prevention needed.<br>
+<strong>Current:</strong> Minimal activity (2 pts)
+</p>
+</div>
 
-<strong>Data-Driven Approach:</strong>
-<ol style="margin:8px 0">
-<li>Identify your school's specific gaps (click your school in table below)</li>
-<li>Compare to similar schools to find best practices</li>
-<li>Track your score over time (this system updates daily)</li>
-<li>Show improvements to justify continued funding</li>
-</ol>
-
-<div style="background:#e8f5e9;padding:12px;margin-top:16px;border-radius:4px;border:1px solid #81c784">
-<strong>✅ Success Story Example:</strong><br>
-<em>"School A had a 42 score. They added a full-time nurse, improved lunch nutrition, and partnered with a local clinic for free diabetes screenings. One year later, their score dropped to 38 (improvement!) and chronic disease prevalence in their community decreased from 22% to 19%."</em>
 </div>
 
 </div>
 </details>
+
+<details>
+<summary style="font-size:1.05rem">💡 What Can Be Done to Improve a School's Score? (Click to expand)</summary>
+<div style="padding:16px 0;line-height:1.7">
+
+<strong>For Parents:</strong>
+<ul style="margin:12px 0">
+<li>✓ Ask: "Do we have a full-time school nurse?"</li>
+<li>✓ Request: Wellness programs and health screenings</li>
+<li>✓ Support: PTA health committees</li>
+<li>✓ At home: Healthy eating, daily physical activity, regular checkups</li>
+</ul>
+
+<strong>For Schools & Administrators:</strong>
+<ul style="margin:12px 0">
+<li>✓ Apply for federal wellness grants (use this data to justify need)</li>
+<li>✓ Hire or expand school nurse coverage</li>
+<li>✓ Partner with local clinics for free student health screenings</li>
+<li>✓ Improve lunch nutrition and increase PE time</li>
+<li>✓ Install air quality monitors and HEPA filters</li>
+<li>✓ Launch chronic disease prevention programs</li>
+</ul>
+
+<strong>For District Leadership:</strong>
+<ul style="margin:12px 0">
+<li>✓ Compare schools to identify which need resources most</li>
+<li>✓ Use tract-level data for targeted interventions (not county-wide)</li>
+<li>✓ Track improvements over time (data updates daily)</li>
+<li>✓ Justify budget requests with objective federal data</li>
+</ul>
+
+</div>
+</details>
+
+<details>
+<summary style="font-size:1.05rem">📈 Example: What Does a Score of 35 Mean? (Click to expand)</summary>
+<div style="padding:16px 0">
+
+<div style="background:white;padding:20px;border-radius:6px;border:1px solid #e0e0e0">
+<h4 style="color:#f57c00;margin-bottom:12px">Example School: Score 35 (Medium Need)</h4>
+
+<p style="margin-bottom:16px;color:#555">
+<strong>Score Breakdown:</strong>
+</p>
+
+<table style="width:100%;font-size:0.9rem;border:none">
+<tr><td style="border:none;padding:8px 0"><strong>Doctor Availability:</strong></td><td style="border:none;padding:8px 0">20 pts (moderate shortage)</td></tr>
+<tr><td style="border:none;padding:8px 0"><strong>Neighborhood Health:</strong></td><td style="border:none;padding:8px 0">10 pts (18% chronic disease - near US avg)</td></tr>
+<tr><td style="border:none;padding:8px 0"><strong>Air Quality:</strong></td><td style="border:none;padding:8px 0">0 pts (clean air)</td></tr>
+<tr><td style="border:none;padding:8px 0"><strong>Disaster Risk:</strong></td><td style="border:none;padding:8px 0">0 pts (low risk)</td></tr>
+<tr><td style="border:none;padding:8px 0"><strong>Respiratory Illness:</strong></td><td style="border:none;padding:8px 0">2 pts (minimal activity)</td></tr>
+<tr style="border-top:2px solid #ddd"><td style="border:none;padding:12px 0"><strong>Total Score:</strong></td><td style="border:none;padding:12px 0"><strong>35 pts</strong></td></tr>
+</table>
+
+<div style="background:#fff3e0;padding:16px;margin-top:20px;border-radius:6px">
+<strong>What This Means:</strong>
+<ul style="margin:8px 0">
+<li>School is in a <strong>moderately healthy area</strong> with some doctor shortage</li>
+<li>About 1 in 5 neighbors have chronic disease (close to national average)</li>
+<li>Air quality is good, disaster risk is low</li>
+<li>Recommended: Standard wellness programs, part-time nurse minimum</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+</details>
+</div>
 </div>
 
 <div class="charts-grid">
