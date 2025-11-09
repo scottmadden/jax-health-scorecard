@@ -70,25 +70,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 .filter-btn.active{background:#1a1a1a;color:white;border-color:#1a1a1a}
 .search-box{width:100%}
 .search-box input{width:100%;padding:14px;border:2px solid #ddd;border-radius:6px;font-size:1rem;-webkit-appearance:none;min-height:48px}
-.school-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:32px}
-.school-card{background:white;border:1px solid #e0e0e0;border-radius:8px;padding:20px;transition:all 0.15s;-webkit-tap-highlight-color:transparent}
-.school-card:active{background:#f9f9f9}
-.school-card.no-nurse{border-left:4px solid #d32f2f}
-.school-card .header{display:flex;justify-content:space-between;align-items:start;margin-bottom:14px;gap:12px}
-.school-card .school-name{font-size:1.05rem;font-weight:600;margin-bottom:4px;line-height:1.3}
-.school-card .meta{font-size:0.8rem;color:#666}
-.school-card .score{font-size:2rem;font-weight:700;text-align:right;line-height:1}
+.school-grid{display:flex;flex-direction:column;gap:0;margin-bottom:32px;background:white;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden}
+.school-card{background:white;border:none;border-bottom:1px solid #f0f0f0;padding:16px;transition:all 0.15s;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.school-card:last-child{border-bottom:none}
+.school-card:active{background:#f5f5f5}
+.school-card.no-nurse{border-left:3px solid #d32f2f;padding-left:13px}
+.school-card .header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.school-card .left{flex:1;min-width:0}
+.school-card .school-name{font-size:1rem;font-weight:600;margin-bottom:2px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.school-card .meta{font-size:0.75rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.school-card .right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.school-card .quick-info{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.school-card .nurse-status{font-size:0.7rem;color:#888}
 .score.danger{color:#d32f2f}
 .score.warning{color:#f57c00}
 .score.success{color:#2e7d32}
 .score-label{font-size:0.7rem;color:#888;text-transform:uppercase;margin-top:2px}
 """ + grading.get_grade_styles() + """
-.indicators{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.indicator{display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 0;border-bottom:1px solid #f5f5f5}
-.indicator:last-child{border-bottom:none}
-.indicator .name{color:#666}
-.indicator .value{font-weight:600}
-.recommendation{background:#f5f5f5;padding:14px;border-radius:6px;font-size:0.85rem;color:#555;margin-top:10px;line-height:1.5}
+.grade-display{font-size:2.5rem}
+.school-details{display:none;padding:16px;background:#fafafa;border-top:1px solid #e0e0e0;margin:0 -16px -16px -16px}
+.school-details.show{display:block}
+.indicators{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.indicator{display:flex;flex-direction:column;font-size:0.75rem;padding:8px;background:white;border-radius:4px}
+.indicator .name{color:#888;margin-bottom:2px;font-size:0.7rem}
+.indicator .value{font-weight:600;font-size:0.85rem}
+.recommendation{background:white;padding:12px;border-radius:6px;font-size:0.8rem;color:#555;line-height:1.4;border:1px solid #e0e0e0}
 .recommendation strong{color:#1a1a1a}
 .nurse-badge{display:inline-block;padding:4px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em}
 .nurse-badge.full{background:#e8f5e9;color:#2e7d32}
@@ -117,11 +123,16 @@ footer{background:white;border-top:1px solid #e0e0e0;padding:20px 16px;text-alig
 .filter-label{min-width:100px;margin-bottom:0}
 .filter-btn{padding:8px 16px}
 .filter-btn:hover{border-color:#1a1a1a}
-.school-grid{grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;margin-bottom:40px}
-.school-card{padding:24px}
-.school-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
-.school-card .school-name{font-size:1.1rem}
-.school-card .score{font-size:2rem}
+.school-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;background:transparent;border:none}
+.school-card{border:1px solid #e0e0e0;border-radius:8px;padding:20px}
+.school-card:hover{background:#f9f9f9}
+.school-card .school-name{font-size:1.05rem;white-space:normal}
+.school-card .meta{white-space:normal}
+.school-card .header{align-items:start}
+.school-card .right{flex-direction:row-reverse;gap:16px}
+.grade-display{font-size:3rem}
+.school-details{margin:16px 0 0 0;padding:16px 0 0 0}
+.indicators{grid-template-columns:repeat(3,1fr)}
 .insights-panel{padding:28px;margin-bottom:32px}
 .insights-panel h3{font-size:1.3rem;margin-bottom:16px}
 .insight-item{font-size:0.95rem;gap:12px}
@@ -264,18 +275,22 @@ for idx, row in schools_df.iterrows():
     card_class = 'no-nurse' if nurse_status == 'None' else ''
     
     html += f"""
-<div class="school-card {card_class}" data-need="{need_level}" data-name="{row['school_name'].lower()}" data-county="{row.get('county', '').lower()}" data-nurse="{nurse_status.lower().replace('-', '')}"">
+<div class="school-card {card_class}" data-need="{need_level}" data-name="{row['school_name'].lower()}" data-county="{row.get('county', '').lower()}" data-nurse="{nurse_status.lower().replace('-', '')}"" onclick="toggleSchoolDetails(this, {idx})">
 <div class="header">
-<div>
+<div class="left">
 <div class="school-name">{row['school_name']}</div>
-<div class="meta">{row.get('county', 'Unknown')} County • {row.get('school_type', 'School')}</div>
+<div class="meta">{row.get('county', 'Unknown')} • {row.get('school_type', 'School')}</div>
+</div>
+<div class="right">
+<div class="quick-info">
+<span class="nurse-badge {nurse_badge_class}">{nurse_status}</span>
 </div>
 <div>
 <div class="grade-display grade-{letter.lower()}">{letter}</div>
-<div class="grade-label-text">{grade_label}</div>
-<div class="numeric-score">{unmet_score:.1f} pts</div>
 </div>
 </div>
+</div>
+<div class="school-details" id="details-{idx}">
 <div class="indicators">
 <div class="indicator">
 <span class="name">Health Need</span>
@@ -294,15 +309,16 @@ for idx, row in schools_df.iterrows():
 <span class="value">{hpsa_val}</span>
 </div>
 <div class="indicator">
-<span class="name">Nurse Staffing</span>
-<span class="value"><span class="nurse-badge {nurse_badge_class}">{nurse_status}</span></span>
+<span class="name">Enrollment</span>
+<span class="value">{enrollment_val if isinstance(enrollment_val, str) else f'{enrollment_val:,}'}</span>
 </div>
 <div class="indicator">
-<span class="name">Enrollment</span>
-<span class="value">{enrollment_val}</span>
+<span class="name">Total Score</span>
+<span class="value">{unmet_score:.1f} pts</span>
 </div>
 </div>
 <div class="recommendation">{rec}</div>
+</div>
 </div>
 """
 
