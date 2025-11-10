@@ -1,13 +1,27 @@
 {
-  "generated_at": "2025-11-09T16:55:32.450584",
+  "generated_at": "2025-11-10T14:23:12.580695",
   "counties": {
-    "total": 0,
-    "biggest_increase": {},
-    "biggest_decrease": {}
+    "total": 5,
+    "biggest_increase": {
+      "name": "Duval",
+      "change": 0.0
+    },
+    "biggest_decrease": {
+      "name": "Nassau",
+      "change": 0.0
+    }
   },
   "schools": {
-    "total": 0,
-    "biggest_increase": {},
-    "biggest_decrease": {}
+    "total": 132,
+    "biggest_increase": {
+      "name": "Kirby-Smith Middle School",
+      "county": "Duval",
+      "change": 0.0
+    },
+    "biggest_decrease": {
+      "name": "Bryceville Elementary School",
+      "county": "Nassau",
+      "change": NaN
+    }
   }
 }
