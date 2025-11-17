@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-16T14:22:35.008837",
+  "generated_at": "2025-11-17T14:23:25.887661",
   "counties": {
     "total": 5,
     "biggest_increase": {
@@ -14,14 +14,14 @@
   "schools": {
     "total": 132,
     "biggest_increase": {
-      "name": "Kirby-Smith Middle School",
+      "name": "Robert E. Lee High School",
       "county": "Duval",
       "change": 0.0
     },
     "biggest_decrease": {
       "name": "Bryceville Elementary School",
       "county": "Nassau",
-      "change": NaN
+      "change": 0.0
     }
   }
 }
