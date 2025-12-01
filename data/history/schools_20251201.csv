@@ -1,0 +1,133 @@
+school_id,school_name,district,city,county,enrollment,tract,chronic_disease_prev,hpsa_primary_care_max,respiratory_activity,score_hpsa,score_chronic,score_air_q,score_hazard,score_respiratory,readiness_score
+120310000001,Robert E. Lee High School,Duval County School District,Jacksonville,Duval,1800,12031015400.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000002,Douglas Anderson School of the Arts,Duval County School District,Jacksonville,Duval,1200,12031000600.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000003,Paxon School for Advanced Studies,Duval County School District,Jacksonville,Duval,1400,12031011800.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000004,Stanton College Preparatory School,Duval County School District,Jacksonville,Duval,1600,12031001500.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000005,Andrew Jackson High School,Duval County School District,Jacksonville,Duval,1500,12031015002.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000006,Fletcher High School,Duval County School District,Neptune Beach,Duval,2000,12031014001.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000007,Mandarin High School,Duval County School District,Jacksonville,Duval,2200,12031016810.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000008,Sandalwood High School,Duval County School District,Jacksonville,Duval,2400,12031014312.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000009,Englewood High School,Duval County School District,Jacksonville,Duval,1300,12031016102.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000010,Raines High School,Duval County School District,Jacksonville,Duval,950,12031011400.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000011,Westside High School,Duval County School District,Jacksonville,Duval,1700,12031013523.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000012,First Coast High School,Duval County School District,Jacksonville,Duval,2100,12031010204.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000013,Ribault High School,Duval County School District,Jacksonville,Duval,1100,12031011300.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000014,Atlantic Coast High School,Duval County School District,Jacksonville,Duval,1900,12031013302.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000015,Terry Parker High School,Duval County School District,Jacksonville,Duval,1650,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000016,Wolfson High School,Duval County School District,Jacksonville,Duval,1400,12031016606.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000017,Ed White High School,Duval County School District,Jacksonville,Duval,1550,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000018,Samuel W. Wolfson High School,Duval County School District,Jacksonville,Duval,1200,12031016606.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000019,Baldwin Middle-Senior High School,Duval County School District,Baldwin,Duval,800,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000020,Lavilla School of the Arts,Duval County School District,Jacksonville,Duval,650,12031001600.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000021,Darnell-Cookman School of the Medical Arts,Duval County School District,Jacksonville,Duval,700,12031001600.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000022,Landon Middle School,Duval County School District,Jacksonville,Duval,900,12031016101.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000023,Southside Middle School,Duval County School District,Jacksonville,Duval,850,12031002102.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000024,Kirby-Smith Middle School,Duval County School District,Jacksonville,Duval,780,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310000025,Lake Shore Middle School,Duval County School District,Jacksonville,Duval,920,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001005,Holiday Hill Elementary School,Duval County School District,Jacksonville,Duval,510,12031015803.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001007,Arlington Heights Elementary School,Duval County School District,Jacksonville,Duval,530,12031015200.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001004,Highlands Elementary School,Duval County School District,Jacksonville,Duval,480,12031010306.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001012,Pinedale Elementary School,Duval County School District,Jacksonville,Duval,470,12031012602.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001009,Duncan U. Fletcher Elementary,Duval County School District,Neptune Beach,Duval,480,12031014001.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001010,Beauclerc Elementary School,Duval County School District,Jacksonville,Duval,520,12031016711.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001011,Greenland Pines Elementary School,Duval County School District,Jacksonville,Duval,590,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001014,Timucuan Elementary School,Duval County School District,Jacksonville,Duval,550,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001013,Gregory Drive Elementary School,Duval County School District,Jacksonville,Duval,500,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001015,Abess Park Elementary School,Duval County School District,Jacksonville,Duval,460,12031013100.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001008,Lone Star Elementary School,Duval County School District,Jacksonville,Duval,560,12031015100.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001002,San Jose Elementary School,Duval County School District,Jacksonville,Duval,580,12031000800.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001003,Love Grove Elementary School,Duval County School District,Jacksonville,Duval,520,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001001,Fishweir Elementary School,Duval County School District,Jacksonville,Duval,650,12031002300.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001006,Hendricks Avenue Elementary School,Duval County School District,Jacksonville,Duval,490,12031016400.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001027,West Riverside Elementary School,Duval County School District,Jacksonville,Duval,410,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001026,Ramona Boulevard Elementary School,Duval County School District,Jacksonville,Duval,480,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001025,Annie R. Morgan Elementary School,Duval County School District,Jacksonville,Duval,450,12031001500.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001024,Loretto Elementary School,Duval County School District,Jacksonville,Duval,420,12031002501.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001023,Venetia Elementary School,Duval County School District,Jacksonville,Duval,510,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001021,Greenfield Elementary School,Duval County School District,Jacksonville,Duval,540,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001022,Southside Estates Elementary School,Duval County School District,Jacksonville,Duval,490,12031016400.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001020,Chet's Creek Elementary School,Duval County School District,Jacksonville,Duval,580,12031016730.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001019,Chaffee Trail Elementary School,Duval County School District,Jacksonville,Duval,620,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001018,Brookview Elementary School,Duval County School District,Jacksonville,Duval,490,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001017,Brentwood Elementary School,Duval County School District,Jacksonville,Duval,440,12031015002.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001016,Mayport Elementary School,Duval County School District,Jacksonville,Duval,380,12031013904.0,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120310001028,Lackawanna Alternative Education Center,Duval County School District,Jacksonville,Duval,320,,,23,Minimal,27.6,0.0,0.0,0.0,2.0,29.6
+120030000004,J. Franklin Keller Elementary,Baker County School District,Macclenny,Baker,420,12003040102.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000008,Sebastian Middle School,St. Johns County School District,St. Augustine,St. Johns,920,12109020904.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000009,Liberty Pines Academy,St. Johns County School District,St. Johns,St. Johns,850,12109020801.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000002,Bartram Trail High School,St. Johns County School District,St. Johns,St. Johns,2400,12109020807.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000001,St. Augustine High School,St. Johns County School District,St. Augustine,St. Johns,1600,12109020903.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000009,Fleming Island High School,Clay County School District,Fleming Island,Clay,2200,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000004,Oakleaf High School,Clay County School District,Orange Park,Clay,2500,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000003,Middleburg High School,Clay County School District,Middleburg,Clay,1600,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000002,Ridgeview High School,Clay County School District,Orange Park,Clay,1850,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000001,Orange Park High School,Clay County School District,Orange Park,Clay,2100,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000008,Lakeside Junior High School,Clay County School District,Middleburg,Clay,920,12019030105.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000007,Orange Park Junior High School,Clay County School District,Orange Park,Clay,980,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000006,Keystone Heights Junior-Senior High School,Clay County School District,Keystone Heights,Clay,850,12019031109.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190000005,Clay High School,Clay County School District,Green Cove Springs,Clay,1450,12019031400.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000003,Creekside High School,St. Johns County School District,St. Johns,St. Johns,2300,12109020810.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001028,Orange Park Elementary School,Clay County School District,Orange Park,Clay,550,12019030801.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001025,Robert M. Paterson Elementary,Clay County School District,Orange Park,Clay,610,12019030801.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001026,Swimming Pen Creek Elementary,Clay County School District,Orange Park,Clay,770,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001015,Lake Asbury Elementary School,Clay County School District,Green Cove Springs,Clay,620,12019031203.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001012,Jack L. Wilkinson Junior High School,Clay County School District,Orange Park,Clay,940,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120030000005,Westside Elementary School,Baker County School District,Macclenny,Baker,380,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000005,Pedro Menendez High School,St. Johns County School District,St. Augustine,St. Johns,1500,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000004,Nease High School,St. Johns County School District,Ponte Vedra,St. Johns,2250,12109020605.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120030000002,Baker County Middle School,Baker County School District,Macclenny,Baker,620,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120030000003,Keller Intermediate School,Baker County School District,Macclenny,Baker,480,12003040102.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120030000001,Baker County High School,Baker County School District,Glen St. Mary,Baker,750,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000006,Tocoi Creek High School,St. Johns County School District,St. Johns,St. Johns,1800,12109020801.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090000007,Ponte Vedra High School,St. Johns County School District,Ponte Vedra Beach,St. Johns,1650,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001001,W.E. Cherry Elementary School,Clay County School District,Orange Park,Clay,520,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001002,Lakeside Elementary School,Clay County School District,Middleburg,Clay,590,12019030103.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001003,Ridgeview Elementary School,Clay County School District,Orange Park,Clay,580,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001004,Fruit Cove Middle School,St. Johns County School District,St. Johns,St. Johns,890,12109020801.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001005,Cunningham Creek Elementary School,St. Johns County School District,St. Johns,St. Johns,690,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001006,Hickory Creek Elementary School,St. Johns County School District,St. Johns,St. Johns,650,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001007,Patriot Oaks Academy,St. Johns County School District,St. Johns,St. Johns,720,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001008,Valley Ridge Academy,St. Johns County School District,St. Johns,St. Johns,630,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001009,Julington Creek Elementary School,St. Johns County School District,St. Johns,St. Johns,710,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001010,Montclair Elementary School,Clay County School District,Jacksonville,Clay,630,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001009,Thunderbolt Elementary School,Clay County School District,Orange Park,Clay,560,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001004,Grove Park Elementary School,Clay County School District,Jacksonville,Clay,510,12031013402.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001005,Fleming Island Elementary School,Clay County School District,Fleming Island,Clay,670,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001006,McRae Elementary School,Clay County School District,Orange Park,Clay,540,12019030208.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001007,Shadowlawn Elementary School,Clay County School District,Middleburg,Clay,490,12019030204.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001008,Oakleaf Village Elementary School,Clay County School District,Orange Park,Clay,710,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001001,R.B. Hunt Elementary School,St. Johns County School District,St. Augustine,St. Johns,580,12109020906.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001002,Palencia Elementary School,St. Johns County School District,St. Augustine,St. Johns,640,12109020606.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001003,Webster Elementary School,St. Johns County School District,St. Augustine,St. Johns,520,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001013,Alice B. Landrum Middle School,St. Johns County School District,Ponte Vedra Beach,St. Johns,880,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001014,Pacetti Bay Middle School,St. Johns County School District,St. Augustine,St. Johns,850,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001015,Mill Creek Elementary School,St. Johns County School District,St. Augustine,St. Johns,640,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001027,Keystone Heights Elementary School,Clay County School District,Keystone Heights,Clay,420,12019031104.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001024,Rideout Elementary School,Clay County School District,Green Cove Springs,Clay,480,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001011,S. Bryan Jennings Elementary,Clay County School District,Middleburg,Clay,590,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001013,Argyle Elementary School,Clay County School District,Middleburg,Clay,510,12019030105.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001014,Doctors Inlet Elementary School,Clay County School District,Middleburg,Clay,580,12019030103.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001023,Plantation Oaks Elementary School,Clay County School District,Orange Park,Clay,740,12019030205.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001022,Oakleaf Junior High School,Clay County School District,Orange Park,Clay,1020,12019030205.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001021,Middleburg Elementary School,Clay County School District,Middleburg,Clay,560,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001016,Tynes Elementary School,Clay County School District,Jacksonville,Clay,540,12031013402.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001020,Charles E. Bennett Elementary,Clay County School District,Green Cove Springs,Clay,520,12019031202.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001017,Wilkinson Elementary School,Clay County School District,Orange Park,Clay,490,12019030400.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001018,Green Cove Springs Junior High School,Clay County School District,Green Cove Springs,Clay,850,12019031303.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120190001019,Discovery Oaks Elementary School,Clay County School District,Orange Park,Clay,680,12019030802.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001017,Ketterlinus Elementary School,St. Johns County School District,St. Augustine,St. Johns,380,12109020400.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001018,Crookshank Elementary School,St. Johns County School District,St. Augustine,St. Johns,360,12109020400.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001016,Ocean Palms Elementary School,St. Johns County School District,Ponte Vedra Beach,St. Johns,610,12109020706.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001012,Switzerland Point Middle School,St. Johns County School District,St. Johns,St. Johns,920,,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001011,Durbin Creek Elementary School,St. Johns County School District,St. Johns,St. Johns,720,12109020808.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+121090001010,Wards Creek Elementary School,St. Johns County School District,St. Augustine,St. Johns,680,12109020904.0,,17,Minimal,20.4,0.0,0.0,0.0,2.0,22.4
+120890000002,West Nassau High School,Nassau County School District,Callahan,Nassau,750,,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890000001,Fernandina Beach High School,Nassau County School District,Fernandina Beach,Nassau,900,,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890000005,Fernandina Beach Middle School,Nassau County School District,Fernandina Beach,Nassau,550,12089050204.0,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890000004,Yulee Middle School,Nassau County School District,Yulee,Nassau,680,12089050304.0,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890000003,Yulee High School,Nassau County School District,Yulee,Nassau,1200,12089050304.0,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890001001,Emma Love Hardee Elementary School,Nassau County School District,Fernandina Beach,Nassau,420,,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890001003,Callahan Elementary School,Nassau County School District,Callahan,Nassau,380,,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890001002,Yulee Primary School,Nassau County School District,Yulee,Nassau,480,12089050304.0,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890001004,Hilliard Elementary School,Nassau County School District,Hilliard,Nassau,310,,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
+120890001005,Bryceville Elementary School,Nassau County School District,Bryceville,Nassau,280,,,11,Minimal,13.2,0.0,0.0,0.0,2.0,15.2
